@@ -51,3 +51,46 @@
         .navbar .navbar-content .nav-item:hover{
             background: #e5e5e5;
         }
+
+
+        .navbar .nav-item .icon1 {
+            width: 24px;
+            height: 24px;
+            background-image: url('/contents/icons/dashboard.png');
+            background-size: contain;
+        }
+
+        .navbar .nav-item .icon2 {
+            width: 24px;
+            height: 24px;
+            background-image: url('/contents/icons/report.png');
+            background-size: contain;
+        }
+
+        .navbar .nav-item .icon3 {
+            width: 24px;
+            height: 24px;
+            background-image: url('/contents/icons/dashboard.png');
+            background-size: contain;
+        }
+
+        .navbar .nav-item .icon4 {
+            width: 24px;
+            height: 24px;
+            background-image: url('/contents/icons/dic-employee.png');
+            background-size: contain;
+        }
+
+        .navbar .nav-item .icon5 {
+            width: 24px;
+            height: 24px;
+            background-image: url('/contents/icons/dic-employee.png');
+            background-size: contain;
+        }
+
+        .navbar .nav-item .icon6 {
+            width: 24px;
+            height: 24px;
+            background-image: url('/contents/icons/setting.png');
+            background-size: contain;
+        }
