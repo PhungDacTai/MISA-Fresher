@@ -9,7 +9,8 @@
     .header .header-left {
         line-height: 60px;
         outline: none;
-        margin-left: 10px;
+        padding-left: 35px;
+
     }
 
     .header .header-right {
@@ -25,20 +26,34 @@
             background-size: contain;
             /*margin: auto 0px;*/
             align-self: center; /*Su dung khi display: flex;*/
-            margin-right: 10px;
         }
 
 
         .header .header-right .avatar-icon {
+            cursor: pointer;
             background-image: url('/contents/icons/avatar-default.png');
             width: 35px;
             height: 35px;
         }
 
         .header .header-right .three-dot {
+            cursor: pointer;
             background-image: url('/contents/icons/option.png');
         }
 
         .header .header-right .header-content {
-            margin-right: 10px;
+            margin-right: 16px;
         }
+
+
+select {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-padding-end: 15px;
+    -webkit-user-select: none;
+    border-style: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+

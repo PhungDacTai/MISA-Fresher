@@ -7,92 +7,86 @@
     width: 220px;
 }
 
-    .navbar .logo-site, .navbar .logo-box{
+    .navbar .logo-site, .navbar .logo-box {
         display: flex;
         width: 100%;
         height: 60px;
     }
 
-    .navbar .logo-box{
+    .navbar .logo-box {
         position: absolute;
         top: 20px;
         left: 24px;
         /*padding:24px 0 0 24px;*/
     }
-        .navbar .logo-site .toggle-icon {
-            width: 24px;
-            height: 24px;
-            background-image: url('/contents/images/toggle.png');
-            background-size:contain;
-            background-repeat: no-repeat;
 
-        }
+    .navbar .logo-site .toggle-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url('/contents/images/toggle.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 
-        .navbar .logo-site .cukcuk-logo {
-            width: 100%;
-            height: 30px;
-            background-image: url('/contents/images/cukcuk-logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
+    .navbar .logo-site .cukcuk-logo {
+        width: 100%;
+        height: 30px;
+        background-image: url('/contents/images/cukcuk-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 
 
 
-    .navbar .navbar-content{
+    .navbar .navbar-content {
         width: 100%;
     }
+
         .navbar .navbar-content .nav-item {
             display: flex;
             padding-left: 24px;
             height: 44px;
             cursor: pointer;
+            line-height: 44px;
         }
 
-        .navbar .navbar-content .nav-item:hover{
-            background: #e5e5e5;
-        }
-                 
-                .navbar .nav-item .nav-item-icon{
+            .navbar .navbar-content .nav-item:hover {
+                background: #e5e5e5;
+                color: #000000;
+            }
 
-                }
+    .navbar .nav-item .nav-item-icon {
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        /*margin: auto 0px;*/
+        align-self: center; /*Su dung khi display: flex;*/
+        margin-right: 10px;
+    }
 
-                .navbar .nav-item .icon1 {
+    .navbar .nav-item .nav-item-icon {
+    }
 
-                    background-image: url('/contents/icons/dashboard.png');
-                    background-size: contain;
-                }
+    .navbar .nav-item .icon1 {
+        background-image: url('/contents/icons/dashboard.png');
+    }
 
-                .navbar .nav-item .icon2 {
-                    width: 24px;
-                    height: 24px;
-                    background-image: url('/contents/icons/report.png');
-                    background-size: contain;
-                }
+    .navbar .nav-item .icon2 {
+        background-image: url('/contents/icons/report.png');
+    }
 
-                .navbar .nav-item .icon3 {
-                    width: 24px;
-                    height: 24px;
-                    background-image: url('/contents/icons/dashboard.png');
-                    background-size: contain;
-                }
+    .navbar .nav-item .icon3 {
+        background-image: url('/contents/icons/dashboard.png');
+    }
 
-                .navbar .nav-item .icon4 {
-                    width: 24px;
-                    height: 24px;
-                    background-image: url('/contents/icons/dic-employee.png');
-                    background-size: contain;
-                }
+    .navbar .nav-item .icon4 {
+        background-image: url('/contents/icons/dic-employee.png');
+    }
 
-                .navbar .nav-item .icon5 {
-                    width: 24px;
-                    height: 24px;
-                    background-image: url('/contents/icons/dic-employee.png');
-                    background-size: contain;
-                }
+    .navbar .nav-item .icon5 {
+        background-image: url('/contents/icons/dic-employee.png');
+    }
 
-                .navbar .nav-item .icon6 {
-                    width: 24px;
-                    height: 24px;
-                    background-image: url('/contents/icons/setting.png');
-                    background-size: contain;
-                }
+    .navbar .nav-item .icon6 {
+        background-image: url('/contents/icons/setting.png');
+    }
