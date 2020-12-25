@@ -1,4 +1,5 @@
-﻿.header {
+﻿/* Định dạng header*/
+.header {
     float: left;
     width: calc(100% - 221px);
     height: 60px;
@@ -19,15 +20,6 @@
         display: flex;
         line-height: 60px;
     }
-
-        .header .header-right .nav-item-icon {
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            /*margin: auto 0px;*/
-            align-self: center; /*Su dung khi display: flex;*/
-        }
-
 
         .header .header-right .avatar-icon {
             cursor: pointer;
