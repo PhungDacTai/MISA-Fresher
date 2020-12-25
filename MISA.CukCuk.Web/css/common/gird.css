@@ -1,0 +1,66 @@
+﻿/*==============================================================GRID======================================*/
+
+.content .content-grid {
+    height: calc(100vh - 240px);
+    margin-left: 16px;
+    position: relative;
+    margin-top: -10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100.5%;
+}
+table th, td {
+    border-bottom: 1pt solid #bbbbbb;
+    padding: 0px 16px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 48px;
+}
+
+.grid-scroll {
+    height: calc(100vh - 240px);
+    overflow: auto;
+}
+    /*
+.content-grid table {
+    width: 100%;
+}
+
+    .content-grid table thead th .text {
+        /*position: absolute;
+        top: -10px;
+        margin-bottom: 10px;
+    }*/
+
+
+    .grid-scroll::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: #e5e5e5;
+        border-radius: 2px;
+    }
+
+    .grid-scroll::-webkit-scrollbar-thumb {
+        background-color: #454545;
+        border-radius: 3px;
+    }
+
+    .grid-scroll::-webkit-scrollbar-track {
+    }
+
+
+
+
+    table th {
+        position: sticky;
+        top: 0px;
+        background: #fff;
+    }
+
+tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
