@@ -1,0 +1,16 @@
+﻿/*Định dạng thanh cuộn*/
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #e5e5e5;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #454545;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+}

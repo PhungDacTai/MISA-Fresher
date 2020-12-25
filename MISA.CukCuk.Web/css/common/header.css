@@ -1,0 +1,51 @@
+﻿/* Định dạng header*/
+.header {
+    float: left;
+    width: calc(100% - 221px);
+    height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+}
+
+    .header .header-left {
+        line-height: 60px;
+        outline: none;
+        padding-left: 35px;
+
+    }
+
+    .header .header-right {
+        position: absolute;
+        right: 10px;
+        display: flex;
+        line-height: 60px;
+    }
+
+        .header .header-right .avatar-icon {
+            cursor: pointer;
+            background-image: url('/contents/icons/avatar-default.png');
+            width: 35px;
+            height: 35px;
+        }
+
+        .header .header-right .three-dot {
+            cursor: pointer;
+            background-image: url('/contents/icons/option.png');
+        }
+
+        .header .header-right .header-content {
+            margin-right: 16px;
+        }
+
+
+select {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-padding-end: 15px;
+    -webkit-user-select: none;
+    border-style: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+

@@ -1,0 +1,49 @@
+﻿/*=======================Định dạng bảng/GRID======================================*/
+
+.content .content-grid {
+    margin-left: 16px;
+    position: relative;
+    margin-top: -10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100.5%;
+}
+
+    table th, td {
+        border-bottom: 1pt solid #bbbbbb;
+        padding: 0px 16px;
+        text-align: left;
+        /*Chuyển overflow thành 3 chấm*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 48px;
+    }
+
+.grid-scroll {
+    height: calc(100vh - 240px);
+    overflow: auto;
+}
+
+    table th {
+        position: sticky;
+        top: 0px;
+        background: #fff;
+    }
+    /*Tô màu hàng*/
+    tr:nth-child(even) {
+        background-color: #f4f4f4;
+    }
+
+/*
+.content-grid table {
+    width: 100%;
+}
+
+    .content-grid table thead th .text {
+        /*position: absolute;
+        top: -10px;
+        margin-bottom: 10px;
+    }*/

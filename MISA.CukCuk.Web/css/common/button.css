@@ -1,0 +1,13 @@
+﻿/* Định dạng button*/
+.m-btn{
+    height: 40px;
+    background: #019160;
+    border-radius: 4px;
+    text-align: left;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 12px 0px;
+    line-height: 40px;
+    color: #ffffff;
+    display: flex !important;
+}
