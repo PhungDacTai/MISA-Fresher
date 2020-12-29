@@ -1,0 +1,27 @@
+﻿.m-dialog{
+    position: relative;
+}
+
+    .m-dialog .dialog-modal{
+        position: fixed;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: black;
+        z-index: 20;
+
+
+    }
+
+
+    .m-dialog .dialog-content {
+        position: absolute;
+        width: 800px;
+        height: 400px;
+        background: #ffffff;
+        z-index: 21;
+        top: calc(50%-200px);
+        left: calc(50% -400px);
+    }

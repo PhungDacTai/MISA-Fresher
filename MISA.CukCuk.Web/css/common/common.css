@@ -1,0 +1,12 @@
+﻿.text-right{
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+    .navbar a{
+        text-decoration: none;
+        color: inherit;
+    }
