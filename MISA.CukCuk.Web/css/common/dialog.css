@@ -1,4 +1,4 @@
-﻿.m-dialog{
+.m-dialog{
     position: relative;
 }
 
@@ -19,9 +19,77 @@
     .m-dialog .dialog-content {
         position: absolute;
         width: 800px;
-        height: 400px;
+        height: auto;
         background: #ffffff;
         z-index: 21;
-        top: calc(50%-200px);
-        left: calc(50% -400px);
+        left: calc(50% - 400px);
+        bottom: calc(50% - 650px)
     }
+
+/*Title*/
+.dialog-content {
+    padding: 24px;
+    border-radius: 5px;
+}
+
+    .dialog-content .dialog-title{
+        display: flex;
+        background: red;
+        height: 60px;
+        width: 100%;
+    }
+        .dialog-content .dialog-title .btn-close{
+            border-radius: 0px 0px 4px 4px;
+            background-color: #ccc;
+            border: 1px;
+
+        }
+button:hover {
+    background-color: black;
+}
+        .dialog-content .dialog-title button {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            right: 0px;
+            top: 0px;
+            background-image: url('../../contents/icons/x.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border: none;
+            outline: none;
+            margin: 5px;
+            background-color: #ffffff;
+        }
+
+        .dialog-content .dialog-infor-top {
+            background: yellow;
+            height: 180px;
+            width: 100%;
+        }
+
+    .dialog-content .dialog-infor-center1 {
+        background: orange;
+        height: 60px;
+        width: 100%;
+    }
+
+    .dialog-content .dialog-infor-center2 {
+        background: yellow;
+        height: 60px;
+        width: 100%;
+    }
+
+    .dialog-content .dialog-infor-center3 {
+        background: green;
+        height: 60px;
+        width: 100%;
+    }
+
+    .dialog-content .footer {
+        background: black;
+        height: 60px;
+        width: 100%;
+    }
+
