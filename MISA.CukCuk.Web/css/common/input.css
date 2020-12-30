@@ -1,5 +1,14 @@
 ﻿/*Định dạng thẻ input*/
 input {
-    height: 38px;
-    border: none;
+    height: 40px;
+    margin-bottom: 16px;
+    margin-top: 4px;
+    width: 284px;
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+}
+
+input[type="radio"]{
+    width: 15px;
+    height: 15px;
 }

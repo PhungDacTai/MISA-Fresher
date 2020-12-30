@@ -1,4 +1,4 @@
-﻿/*Định dạng thanh cuộn*/
+/*Định dạng thanh cuộn*/
 
 ::-webkit-scrollbar {
     width: 6px;
@@ -12,5 +12,4 @@
     border-radius: 3px;
 }
 
-::-webkit-scrollbar-track {
-}
+::-webkit-scrollbar-track {}

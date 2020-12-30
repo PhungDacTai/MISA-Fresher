@@ -1,4 +1,4 @@
-﻿/* Định dạng button*/
+/* Định dạng button*/
 .m-btn{
     height: 40px;
     background: #019160;
@@ -11,3 +11,43 @@
     color: #ffffff;
     display: flex !important;
 }
+
+.btn-cancel, .btn-save {
+    width: 80px;
+    height: 36px;
+    background: #019160;
+    border-radius: 4px;
+    font-weight: normal;
+    padding-left: 25px;
+    line-height: 36px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    position: absolute;
+    right: 169px;
+    top: 12px;
+    width: 60px;
+    color: inherit;
+    background: #e5e5e5;
+}
+    .btn-cancel:hover{
+        background-color:#cccccc;
+    }
+
+    .btn-cancel .cancel {
+        width: inherit;
+        margin-left: 5px;
+    }
+
+.btn-save {
+    position: absolute;
+    display: flex;
+    margin-right: 24px;
+    right: 0px;
+    top: 12px;
+}
+    .btn-save:hover {
+        background-color: #2fbe8e;
+    }

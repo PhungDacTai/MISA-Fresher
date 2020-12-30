@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>MISA CukCuk</title>
     <!--abc-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link href="/css/common/main.css" rel="stylesheet" />
     <link href="/css/common/common.css" rel="stylesheet" />
     <link href="../css/common/dialog.css" rel="stylesheet" />
@@ -149,18 +150,86 @@
         <div class="dialog-modal"></div>
         <div class="dialog-content">
             <div class="dialog-title">
-                <div>THÔNG TIN NHÂN VIÊN</div>
+                <div>THÔNG TIN KHÁCH HÀNG</div>
                 <div class="btn-close"><button></button></div>
             </div>
             <div class="dialog-infor-top">
-                <div class="dialog-avatar"></div>
-                <div class="dialog-infor-top2"></div>
-                <div class="dialog-infor-top3"></div>
+                <div class="dialog-avatar">
+                    <div class="avatar-icon"></div>
+                    <div class="avatar-type">Vui lòng chọn ảnh có định dạng<br /><b>.jpg, .jpeg, .png, .gif.</b></div>
+                </div>
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Mã khách hàng (*) <br />
+                        <input type="text" name="customer_id" /><br />
+                        Mã thẻ thành viên<br />
+                        <input type="text" name="customer_member" /><br />
+                        Ngày sinh<br />
+                        <input type="text" name="customer_dateofbirth" />
+                    </form>
+                </div>
+                <div class="dialog-infor infor-top3">
+                    <form>
+                        Họ và tên (*)<br />
+                        <input class="a" type="text" border="1" /><br />
+                        Nhóm khách hàng<br />
+                        <select>
+                            <option>Khách VIP</option>
+                            <option>Khách VIP 1</option>
+                            <option>Khách VIP 2</option>
+                            <option>Khách VIP 3</option>
+                        </select><br />
+                        Giới tính<br />
+                                 <div class="radio-gender"><input type="radio" id="male" name="gender" value="male" />Nam<input type="radio" id="female" name="gender" value="female" />Nữ</div>
+                                 
+                    </form>
+                </div>
             </div>
-            <div class="dialog-infor-center1"></div>
-            <div class="dialog-infor-center2"></div>
-            <div class="dialog-infor-center3"></div>
-            <div class="dialog-footer"></div>
+            <div class="dialog-infor-center1">
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Email <br />
+                        <input style="width:490px; margin-right: 16px;" placeholder="example@domain.com" type="text" name="customer_email" /><br />
+                    </form>
+                </div>
+                <div class="dialog-infor infor-top3">
+                    <form>
+                        Số điện thoại (*)<br />
+                        <input class="a" type="text" /><br />
+                    </form>
+                </div>
+            </div>
+            <div class="dialog-infor-center2">
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Tên công ty <br />
+                        <input style="width:490px; margin-right: 16px;"type="text" name="customer_id" /><br />
+                    </form>
+                </div>
+                <div class="dialog-infor infor-top3">
+                    <form>
+                        Mã số thuế<br />
+                        <input class="a" type="text" placeholder="Mã số thuế của công ty"/><br />
+                    </form>
+                </div>
+            </div>
+            <div class="dialog-infor-center3">
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Địa chỉ <br />
+                        <input style="width:796px; margin-right: 16px;"  type="text" name="customer_id" /><br />
+                    </form>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <div class="btn-cancel">
+                    <div class="nav-item-text cancel">Hủy</div>
+                </div>
+                <div class="btn-save">
+                    <div class="item-icon save-icon"></div>
+                    <div class="nav-item-text">Lưu</div>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -19,34 +19,29 @@
     .m-dialog .dialog-content {
         position: absolute;
         width: 800px;
-        height: auto;
+        height: 597px;
         background: #ffffff;
         z-index: 21;
         left: calc(50% - 400px);
-        bottom: calc(50% - 650px)
+        bottom: calc(50% - 750px)
     }
 
 /*Title*/
 .dialog-content {
     padding: 24px;
     border-radius: 5px;
+    padding-bottom: 0px;
 }
 
     .dialog-content .dialog-title{
         display: flex;
-        background: red;
-        height: 60px;
+        height: 20px;
         width: 100%;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 24px;
     }
-        .dialog-content .dialog-title .btn-close{
-            border-radius: 0px 0px 4px 4px;
-            background-color: #ccc;
-            border: 1px;
 
-        }
-button:hover {
-    background-color: black;
-}
         .dialog-content .dialog-title button {
             position: absolute;
             height: 20px;
@@ -59,37 +54,103 @@ button:hover {
             background-size: contain;
             border: none;
             outline: none;
-            margin: 5px;
+            padding: 5px;
             background-color: #ffffff;
         }
+            .dialog-content .dialog-title button:hover {
+                background-color: #e5e5e5;
+                border-radius: 0px 0px 4px 4px;
+            }
 
+
+/*======================AVATAR=================*/
         .dialog-content .dialog-infor-top {
-            background: yellow;
-            height: 180px;
+            display: flex;
+            height: 218px;
             width: 100%;
+            margin-bottom: 24px;
         }
+            .dialog-content .dialog-infor-top .dialog-avatar{
+                width: 190px;
+                margin-right: 0px;
+            }
 
-    .dialog-content .dialog-infor-center1 {
-        background: orange;
-        height: 60px;
-        width: 100%;
+            .dialog-content .dialog-infor-top .avatar-icon {
+                width: 190px ;
+                height: 190px;
+                background-image: url('../../contents/images/default-avatar.jpg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                border-radius: 50%;
+                border: 1px solid #bbb;
+                /* margin-right: 10px; */
+            }
+
+                .dialog-content .dialog-infor-top .avatar-type{
+                    text-align: center;
+                }
+
+
+
+    .dialog-content .dialog-infor-top .dialog-infor {
+     
+        width: 300px;
     }
 
+.dialog-content .dialog-infor-top .infor-top2 {
+    margin: 0px 16px;
+}
+
+
+
+    .dialog-content .infor-top3 select {
+        width: 284px;
+        height: 43px;
+        margin-bottom: 16px;
+        margin-top: 4px;
+        padding-left: 30px;
+        border-style: solid;
+        border-radius: 5px;
+        border: 1px solid #bbbbbb;
+        cursor: pointer;
+    }
+
+    .radio-gender{
+        /* text-align: center; */
+        line-height: 60px;
+    }
+/*====================*/
+    .dialog-content .dialog-infor-center1, .dialog-infor-center2 {
+        display: flex;
+        height: 65px;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+
     .dialog-content .dialog-infor-center2 {
-        background: yellow;
-        height: 60px;
+        height: 65px;
         width: 100%;
     }
 
     .dialog-content .dialog-infor-center3 {
-        background: green;
-        height: 60px;
+        height: 65px;
         width: 100%;
+        margin-bottom: 24px;
     }
 
-    .dialog-content .footer {
-        background: black;
+    .dialog-content .dialog-footer {
+        position: absolute;
+        display: flex;
+        background-color: #e9ebee;
         height: 60px;
         width: 100%;
+        left: 0px;
+        border-radius: 0 0 5px 5px;
     }
+
+.save-icon {
+    background-image: url('../../contents/icons/save (2).svg');
+}
 
