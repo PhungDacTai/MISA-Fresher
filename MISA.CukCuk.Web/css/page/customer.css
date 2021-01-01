@@ -1,4 +1,4 @@
-﻿.content {
+.content {
     position: absolute;
     top: 61px;
     left: 221px;
@@ -69,7 +69,6 @@
         .content .content-search .item-icon {
             width: 16px;
             height: 16px;
-
         }
 
         .content .content-search .search-icon {
@@ -81,13 +80,19 @@
         .content .content-search .refresh {
             position: absolute;
             right: 0px;
+            background: #red;
             cursor: pointer;
+            /* padding: 0px; */
         }
 
+        .content .content-search .refresh:hover {
+            background-color: #red;
+        }
         .content .content-search .refresh-icon {
             background-repeat: no-repeat;
             background-image: url('/contents/icons/refresh.png');
             margin-right: 7px;
+            /* width: 24px; */
         }
 
 
@@ -172,3 +177,8 @@
         .content-bottom .bottom-center .bt-icon4 {
             background-image: url('/contents/icons/btn-lastpage.svg');
         }
+
+#DateOfBirth{
+    width: 275px;
+    padding-right: 10px;
+}

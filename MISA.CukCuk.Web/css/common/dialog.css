@@ -1,5 +1,6 @@
 .m-dialog{
     position: relative;
+    z-index:100;
 }
 
     .m-dialog .dialog-modal{
@@ -153,4 +154,3 @@
 .save-icon {
     background-image: url('../../contents/icons/save (2).svg');
 }
-

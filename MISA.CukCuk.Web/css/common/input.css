@@ -8,7 +8,37 @@ input {
     border: 1px solid #bbbbbb;
 }
 
+.searchbox input{
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
 input[type="radio"]{
     width: 15px;
     height: 15px;
+    margin-top: 7px;
+}
+
+.border-red{
+    border: 1px solid #ff4747;
+}
+.radio-gender input{
+    margin: 0;
+    margin-right: 4px;
+}
+.radio-gender {
+    display: flex;
+    align-items:center;
+    height: 44px;
+    margin-top: 4px;
+}
+
+.radio-gender p{
+  
+}
+
+/*Focus vao input*/
+.focus{
+    border-color: violet;
 }
