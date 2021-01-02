@@ -1,4 +1,4 @@
-﻿.text-right{
+.text-right{
     text-align: right;
 }
 
@@ -10,3 +10,43 @@
         text-decoration: none;
         color: inherit;
     }
+
+.loading{
+    display: none;
+}
+
+.loading-modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 100;
+}
+
+.loading-icon{
+    position: fixed;
+    z-index: 21;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: calc(50% - 25px);
+    left: calc(50% - 50px);
+    border: 4px solid;
+    border-bottom-color: #00ff21;
+    border-top-color: #ff0000;
+    border-right-color: #0026ff;
+    border-left-color: #ffd800;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

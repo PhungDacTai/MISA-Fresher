@@ -145,6 +145,10 @@
         </div>
     </div>
 
+    <div class="loading">
+        <div class="loading-modal"></div>
+        <div class="loading-icon"></div>
+    </div>
     <div class="m-dialog dialog-detail" id="dialog">
         <div class="dialog-modal"></div>
         <div class="dialog-content">
@@ -160,25 +164,26 @@
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Mã khách hàng (<label style="color: red;">*</label>) <br />
-                        <input autofocus type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
+                        <input autofocus fieldName="CustomerCode" type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
                         Mã thẻ thành viên<br />
-                        <input type="text" id="txtMemberCardCode" name="customer_member" /><br />
+                        <input type="text" id="txtMemberCardCode" fieldName="MemberCardCode" name="customer_member" /><br />
                         Ngày sinh<br />
-                        <input type="date" id="DateOfBirth" name="customer_dateofbirth" placeholder="mm/dd/yy" />
+                        <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth"  placeholder="mm/dd/yy" />
                     </form>
                 </div>
                 <div class="dialog-infor infor-top3">
                     <form>
                         Họ và tên (<label style="color: red;">*</label>)<br />
-                        <input class="a input-required" id="txtFullName" type="text" border="1" /><br />
+                        <input class="a input-required" id="txtFullName" fieldName="FullName" type="text" border="1" /><br />
                         Nhóm khách hàng<br />
-                        <select id="cbxCustomerGroup">
-                            <option>Khách VIP</option>
-                            <option>Khách thường</option>
-                            <option>Khách vãng lai</option>
-                        </select><br />
+                        <select fieldName="CustomerGroupId" id="cbxCustomerGroup">
+                            <!--<option value="">Khách VIP</option>
+                            <option value="">Khách thường</option>
+                            <option value="">Khách vãng lai</option>-->
+                        </select><br /> 
                         Giới tính<br />
-                        <div class="radio-gender"><input checked type="radio" id="male" name="gender" value="male" /><p style="margin-right:30px">Nam</p><input type="radio" id="female" name="gender" value="female" /><p>Nữ</p></div>
+                        <div class="radio-gender"><input fieldName="Gender" checked type="radio" id="male" name="gender" value="1" /><p style="margin-right:30px">Nam</p>
+                        <input fieldName="Gender" type="radio" id="female" name="gender" value="0" /><p>Nữ</p></div>
                     </form>
                 </div>
             </div>
@@ -186,13 +191,13 @@
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Email <br />
-                        <input id="txtCustomerEmail" style="width:490px; margin-right: 16px;" placeholder="example@domain.com" type="email" name="customer_email" /><br />
+                        <input fieldName="Email" id="txtCustomerEmail" style="width:490px; margin-right: 16px;" placeholder="example@domain.com" type="email" name="customer_email" /><br />
                     </form>
                 </div>
                 <div class="dialog-infor infor-top3">
                     <form>
                         Số điện thoại (<label style="color: red;">*</label>)<br />
-                        <input class="a input-required" id="txtPhoneNumber"  type="text" /><br />
+                        <input fieldName="PhoneNumber" class="a input-required" id="txtPhoneNumber"  type="tel" /><br />
                     </form>
                 </div>
             </div>
@@ -200,13 +205,13 @@
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Tên công ty <br />
-                        <input style="width:490px; margin-right: 16px;" type="text" name="customer_id" /><br />
+                        <input fieldName="CompanyName" style="width:490px; margin-right: 16px;" type="text" name="customer_id" /><br />
                     </form>
                 </div>
                 <div class="dialog-infor infor-top3">
                     <form>
                         Mã số thuế<br />
-                        <input class="a" type="text" placeholder="Mã số thuế của công ty" /><br />
+                        <input fieldName="CompanyTaxCode" class="a" type="text" placeholder="Mã số thuế của công ty" /><br />
                     </form>
                 </div>
             </div>
@@ -214,7 +219,7 @@
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Địa chỉ <br />
-                        <input id="txtAddress" style="width:796px; margin-right: 16px;" type="text" name="customer_id" /><br />
+                        <input fieldName="Address" id="txtAddress" style="width:796px; margin-right: 16px;" type="text" name="customer_id" /><br />
                     </form>
                 </div>
             </div>

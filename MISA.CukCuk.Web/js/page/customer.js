@@ -28,11 +28,7 @@ class CustomerJS extends BaseJS {
         super();
     }
 
-    /**
-     * Set đường dẫn lấy database
-     * CreatedBy: PDTAI (28/12/2020)
-     * */
-    setDataUrl() {
-        this.getDataUrl = "http://api.manhnv.net/api/customers";
+    setApiRouter() {
+        this.apiRouter = "/api/customers";
     }
 }
