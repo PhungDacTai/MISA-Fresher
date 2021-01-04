@@ -11,12 +11,8 @@
     //});
 
     $(".m-dialog").hide();//Sự kiện ẩn dialog
-    $('input').focus(function () {
-        $(this).addClass('focus');
-    })
-    $('input').blur(function () {
-        $(this).removeClass('focus');
-    })
+
+
 })
 
 /**

@@ -4,7 +4,11 @@
         this.apiRouter = null;
         this.setApiRouter();
         this.loadData();
-        this.initEvent();
+        this.initEvents();
+
+        var input = document.getElementById('txtCustomerCode');
+        input.focus();
+        input.select();
     }
 
     setApiRouter() {
@@ -15,7 +19,7 @@
      * Khởi tạo sự kiện các button
      * CredtedBy: PDTAI (29/12/2020)
      * */
-    initEvent() {
+    initEvents() {
         var me = this;
         // Sự kiên click khi nhấn thêm mới
 
@@ -116,18 +120,34 @@
             }).done(function (res) {
                 // Sau khi thành công: 
                 // - Đưa ra thông báo
-                debugger
-                alert(mes);
+                // Get the snackbar DIV
+                var x = document.getElementById("snackbar");
+
+                // Add the "show" class to DIV
+                x.className = "show";
+
+                // After 3 seconds, remove the show class from DIV
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
                 // - Ẩn dialog chi tiết
                 $(".m-dialog").hide();
                 // - Load lại dữ  liệu
                 me.loadData();
             }).fail(function (res) {
+                // Get the snackbar DIV
+                var x = document.getElementById("snackbar_fail");
+
+                // Add the "show" class to DIV
+                x.className = "show";
+
+                // After 3 seconds, remove the show class from DIV
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                // - Ẩn dialog chi tiết
             })
         });
 
         //Hiển thị thông tin chi tiết khi đúp chuột chọn một bản ghi trên danh sách dữ liệu===============================================================
         $('table tbody').on('dblclick', 'tr', function () {
+            $(this).find('td').addClass('selected');
             me.FormMode = 'Edit';
             // Load form
             var select = $('select#cbxCustomerGroup');
@@ -152,7 +172,7 @@
             var recordId = $(this).data('recordId');// Che giấu code dễ hơn
             me.recordId = recordId;
 
-            //Gọi service lấy thông tin chi tiết qua Id
+            //Gọi service lấy thông tin chi tiết hiển thị lại form qua Id
             $.ajax({
                 url: me.host + me.apiRouter + `/${recordId}`,
                 method: "GET"
