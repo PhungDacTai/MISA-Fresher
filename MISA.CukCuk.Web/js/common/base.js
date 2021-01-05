@@ -5,6 +5,7 @@
         this.setApiRouter();
         this.loadData();
         this.initEvents();
+        this.contextMenu();
 
         var input = document.getElementById('txtCustomerCode');
         input.focus();
@@ -14,6 +15,7 @@
     setApiRouter() {
 
     }
+
 
     /**
      * Khởi tạo sự kiện các button
@@ -147,6 +149,7 @@
 
         //Hiển thị thông tin chi tiết khi đúp chuột chọn một bản ghi trên danh sách dữ liệu===============================================================
         $('table tbody').on('dblclick', 'tr', function () {
+            $('tr').find('td').removeClass('selected');
             $(this).find('td').addClass('selected');
             me.FormMode = 'Edit';
             // Load form
@@ -339,4 +342,31 @@
 
     }
 
+    /**
+     * Context menu kích chuột phải chọn một dòng tr
+     * CreatedBy: PDTAI (05/01/2021)
+     * */
+    contextMenu() {
+
+        var $contextMenu = $("#contextMenu");
+
+        $("body").on("contextmenu", "table tr", function (e) {
+            $contextMenu.css({
+                display: "block",
+                left: e.pageX,
+                top: e.pageY
+            });
+            debugger;
+            return false;
+        });
+
+        $('html').click(function () {
+            $contextMenu.hide();
+        });
+
+        $("#contextMenu").click(function (e) {
+            var f = $(this);
+            debugger;
+        });
+    }
 }

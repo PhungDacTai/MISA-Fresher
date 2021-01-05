@@ -41,7 +41,7 @@ table {
     }
     /*Tô màu hàng*/
     tr:nth-child(even) {
-        background-color: #f4f4f4;
+        /*background-color: #F8f8ff;*/
     }
 
 /*
