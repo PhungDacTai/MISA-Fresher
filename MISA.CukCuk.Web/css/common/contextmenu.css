@@ -1,8 +1,8 @@
 ﻿#contextMenu {
     position: absolute;
     display: none;
-    width: 120px;
-    height: 108px;
+    width: auto;
+    height: auto;
     border: 1px solid #fff;
     border-radius: 3px;
     z-index: 122;
@@ -16,7 +16,7 @@
     height: 36px;
     background: #019160;
     border-radius: 4px;
-    margin: 12px 10px;
+    margin: 5px;
     padding-left: 20px;
     font-weight: normal;
     line-height: 36px;
@@ -28,9 +28,12 @@
 }
 
 .btn-delete {
-    background: #F08080;
+    background: #EE0000;
 }
 
+.delete-icon {
+    background-image: url('../../contents/icons/trash-2.svg');
+}
 tr:nth-child(even) {
     background: #F5F5F5;
 }
@@ -43,3 +46,4 @@ tr {
         background: #c9e8f7;
         position: relative;
     }
+
