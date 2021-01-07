@@ -75,6 +75,7 @@ class BaseJS {
     loadData() {
         var me = this;
         try {
+
             $('table tbody').empty();
             // Lấy thông tin các cột dữ liệu
             var ths = $('table thead th');
@@ -152,29 +153,43 @@ class BaseJS {
     * */
     btnAddOnClick() {
         try {
-            $('input[type="text"]').val();
+            $('input[type="text"]').val('');
+            $('input[type="email"]').val('');
+            $('input[type="tel"]').val('');
+            $('input[type="date"]').val('');
             var me = this;
             me.FormMode = 'Add';
             // Hiển thị dialog thông tin chi tiết
             $(".m-dialog").show();
             // Load dữ liệu cho combobox
-            var select = $('select#cbxCustomerGroup');
+            var select = $('select[fieldName]');
             select.empty();
-            // Lấy dữ liệu nhóm khách hàng
-            $('.loading').show();
-            $.ajax({
-                url: me.host + "/api/customergroups",
-                method: "GET"
-            }).done(function (res) {
-                if (res) {
-                    $.each(res, function (index, obj) {
-                        var option = $(`<option value="${obj.CustomerGroupId}">${obj.CustomerGroupName}</option>`);
-                        select.append(option);
-                    })
-                }
-                $('.loading').hide();
-            }).fail(function (res) {
-                $('.loading').hide();
+            $.each(select, function (index, value) {
+                // Lấy dữ liệu nhóm khách hàng
+                var api = $(select).attr('api');
+                var fieldName = $(select).attr('fieldName');
+                var fieldValue = $(select).attr('fieldValue');
+                $('.loading').show();
+                $.ajax({
+                    url: me.host + api,
+                    method: "GET"
+                }).done(function (res) {
+                    try {
+                        if (res) {
+                            $.each(res, function (index, obj) {
+                                var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
+                                select.append(option);
+                            })
+                            console.log(select);
+                        }
+                    } catch (e) {
+                        console.log(e);
+                    }
+
+                    $('.loading').hide();
+                }).fail(function (res) {
+                    $('.loading').hide();
+                })
             })
         } catch (e) {
             console.log(e);
@@ -206,7 +221,12 @@ class BaseJS {
         var entity = {};
         $.each(inputs, function (index, input) {
             var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
+
+            
             var value = $(this).val();//Lấy giá trị
+            if (propertyName == "DateOfBirth") {
+                value = formatDate2(value);
+            }
             //Check với trường hợp input là radio, thì chỉ lấy value có thuộc tính  checked
             if ($(this).attr('type') == "radio") {
                 if (this.checked) {
@@ -216,7 +236,7 @@ class BaseJS {
             } else {
                 entity[propertyName] = value;
             }
-            
+
         })
         var method = "POST";
         if (me.FormMode == 'Edit') {
@@ -244,6 +264,7 @@ class BaseJS {
             $(".m-dialog").hide();
             // - Load lại dữ  liệu
             me.loadData();
+            location.reload(true);//==========================================================================================================
         }).fail(function (res) {
             // Get the snackbar DIV
             var x = document.getElementById("snackbar_fail");
@@ -255,6 +276,7 @@ class BaseJS {
             setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
             // - Ẩn dialog chi tiết
         })
+            
     }
 
 
@@ -263,27 +285,42 @@ class BaseJS {
      * */
     doubleClickEvent(e) {
         var me = this;
+        $('input[type="text"]').val('');
+        $('input[type="email"]').val('');
+        $('input[type="tel"]').val('');
         $('tr').find('td').removeClass('selected');
         $(e.currentTarget).find('td').addClass('selected');
         me.FormMode = 'Edit';
         // Load form
-        var select = $('select#cbxCustomerGroup');
-        select.empty();
         // Lấy dữ liệu nhóm khách hàng
-        $('.loading').show();
-        $.ajax({
-            url: me.host + "/api/customergroups",
-            method: "GET"
-        }).done(function (res) {
-            if (res) {
-                $.each(res, function (index, obj) {
-                    var option = $(`<option value="${obj.CustomerGroupId}">${obj.CustomerGroupName}</option>`);
-                    select.append(option);
-                })
-            }
-            $('.loading').hide();
-        }).fail(function (res) {
-            $('.loading').hide();
+        var select = $('select[fieldName]');
+        select.empty();
+        $.each(select, function (index, value) {
+            // Lấy dữ liệu nhóm khách hàng
+            var api = $(select).attr('api');
+            var fieldName = $(select).attr('fieldName');
+            var fieldValue = $(select).attr('fieldValue');
+            $('.loading').show();
+            $.ajax({
+                url: me.host + api,
+                method: "GET"
+            }).done(function (res) {
+                try {
+                    if (res) {
+                        $.each(res, function (index, obj) {
+                            var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
+                            select.append(option);
+                        })
+                        console.log(select);
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+
+                $('.loading').hide();
+            }).fail(function (res) {
+                $('.loading').hide();
+            })
         })
         // Lấy khóa chính bản ghi
         var recordId = $(e.currentTarget).data('recordId');// Che giấu code dễ hơn
@@ -302,15 +339,38 @@ class BaseJS {
             $.each(inputs, function (index, input) {
                 var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
                 var value = res[propertyName];
-                $(this).val(value);
+                console.log(value);
+                //Check nhosm
+                //value = $("select[fieldName]").find(":selected").val();
+                //Check ngày sinh
+                if (propertyName == "DateOfBirth") {
+                    value = formatDate2(value);
+                    $(this).attr('value', value);
+                    console.log(this);
+                }
                 //Check với trường hợp input là radio, thì chỉ lấy value có thuộc tính  checked
-                if ($(this).attr('type') == "radio") {
-                    if (value == 0) {
+                if (propertyName == "Gender") {
+                    if (res[propertyName] == "0") {
                         $('input[id="female"]').prop('checked', true);
-                    } else {
+                        $('input[id="male"]').prop('checked', false);
+                        $('input[id="other"]').prop('checked', false);
+
+                    }
+                    if (res[propertyName] == "1") {
+                        $('input[id="female"]').prop('checked', false);
+                        $('input[id="other"]').prop('checked', false);
                         $('input[id="male"]').prop('checked', true);
                     }
+                    if (res[propertyName] == "2") {
+                        $('input[id="female"]').prop('checked', false);
+                        $('input[id="female"]').prop('checked', false);
+                        $('input[id="other"]').prop('checked', true);
+                    }
                 }
+                $(this).val(value);
+                $("#male").val("1");
+                $("#female").val("0");
+                $("#other").val("2");
 
             })
 
@@ -374,7 +434,7 @@ class BaseJS {
                 left: e.pageX,
                 top: e.pageY
             });
-            debugger;
+
             return false;
         });
 
@@ -384,7 +444,6 @@ class BaseJS {
 
         $("#contextMenu").click(function (e) {
             var f = $(this);
-            debugger;
         });
     }
 }

@@ -108,6 +108,7 @@
                             <th fieldName="Email"><span class="text">Email</span></th>
                             <th fieldName="Address" width="215px"><span class="text">Địa chỉ</span></th>
                             <th fieldName="MemberCardCode"><span class="text">Mã thẻ thành viên</span></th>
+                            <th fieldName="CustomerGroupName"><span class="text">Nhóm khách hàng</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -170,7 +171,7 @@
                         Mã thẻ thành viên<br />
                         <input type="text" id="txtMemberCardCode" fieldName="MemberCardCode" name="customer_member" /><br />
                         Ngày sinh<br />
-                        <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth" placeholder="mm/dd/yy"/>
+                        <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth"  max="2003-01-01" />
                     </form>
                 </div>
                 <div class="dialog-infor infor-top3">
@@ -186,7 +187,8 @@
                         Giới tính<br />
                         <div class="radio-gender">
                             <input fieldName="Gender" checked type="radio" id="male" name="gender" value="1" /><p style="margin-right:30px">Nam</p>
-                            <input fieldName="Gender" type="radio" id="female" name="gender" value="0" /><p>Nữ</p>
+                            <input fieldName="Gender" type="radio" id="female" name="gender" value="0" /><p style="margin-right:30px">Nữ</p>
+                            <input fieldName="Gender" type="radio" id="other" name="gender" value="2" /><p>Khác</p>
                         </div>
                     </form>
                 </div>
