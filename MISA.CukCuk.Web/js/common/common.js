@@ -24,6 +24,31 @@ function formatDate(date) {
     }
 }
 
+/**
+ * Định dạng ngày tháng mm/dd/yy
+ * 
+ * @param {any} date
+ */
+function formatDate2(date) {
+    var date = new Date(date);
+    if (Number.isNaN(date.getTime())) {
+        return "";
+    }
+
+    else {
+        var day = date.getDate(), month = date.getMonth() + 1, year = date.getFullYear();
+        if (day < 10) {
+            day = '0' + day;
+        }
+
+        //day = day<10?'0' + day:day;
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        return year + '/' + month + '/' + day  ;
+    }
+}
 
 /**
  * Hàm định  dạng tiền 

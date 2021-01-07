@@ -1,4 +1,4 @@
-﻿class BaseJS {
+class BaseJS {
     constructor() {
         this.host = "http://api.manhnv.net";
         this.apiRouter = null;
@@ -152,6 +152,7 @@
     * */
     btnAddOnClick() {
         try {
+            $('input[type="text"]').val();
             var me = this;
             me.FormMode = 'Add';
             // Hiển thị dialog thông tin chi tiết
@@ -215,12 +216,11 @@
             } else {
                 entity[propertyName] = value;
             }
+            
         })
         var method = "POST";
-        var mes = "Thêm thành công!";
         if (me.FormMode == 'Edit') {
             method = "PUT";
-            var mes = "Sửa thành công!";
             entity.CustomerId = me.recordId;
         }
         //Gọi service tương ứng thực hiện dữ liệu
@@ -304,14 +304,13 @@
                 var value = res[propertyName];
                 $(this).val(value);
                 //Check với trường hợp input là radio, thì chỉ lấy value có thuộc tính  checked
-                //if ($(this).attr('type') == "radio") {
-                //    if (this.checked) {
-                //        entity[propertyName] = value;
-                //    }
-
-                //} else {
-                //    entity[propertyName] = value;
-                //}
+                if ($(this).attr('type') == "radio") {
+                    if (value == 0) {
+                        $('input[id="female"]').prop('checked', true);
+                    } else {
+                        $('input[id="male"]').prop('checked', true);
+                    }
+                }
 
             })
 
