@@ -65,6 +65,8 @@ class BaseJS {
         * CreatedBy: PDTAI (1/1/2021)
         * */
         $('input[type="email"]').blur(me.validateEmail);
+
+
     }
 
 
@@ -222,7 +224,7 @@ class BaseJS {
         $.each(inputs, function (index, input) {
             var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
 
-            
+
             var value = $(this).val();//Lấy giá trị
             if (propertyName == "DateOfBirth") {
                 value = formatDate2(value);
@@ -236,7 +238,7 @@ class BaseJS {
             } else {
                 entity[propertyName] = value;
             }
-
+            debugger;
         })
         var method = "POST";
         if (me.FormMode == 'Edit') {
@@ -264,7 +266,7 @@ class BaseJS {
             $(".m-dialog").hide();
             // - Load lại dữ  liệu
             me.loadData();
-            location.reload(true);//==========================================================================================================
+            //==========================================================================================================
         }).fail(function (res) {
             // Get the snackbar DIV
             var x = document.getElementById("snackbar_fail");
@@ -276,7 +278,7 @@ class BaseJS {
             setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
             // - Ẩn dialog chi tiết
         })
-            
+
     }
 
 
@@ -310,6 +312,7 @@ class BaseJS {
                         $.each(res, function (index, obj) {
                             var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
                             select.append(option);
+                            console.log(res[fieldName]);
                         })
                         console.log(select);
                     }
@@ -339,14 +342,27 @@ class BaseJS {
             $.each(inputs, function (index, input) {
                 var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
                 var value = res[propertyName];
-                console.log(value);
-                //Check nhosm
-                //value = $("select[fieldName]").find(":selected").val();
+                //console.log(value);
+                //Check nhóm
+                if (propertyName == "CustomerGroupName") {
+                    var value1 = res[propertyName];
+                    console.log(value1);
+                    var select = $('select[fieldName]');
+                    $.each(select, function (index, value) {
+                        // Lấy dữ liệu nhóm khách hàng
+                        var fieldName = $(select).attr('fieldName');
+                        console.log(fieldName);
+                        if (fieldName = value1) {
+                            
+                            $(this).attr('selected', 'selected');
+                            console.log(this);
+                        }
+                    })
+                }
                 //Check ngày sinh
                 if (propertyName == "DateOfBirth") {
                     value = formatDate2(value);
                     $(this).attr('value', value);
-                    console.log(this);
                 }
                 //Check với trường hợp input là radio, thì chỉ lấy value có thuộc tính  checked
                 if (propertyName == "Gender") {
@@ -425,16 +441,33 @@ class BaseJS {
      * CreatedBy: PDTAI (05/01/2021)
      * */
     contextMenu() {
-
+        var me = this;
         var $contextMenu = $("#contextMenu");
 
         $("body").on("contextmenu", "table tr", function (e) {
+            var me2 = this;
+            $('tr').addClass('remove');
+            console.log(me2);
             $contextMenu.css({
                 display: "block",
                 left: e.pageX,
                 top: e.pageY
-            });
+            })
+            
+            var recordId = $(e.currentTarget).data('recordId');// Che giấu code dễ hơn
+            me.recordId = recordId;
+            console.log(recordId);
+            console.log(me);
+            $('#btnDelete').on('click', function () {
+                $.ajax({
+                    url: me.host + me.apiRouter + `/${recordId}`,
+                    method: "DELETE"
+                }).done(function (res) {
+                    me.loadData();
+                }).fail(function (res) {
 
+                })
+            })
             return false;
         });
 
@@ -446,4 +479,6 @@ class BaseJS {
             var f = $(this);
         });
     }
+
+
 }

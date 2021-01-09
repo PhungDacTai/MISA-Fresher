@@ -97,7 +97,7 @@
 
         <div class="content-grid">
             <div class="grid-scroll">
-                <table cellspacing="0" border="0" cellpadding="0" width="100%" style="overflow:auto">
+                <table id="dsTable" cellspacing="0" border="0" cellpadding="0" width="100%" style="overflow:auto">
                     <thead>
                         <tr>
                             <th fieldName="CustomerCode"><span class="text">Mã khách hàng</span></th>
@@ -164,40 +164,53 @@
                     <div class="avatar-icon"></div>
                     <div class="avatar-type">Vui lòng chọn ảnh có định dạng<br /><b>.jpg, .jpeg, .png, .gif.</b></div>
                 </div>
-                <div class="dialog-infor infor-top2">
-                    <form action="">
-                        Mã khách hàng (<label style="color: red;">*</label>) <br />
-                        <input fieldName="CustomerCode" autofocus type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
-                        Mã thẻ thành viên<br />
-                        <input type="text" id="txtMemberCardCode" fieldName="MemberCardCode" name="customer_member" /><br />
-                        Ngày sinh<br />
-                        <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth"  max="2003-01-01" />
-                    </form>
-                </div>
-                <div class="dialog-infor infor-top3">
-                    <form>
-                        Họ và tên (<label style="color: red;">*</label>)<br />
-                        <input class="a input-required" id="txtFullName" fieldName="FullName" type="text" border="1" /><br />
-                        Nhóm khách hàng<br />
-                        <select fieldName="CustomerGroupName" fieldValue="CustomerGroupId" api="/api/customergroups" id="cbxCustomerGroup">
-                            <!--<option value="">Khách VIP</option>
-                            <option value="">Khách thường</option>
-                            <option value="">Khách vãng lai</option>-->
-                        </select><br />
-                        Giới tính<br />
+
+                <!--================================================================================-->
+                <div class="infor-top-content">
+                    <div class="conten1" style="display: flex;">
+                        <form>
+                            Mã khách hàng (<label style="color: red;">*</label>) <br />
+                            <input fieldName="CustomerCode" autofocus type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
+                        </form>
+                        <form>
+                            Họ và tên (<label style="color: red;">*</label>)<br />
+                            <input class="a input-required" id="txtFullName" fieldName="FullName" type="text" border="1" /><br />
+                        </form>
+                    </div>
+                    <div class="conten2" style="display: flex;">
+                        <form>
+                            Mã thẻ thành viên<br />
+                            <input type="text" id="txtMemberCardCode" fieldName="MemberCardCode" name="customer_member" /><br />
+                        </form>
+                        <form>
+                            Nhóm khách hàng<br />
+                            <select fieldName="CustomerGroupName" fieldValue="CustomerGroupId" api="/api/customergroups" id="cbxCustomerGroup">
+                                <!--<option value="">Khách VIP</option>
+                                <option value="">Khách thường</option>
+                                <option value="">Khách vãng lai</option>-->
+                            </select><br />
+                        </form>
+                    </div>
+                    <div class="conten3" style="display: flex;">
+                        <form>
+                            Ngày sinh<br />
+                            <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth" max="2003-01-01" />
+                        </form>
+                        Giới tính
                         <div class="radio-gender">
                             <input fieldName="Gender" checked type="radio" id="male" name="gender" value="1" /><p style="margin-right:30px">Nam</p>
                             <input fieldName="Gender" type="radio" id="female" name="gender" value="0" /><p style="margin-right:30px">Nữ</p>
                             <input fieldName="Gender" type="radio" id="other" name="gender" value="2" /><p>Khác</p>
                         </div>
-                    </form>
+                    </div>
                 </div>
+                <!--================================================================================-->
             </div>
             <div class="dialog-infor-center1">
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Email <br />
-                        <input fieldName="Email" id="txtCustomerEmail" style="width:490px; margin-right: 16px;" placeholder="example@domain.com" type="email" name="customer_email" /><br />
+                        <input fieldName="Email" id="txtCustomerEmail" style="width:490px;" placeholder="example@domain.com" type="email" name="customer_email" /><br />
                     </form>
                 </div>
                 <div class="dialog-infor infor-top3">
@@ -211,7 +224,7 @@
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Tên công ty <br />
-                        <input fieldName="CompanyName" style="width:490px; margin-right: 16px;" type="text" name="customer_id" /><br />
+                        <input fieldName="CompanyName" style="width:490px;" type="text" name="customer_id" /><br />
                     </form>
                 </div>
                 <div class="dialog-infor infor-top3">
@@ -225,7 +238,7 @@
                 <div class="dialog-infor infor-top2">
                     <form action="">
                         Địa chỉ <br />
-                        <input fieldName="Address" id="txtAddress" style="width:796px; margin-right: 16px;" type="text" name="customer_id" /><br />
+                        <input fieldName="Address" id="txtAddress" style="width:796px;" type="text" name="customer_id" /><br />
                     </form>
                 </div>
             </div>

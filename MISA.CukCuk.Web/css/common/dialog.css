@@ -27,6 +27,9 @@
         bottom: calc(50% - 750px)
     }
 
+    .infor-top-content{
+        margin-left: 18px;
+    }
 /*Title*/
 .dialog-content {
     padding: 24px;
@@ -105,8 +108,8 @@
 
 
 
-    .dialog-content .infor-top3 select {
-        width: 284px;
+    .dialog-content .conten2 select {
+        width: 290px;
         height: 43px;
         margin-bottom: 16px;
         margin-top: 4px;
@@ -119,7 +122,9 @@
 
     .radio-gender{
         /* text-align: center; */
-        line-height: 60px;
+        /* line-height: 60px; */
+        margin-top: 18px !important;
+        margin-left: -50px;
     }
 /*====================*/
     .dialog-content .dialog-infor-center1, .dialog-infor-center2 {
@@ -153,4 +158,8 @@
 
 .save-icon {
     background-image: url('../../contents/icons/save (2).svg');
+}
+
+form{
+    margin-right: 16px;
 }
