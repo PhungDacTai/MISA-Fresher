@@ -5,10 +5,6 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Api.Models
 {
-    /// <summary>
-    /// Khách hàng
-    /// </summary>
-    /// CreatedBy: PDTAI (8/1/2021)
     public class Customer
     {
         #region Declare
@@ -41,7 +37,7 @@ namespace MISA.CukCuk.Api.Models
         /// <summary>
         /// Khóa chính nhóm khách hàng
         /// </summary>
-        public Guid CustomerIdGroup { get; set; }
+        public Guid CustomerGroupId { get; set; }
 
         /// <summary>
         /// Ngày sinh
@@ -100,7 +96,8 @@ namespace MISA.CukCuk.Api.Models
         #endregion
 
         #region Method
-        public List<Customer> listCustomers(){
+        public List<Customer> listCustomers()
+        {
             var customers = new List<Customer>();
             for (int i = 0; i < 10; i++)
             {
@@ -113,11 +110,20 @@ namespace MISA.CukCuk.Api.Models
             return customers;
         }
 
-        public Customer addCustomer()
+        public Customer filterByName(string name)
         {
-            var customers = new List<Customer>();
 
-            return customers;
+            var result = new Customer();
+
+            foreach (Customer customer in listCustomers())
+            {
+                if (customer.FullName == name)
+                {
+                    result = customer;
+                    break;
+                }
+            }
+            return result;
         }
         #endregion
     }
