@@ -287,9 +287,6 @@ class BaseJS {
      * */
     doubleClickEvent(e) {
         var me = this;
-        $('input[type="text"]').val('');
-        $('input[type="email"]').val('');
-        $('input[type="tel"]').val('');
         $('tr').find('td').removeClass('selected');
         $(e.currentTarget).find('td').addClass('selected');
         me.FormMode = 'Edit';
@@ -480,5 +477,9 @@ class BaseJS {
         });
     }
 
-
+    setEmptyValue() {
+        $('input[type="text"]').val('');
+        $('input[type="email"]').val('');
+        $('input[type="tel"]').val('');
+    }
 }

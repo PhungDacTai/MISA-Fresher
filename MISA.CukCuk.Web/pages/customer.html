@@ -170,7 +170,7 @@
                     <div class="conten1" style="display: flex;">
                         <form>
                             Mã khách hàng (<label style="color: red;">*</label>) <br />
-                            <input fieldName="CustomerCode" autofocus type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
+                            <input fieldName="CustomerCode"  type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
                         </form>
                         <form>
                             Họ và tên (<label style="color: red;">*</label>)<br />
@@ -270,6 +270,8 @@
     <script src="/js/common/base.js"></script>
     <script src="/js/page/customer.js"></script>
 </body>
+
+</html>
 <script>
     $(document).ready(function () {
         //  $("#txtCustomerCode").focus();
@@ -277,7 +279,9 @@
             $("#txtCustomerCode").focus();
         });
 
+        $('table tbody').on('dblclick', 'tr', function () {
+            $("#txtCustomerCode").focus();
+        });
     });
 
 </script>
-</html>
