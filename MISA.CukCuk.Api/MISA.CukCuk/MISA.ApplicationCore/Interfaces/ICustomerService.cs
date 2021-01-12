@@ -5,12 +5,23 @@ using MISA.ApplicationCore.Entities;
 
 namespace MISA.ApplicationCore.Interfaces
 {
-    public interface ICustomerService
+    public interface ICustomerService:IBaseService<Customer>
     {
-        IEnumerable<Customer> GetCustomers();
-        Customer GetCustomerById(Guid customerId);
-        ServiceResult AddCustomer(Customer customer);
-        ServiceResult UpdateCustomer(Customer customer);
-        ServiceResult DeleteCustomer(Guid customerId);
+        /// <summary>
+        /// Lấy dữ liệu phân trang
+        /// </summary>
+        /// <param name="limit">Giới hạn bao nhiêu bản ghi</param>
+        /// <param name="offset">Tổng số bản ghi</param>
+        /// <returns>Danh sách khách hàng</returns>
+        /// CreatedBy: PDTAI (12/01/2021)
+        IEnumerable<Customer> GetCustomerPaging(int limit, int offset);
+
+        /// <summary>
+        /// Lấy danh sách khách hàng theo nhóm khách hàng
+        /// </summary>
+        /// <param name="groupId">id nhsom khách hàng</param>
+        /// <returns>Danh sách khách hàng</returns>
+        /// CreatedBy: PDTAI (12/01/2021)
+        IEnumerable<Customer> GetCustomerByGroup(CustomerGroup groupId);
     }
 }

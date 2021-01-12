@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MISA.ApplicationCore.Entities
+namespace MISA.ApplicationCore.Enums
 {
     /// <summary>
-    /// MISACode để xác định trạng thái của việc validate
+    /// Xác định trạng thái của việc validate
     /// </summary>
-    /// CreatedBy: PDTAI (11/01/2021)
+    /// CreatedBy: PDTAI (12/01/2021)
     public enum MISACode
     {
         /// <summary>
@@ -24,5 +24,14 @@ namespace MISA.ApplicationCore.Entities
         /// Thành công
         /// </summary>
         Success = 200
+    }
+    /// <summary>
+    /// Xác định trạng thái của Object
+    /// </summary>
+    public enum EntityState
+    {
+        AddNew = 1,
+        Update = 2,
+        Delete =3,
     }
 }

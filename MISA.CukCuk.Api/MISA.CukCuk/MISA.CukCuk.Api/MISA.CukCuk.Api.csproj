@@ -17,4 +17,8 @@
     <ProjectReference Include="..\MISA.Infrarstructure\MISA.Infrarstructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Api\" />
+  </ItemGroup>
+
 </Project>
