@@ -17,6 +17,6 @@ namespace MISA.ApplicationCore.Interfaces
         int Add(TEntity entity);
         int Update(TEntity entity);
         int Delete(Guid entityId);
-        TEntity GetEntityByProperty(string propertyName, object propertyValue );
+        TEntity GetEntityByProperty(TEntity entity, PropertyInfo property );
     }
 }

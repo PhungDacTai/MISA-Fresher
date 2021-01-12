@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MISA.ApplicationCore.Entities
 {
-    public class Customer
+    public class Customer:BaseEntity
     {
         #region Declare
         #endregion

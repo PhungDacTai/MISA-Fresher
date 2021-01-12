@@ -71,7 +71,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="customer"></param>
         /// <returns>Khách hàng mới sửa</returns>
         [HttpPut("{id}")]
-        public IActionResult Put(string id, TEntity entity)
+        public IActionResult Put([FromRoute]object id,[FromBody] TEntity entity)
         {
             var rowAffects = _baseService.Update(entity);
             return Ok(rowAffects);

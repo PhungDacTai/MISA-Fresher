@@ -6,7 +6,7 @@ using MISA.ApplicationCore.Interfaces;
 
 namespace MISA.ApplicationCore.Services
 {
-    public class BaseService<TEntity> : IBaseService<TEntity>
+    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity:BaseEntity
     {
 
         IBaseRepository<TEntity> _baseRepository;
@@ -21,6 +21,7 @@ namespace MISA.ApplicationCore.Services
         #endregion
         public virtual ServiceResult Add(TEntity entity)
         {
+            entity.EntityState = Enums.EntityState.AddNew;
             // Thực hiện validate
             var isValidate = Validate(entity);
             if (isValidate == true)
@@ -54,6 +55,7 @@ namespace MISA.ApplicationCore.Services
 
         public ServiceResult Update(TEntity entity)
         {
+            entity.EntityState = Enums.EntityState.Update;
             var isValidate = Validate(entity);
             if (isValidate == true)
             {
@@ -96,7 +98,7 @@ namespace MISA.ApplicationCore.Services
                 {
                     // Check trùng dữ liệu
                     var propertyName = property.Name;
-                    var entityDuplicate = _baseRepository.GetEntityByProperty(property.Name, property.GetValue(entity));
+                    var entityDuplicate = _baseRepository.GetEntityByProperty(entity, property);
                     if (entityDuplicate != null)
                     {
                         isValidate = false;
