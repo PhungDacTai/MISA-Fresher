@@ -13,7 +13,7 @@ using MySql.Data.MySqlClient;
 
 namespace MISA.Infrarstructure
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity:BaseEntity
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         #region DECLARE
         IConfiguration _configuration;
@@ -41,12 +41,19 @@ namespace MISA.Infrarstructure
 
         public int Delete(Guid entityId)
         {
-            throw new NotImplementedException();
+
+            //Thực thi commandText
+            var rowAffects = _dbConnection.Execute($"DELETE* FROM {_tableName} WHERE {_tableName}Id = '{entityId}'" }, commandType: CommandType.Text);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
+
+            //Trả về số bản ghi thêm mới được
+            return rowAffects;
         }
 
         public TEntity GetEntityById(Guid entityId)
         {
-            throw new NotImplementedException();
+            var entity = _dbConnection.Query<TEntity>($"SELECT * FROM {_tableName} WHERE {_tableName}Id = '{entityId}'", commandType: CommandType.Text).FirstOrDefault();
+            //Trả dữ liệu cho client
+            return entity;
         }
 
         public IEnumerable<TEntity> GetEntitys()
@@ -61,7 +68,12 @@ namespace MISA.Infrarstructure
 
         public int Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            var parameters = MappingDbType(entity);
+            //Thực thi commandText
+            var rowAffects = _dbConnection.Execute($"Proc_Update{_tableName}ById", parameters, commandType: CommandType.StoredProcedure);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
+
+            //Trả về số bản ghi thêm mới được
+            return rowAffects;
         }
 
         private DynamicParameters MappingDbType(TEntity entity)
@@ -74,7 +86,7 @@ namespace MISA.Infrarstructure
                 var propertyName = property.Name;
                 var propertyValue = property.GetValue(entity);
                 var propertyType = property.PropertyType;
-                if (propertyType == typeof(Guid))
+                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
                 {
                     parameters.Add($"@{propertyName}", propertyValue, DbType.String);
                 }
@@ -93,13 +105,13 @@ namespace MISA.Infrarstructure
             var propertyValue = property.GetValue(entity);
             var keyValue = entity.GetType().GetProperty($"{_tableName}Id").GetValue(entity);
             var query = string.Empty;
-            if (entity.EntityState== EntityState.AddNew)
+            if (entity.EntityState == EntityState.AddNew)
             {
                 query = $"SELECT * FROM {_tableName} WHERE {propertyName} ='{propertyValue}'";
             }
-            else if(entity.EntityState == EntityState.Update)
+            else if (entity.EntityState == EntityState.Update)
             {
-                query = $"SELECT * FROM {_tableName} WHERE {propertyName} ='{propertyValue}' AND {_tableName}Id <>{keyValue}";
+                query = $"SELECT * FROM {_tableName} WHERE {propertyName} ='{propertyValue}' AND {_tableName}Id <>'{keyValue}'";
             }
             else
             {

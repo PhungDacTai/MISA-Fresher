@@ -65,6 +65,7 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Số điện thoại
         /// </summary>
+        [DisplayName("Số điện thoại")]
         public string PhoneNumber { get; set; }
 
         /// <summary>

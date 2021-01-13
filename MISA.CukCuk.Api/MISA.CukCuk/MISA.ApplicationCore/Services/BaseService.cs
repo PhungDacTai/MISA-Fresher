@@ -59,7 +59,7 @@ namespace MISA.ApplicationCore.Services
             var isValidate = Validate(entity);
             if (isValidate == true)
             {
-                _serviceResult.Data = _baseRepository.Add(entity);
+                _serviceResult.Data = _baseRepository.Update(entity);
                 _serviceResult.MISACode = Enums.MISACode.IsValid;
                 return _serviceResult;
             }

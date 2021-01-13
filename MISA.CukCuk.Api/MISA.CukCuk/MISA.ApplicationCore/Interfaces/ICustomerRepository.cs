@@ -9,7 +9,7 @@ namespace MISA.ApplicationCore.Interfaces
     /// Interface danh mục khách hàng
     /// </summary>
     /// CreatedBy: PDTAI (11/01/2021)
-    public interface ICustomerRepository
+    public interface ICustomerRepository:IBaseRepository<Customer>
     {
         //#region Bỏ
         ///// <summary>
