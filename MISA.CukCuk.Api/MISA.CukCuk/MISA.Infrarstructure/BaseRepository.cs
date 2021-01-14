@@ -13,7 +13,7 @@ using MySql.Data.MySqlClient;
 
 namespace MISA.Infrarstructure
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity>, IDisposable where TEntity : BaseEntity
     {
         #region DECLARE
         IConfiguration _configuration;
@@ -31,21 +31,37 @@ namespace MISA.Infrarstructure
         }
         public int Add(TEntity entity)
         {
-            var parameters = MappingDbType(entity);
-            //Thực thi commandText
-            var rowAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", parameters, commandType: CommandType.StoredProcedure);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
-
+            var rowAffects = 0;
+            _dbConnection.Open();
+            using(var transaction = _dbConnection.BeginTransaction())
+            {
+                try
+                {
+                    var parameters = MappingDbType(entity);
+                    //Thực thi commandText
+                    rowAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", parameters, commandType: CommandType.StoredProcedure);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                }
+            }
             //Trả về số bản ghi thêm mới được
             return rowAffects;
         }
 
         public int Delete(Guid entityId)
         {
-
-            //Thực thi commandText
-            var rowAffects = _dbConnection.Execute($"DELETE* FROM {_tableName} WHERE {_tableName}Id = '{entityId}'" }, commandType: CommandType.Text);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
-
-            //Trả về số bản ghi thêm mới được
+            var rowAffects = 0;
+            _dbConnection.Open();
+            using(var transaction = _dbConnection.BeginTransaction())
+            {
+                //using khởi tạo đối tượng chạy xong tự giải phóng bộ nhớ
+                rowAffects = _dbConnection.Execute($"DELETE FROM {_tableName} WHERE {_tableName}Id = '{entityId}'", commandType: CommandType.Text);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
+                transaction.Commit();
+            }
+            //Trả về số bản ghi xóa được
             return rowAffects;
         }
 
@@ -119,6 +135,19 @@ namespace MISA.Infrarstructure
             }
             var entityReturn = _dbConnection.Query<TEntity>(query, commandType: CommandType.Text).FirstOrDefault();
             return entityReturn;
+        }
+
+        /// <summary>
+        /// // Chạy khi object không sử dụng nữa, phải implement IDispoable
+        /// </summary>
+        public void Dispose()
+        {
+            
+            if(_dbConnection.State == ConnectionState.Open)
+            {
+                // Khi không dùng nữa tự động đóng kết nối
+                _dbConnection.Close();
+            }
         }
     }
 }

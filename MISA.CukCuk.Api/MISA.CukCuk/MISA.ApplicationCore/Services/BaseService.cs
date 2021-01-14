@@ -24,6 +24,7 @@ namespace MISA.ApplicationCore.Services
             entity.EntityState = Enums.EntityState.AddNew;
             // Thực hiện validate
             var isValidate = Validate(entity);
+
             if (isValidate == true)
             {
                 _serviceResult.Data = _baseRepository.Add(entity);
@@ -70,6 +71,11 @@ namespace MISA.ApplicationCore.Services
 
         }
 
+        /// <summary>
+        /// Check validate các nghiệp vụ trùng, trống, ...
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         private bool Validate(TEntity entity)
         {
             var mesArrayError = new List<string>();
@@ -79,18 +85,23 @@ namespace MISA.ApplicationCore.Services
             foreach (var property in properties)
             {
                 var propertyValue = property.GetValue(entity);
-                var displayName = property.GetCustomAttributes(typeof(DisplayNameAttribute), true);
+                var displayName = string.Empty;
+                var displayNameAttributes = property.GetCustomAttributes(typeof(DisplayName), true);
+                if (displayNameAttributes.Length > 0)
+                {
+                    displayName = (displayNameAttributes[0] as DisplayName).Name;
+                }
                 // Kiểm tra xem có attribute cần phải validate không
                 if (property.IsDefined(typeof(Required), false))
                 {
                     // Check bắt buộc nhập
 
-                    if (propertyValue == null)
+                    if (propertyValue == "")
                     {
                         isValidate = false;
-                        mesArrayError.Add($"Thông tin {displayName} không được để trống.");
+                        mesArrayError.Add(string.Format(Properties.Resources.Msg_Required, displayName));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
-                        _serviceResult.Messenger = "Dữ liệu không hợp lệ";
+                        _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
                     }
                 }
 
@@ -102,14 +113,46 @@ namespace MISA.ApplicationCore.Services
                     if (entityDuplicate != null)
                     {
                         isValidate = false;
-                        mesArrayError.Add($"Thông tin {displayName} đã tồn tại.");
+                        mesArrayError.Add(string.Format(Properties.Resources.Msg_Duplicate, displayName));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
-                        _serviceResult.Messenger = "Dữ liệu không hợp lệ";
+                        _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
                     }
+                }
+
+                if (property.IsDefined(typeof(MaxLength), false))
+                {
+                    // Lấy độ dài đã khai báo
+                    var attributeMaxLength = property.GetCustomAttributes(typeof(MaxLength), true)[0];
+                    var length = (attributeMaxLength as MaxLength).Value;
+                    var msg = (attributeMaxLength as MaxLength).ErrorMsg;
+                    if (propertyValue.ToString().Trim().Length > length)
+                    {
+                        isValidate = false;
+                        mesArrayError.Add(msg ?? string.Format(Properties.Resources.Msg_MaxLength, length));
+                        _serviceResult.MISACode = Enums.MISACode.NotValid;
+                        _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
+                    }
+
                 }
             }
             _serviceResult.Data = mesArrayError;
+
+            // Cho thằng con validate thêm
+            if (isValidate == true)
+            {
+                isValidate = ValidateCustom(entity);
+            }
             return isValidate;
+        }
+
+        /// <summary>
+        /// Hàm thực hiện kiểm tra dữ liệu/ nghiệp vụ tùy chỉnh
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        protected virtual bool ValidateCustom(TEntity entity)
+        {
+            return true;
         }
     }
 }

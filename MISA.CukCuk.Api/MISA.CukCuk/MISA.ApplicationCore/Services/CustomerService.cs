@@ -20,26 +20,12 @@ namespace MISA.ApplicationCore
 
         #endregion
         #region
-        //public override int Add(Customer entity)
-        //{
-        //    // Validate thông tin
-        //    var isValid = true;
-        //    // 1. Check trùng mã khách hàng
-        //    var customerDuplicate = _customerRepository.GetCustomerByCode(entity.CustomerCode);
-        //    if (customerDuplicate != null)
-        //    {
-        //        isValid = false;
-        //    }
-        //    if (isValid == true)
-        //    {
-        //        var res = base.Add(entity);
-        //        return res;
-        //    }
-        //    else
-        //    {
-        //        return 0;
-        //    }
-        //}
+        protected override bool ValidateCustom(Customer entity)
+        {
+            //Validate thêm của con truyền vào
+            return base.ValidateCustom(entity);
+        }
+
         public ServiceResult UpdateCustomer(Customer customer)
         {
             throw new NotImplementedException();

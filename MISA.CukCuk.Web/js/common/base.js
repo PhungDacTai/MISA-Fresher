@@ -223,9 +223,15 @@ class BaseJS {
         var entity = {};
         $.each(inputs, function (index, input) {
             var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
+            var value = '';
+            if (propertyName == "SelectCustomerGroupName") {
+                value = $(this).find(":selected").text();
+                entity[propertyName] = value;
+                console.log(value);
+            } else {
+                value = $(this).val();//Lấy giá trị
+            }
 
-
-            var value = $(this).val();//Lấy giá trị
             if (propertyName == "DateOfBirth") {
                 value = formatDate2(value);
             }
@@ -240,6 +246,7 @@ class BaseJS {
             }
             debugger;
         })
+        console.log(entity);
         var method = "POST";
         if (me.FormMode == 'Edit') {
             method = "PUT";
@@ -341,7 +348,7 @@ class BaseJS {
                 var value = res[propertyName];
                 //console.log(value);
                 //Check nhóm
-                if (propertyName == "CustomerGroupName") {
+                if (propertyName == "SelectCustomerGroupName") {
                     var value1 = res[propertyName];
                     console.log(value1);
                     var select = $('select[fieldName]');

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using Dapper;
 using Microsoft.Extensions.Configuration;
@@ -53,6 +54,19 @@ namespace MISA.Infrarstructure
             //2. Lấy đối tượng kết nối DB
             var employees = _dbConnection.Query<Employee>("Proc_GetEmployees", commandType: CommandType.StoredProcedure);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
             //Trả dữ liệu cho client
+            return employees;
+        }
+
+        public List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId)
+        {
+            // Build tham số đầu vào cho store
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmployeeCode", specs);
+            parameters.Add("@FullName", specs);
+            parameters.Add("@PhoneNumber", specs);
+            parameters.Add("@DepartmentId", departmentId);
+            parameters.Add("@PositionId", positionId);
+            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeePaging", parameters, commandType: CommandType.StoredProcedure).ToList();
             return employees;
         }
 

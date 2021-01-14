@@ -34,6 +34,11 @@ namespace MISA.ApplicationCore.Services
             return _employeeRepository.GetEmployees();
         }
 
+        public List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId)
+        {
+            return _employeeRepository.GetEmployeesFilter(specs, departmentId, positionId);
+        }
+
         public ServiceResult UpdateEmployee(Employee employee)
         {
             throw new NotImplementedException();

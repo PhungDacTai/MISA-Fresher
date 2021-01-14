@@ -59,8 +59,16 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpPost]
         public IActionResult Post(TEntity entity)
         {
-            var rowAffects = _baseService.Add(entity);
-            return Ok(rowAffects);
+            var serviceResult = _baseService.Add(entity);
+            if(serviceResult.MISACode == ApplicationCore.Enums.MISACode.NotValid)
+            {
+                return BadRequest(serviceResult);
+            }
+            else
+            {
+                return Ok(serviceResult);
+            }
+            
         }
 
 
@@ -71,11 +79,30 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="customer"></param>
         /// <returns>Khách hàng mới sửa</returns>
         [HttpPut("{id}")]
-        public IActionResult Put([FromRoute] object id, [FromBody] TEntity entity)
+        public IActionResult Put([FromRoute] string id, [FromBody] TEntity entity)
         {
-            entity.GetType().GetProperty($"{typeof(TEntity).Name}Id").SetValue(entity, id);
-            var rowAffects = _baseService.Update(entity);
-            return Ok(rowAffects);
+           var keyProperty =  entity.GetType().GetProperty($"{typeof(TEntity).Name}Id");
+            if(keyProperty.PropertyType == typeof(Guid))
+            {
+                keyProperty.SetValue(entity, Guid.Parse(id));
+            }else if (keyProperty.PropertyType == typeof(int))
+            {
+                keyProperty.SetValue(entity, int.Parse(id));
+            }
+            else
+            {
+                keyProperty.SetValue(entity, id);
+            }
+
+            var serviceResult = _baseService.Update(entity);
+            if (serviceResult.MISACode == ApplicationCore.Enums.MISACode.NotValid)
+            {
+                return BadRequest(serviceResult);
+            }
+            else
+            {
+                return Ok(serviceResult);
+            }
         }
 
         [HttpDelete("{id}")]

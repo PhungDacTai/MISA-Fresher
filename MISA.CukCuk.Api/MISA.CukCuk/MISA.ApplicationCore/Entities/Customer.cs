@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MISA.ApplicationCore.Entities
 {
-    public class Customer:BaseEntity
+    public class Customer : BaseEntity
     {
         #region Declare
+        string _customerCode = Properties.Resources.CustomerCode;
         #endregion
 
         #region Constructor
@@ -24,10 +24,11 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Mã khách hàng
         /// </summary>
-        
-        [Required]
+
         [CheckDuplicate]
         [DisplayName("Mã khách hàng")]
+        [MaxLength(20,"Mã khách hàng không vượt quá 20 ký tự")]
+        [Required]
         public string CustomerCode { get; set; }
 
         /// <summary>
@@ -59,12 +60,13 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Email
         /// </summary>
-        [CheckDuplicate]
+        
         public string Email { get; set; }
 
         /// <summary>
         /// Số điện thoại
         /// </summary>
+        [CheckDuplicate]
         [DisplayName("Số điện thoại")]
         public string PhoneNumber { get; set; }
 

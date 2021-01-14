@@ -11,7 +11,10 @@ using MISA.ApplicationCore;
 using MISA.ApplicationCore.Interfaces;
 using MISA.ApplicationCore.Middwares;
 using MISA.ApplicationCore.Services;
+using MISA.CukCuk.Api.Middwares;
 using MISA.Infrarstructure;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +34,15 @@ namespace MISA.CukCuk.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddCors();
+
+            //Config respon trả về viết hoa viết thường
+            services.AddControllers()
+                .AddNewtonsoftJson(options=> {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
+
             //Add middware xử lý kiểu dữ liệu là Guid
             SqlMapper.AddTypeHandler(new MySqlGuidTypeHandler());
             SqlMapper.RemoveTypeMap(typeof(Guid));
@@ -60,9 +71,17 @@ namespace MISA.CukCuk.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MISA.CukCuk.Api v1"));
             }
 
+            app.UseMiddleware<ErrorHandlingMiddleWare>();// Xử lý exception
+
             app.UseRouting();
 
+            app.UseCors(option => option.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());// 
+
             app.UseAuthorization();
+
+            app.UseStaticFiles(); // Chạy file static của UI khi ghép làm 1 site (không cần khai báo domain trong js.)
+            app.UseDefaultFiles();
+
 
             app.UseEndpoints(endpoints =>
             {
