@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MISA.ApplicationCore.Entities
 {
-    public class Employee
+    public class Employee : BaseEntity
     {
         /// <summary>
         /// Thông tin nhân viên
@@ -21,8 +21,10 @@ namespace MISA.ApplicationCore.Entities
         public string Email { get; set; }
         public string PersonalCardCode { get; set; }
         public string PhoneNumber { get; set; }
-        public Guid PositionGroupId { get; set; }
-        public Guid DepartmentGroupId { get; set; }
+        public Guid PositionId { get; set; }
+        public string PositionName { get; set; }
+        public Guid DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
         public int Salary { get; set; }
         public DateTime? DateOfJoin { get; set; }
         public string WorkStatus { get; set; }

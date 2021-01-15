@@ -13,14 +13,14 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Api.Controllers
 {
-/// <summary>
-/// Api danh mục khách hàng
-/// </summary>
-/// CreatedBy: PDTAI (12/01/2021)
+    /// <summary>
+    /// Api danh mục khách hàng
+    /// </summary>
+    /// CreatedBy: PDTAI (12/01/2021)
     public class CustomersController : BaseEntityController<Customer>
     {
         ICustomerService _baseService;
-        public CustomersController(ICustomerService baseService):base(baseService)
+        public CustomersController(ICustomerService baseService) : base(baseService)
         {
             _baseService = baseService;
         }

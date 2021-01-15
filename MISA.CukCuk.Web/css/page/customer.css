@@ -180,5 +180,7 @@
 
 #DateOfBirth{
     width: 275px;
+    font-family: inherit;
+    font-size: inherit;
     padding-right: 10px;
 }

@@ -19,7 +19,7 @@ namespace MISA.ApplicationCore.Interfaces
         /// <summary>
         /// Lấy danh sách khách hàng theo nhóm khách hàng
         /// </summary>
-        /// <param name="groupId">id nhsom khách hàng</param>
+        /// <param name="groupId">id nhóm khách hàng</param>
         /// <returns>Danh sách khách hàng</returns>
         /// CreatedBy: PDTAI (12/01/2021)
         IEnumerable<Customer> GetCustomerByGroup(CustomerGroup groupId);

@@ -1,15 +1,13 @@
 class BaseJS {
     constructor() {
-        this.host = "http://api.manhnv.net";
+        //this.host = "http://api.manhnv.net";
+        this.host = "http://localhost:61201";
         this.apiRouter = null;
         this.setApiRouter();
         this.loadData();
         this.initEvents();
         this.contextMenu();
 
-        var input = document.getElementById('txtCustomerCode');
-        input.focus();
-        input.select();
     }
 
     setApiRouter() {
@@ -224,7 +222,7 @@ class BaseJS {
         $.each(inputs, function (index, input) {
             var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
             var value = '';
-            if (propertyName == "SelectCustomerGroupName") {
+            if (propertyName == "CustomerGroupName") {
                 value = $(this).find(":selected").text();
                 entity[propertyName] = value;
                 console.log(value);
@@ -348,7 +346,7 @@ class BaseJS {
                 var value = res[propertyName];
                 //console.log(value);
                 //Check nhóm
-                if (propertyName == "SelectCustomerGroupName") {
+                if (propertyName == "CustomerGroupName") {
                     var value1 = res[propertyName];
                     console.log(value1);
                     var select = $('select[fieldName]');
@@ -441,7 +439,7 @@ class BaseJS {
 
 
     /**
-     * Context menu kích chuột phải chọn một dòng tr
+     * Context menu kích chuột phải chọn một dòng tr để xóa bản ghi
      * CreatedBy: PDTAI (05/01/2021)
      * */
     contextMenu() {
@@ -450,27 +448,30 @@ class BaseJS {
 
         $("body").on("contextmenu", "table tr", function (e) {
             var me2 = this;
-            $('tr').addClass('remove');
             console.log(me2);
             $contextMenu.css({
                 display: "block",
                 left: e.pageX,
                 top: e.pageY
             })
-            
             var recordId = $(e.currentTarget).data('recordId');// Che giấu code dễ hơn
             me.recordId = recordId;
             console.log(recordId);
-            console.log(me);
+            console.log(e.currentTarget);
             $('#btnDelete').on('click', function () {
-                $.ajax({
-                    url: me.host + me.apiRouter + `/${recordId}`,
-                    method: "DELETE"
-                }).done(function (res) {
-                    me.loadData();
-                }).fail(function (res) {
+                if (confirm("Bạn thật sự muốn xóa?") == true) {
+                    $.ajax({
+                        url: me.host + me.apiRouter + `/${recordId}`,
+                        method: "DELETE",
+                        async: true,
 
-                })
+                    }).done(function (res) {
+                        me.loadData();
+                        toastSuccess();
+                    }).fail(function (res) {
+                        toastFail();
+                    })
+                }
             })
             return false;
         });
@@ -482,11 +483,34 @@ class BaseJS {
         $("#contextMenu").click(function (e) {
             var f = $(this);
         });
+        me.loadData();
     }
 
     setEmptyValue() {
         $('input[type="text"]').val('');
         $('input[type="email"]').val('');
         $('input[type="tel"]').val('');
+    }
+
+    toastSuccess() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
+
+    toastFail() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar_fail");
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
     }
 }

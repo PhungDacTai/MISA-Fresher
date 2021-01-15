@@ -2,77 +2,37 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using MISA.ApplicationCore.Entities;
 using MISA.ApplicationCore.Interfaces;
-using MySql.Data.MySqlClient;
 
 namespace MISA.Infrarstructure
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
-
-        #region DECLARE
-        IConfiguration _configuration;
-        string _connectionString = string.Empty;
-        IDbConnection _dbConnection = null;
-        #endregion
-
-        public EmployeeRepository(IConfiguration configuration)
+        public EmployeeRepository(IConfiguration configuration):base(configuration)
         {
-            _configuration = configuration;
-            _connectionString = _configuration.GetConnectionString("MISACukCukConnectionString");//Kết nối DB qua appsetting.json
-            _dbConnection = new MySqlConnection(_connectionString);
-        }
 
-        public int AddEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int DeleteEmployee(Guid employeeId)
-        {
-            throw new NotImplementedException();
         }
 
         public Employee GetEmployeeByCode(string employeeCode)
         {
-            throw new NotImplementedException();
-        }
-
-        public Employee GetEmployeeById(Guid employeeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Employee> GetEmployees()
-        {
-            // Kết nối tới cơ sở dữ liệu
-            // Khởi tạo các commandText
-            //2. Lấy đối tượng kết nối DB
-            var employees = _dbConnection.Query<Employee>("Proc_GetEmployees", commandType: CommandType.StoredProcedure);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
-            //Trả dữ liệu cho client
-            return employees;
+            var employee = _dbConnection.Query<Employee>($"SELECT*FROM Employeee WHERE EmployeeCode = '{employeeCode}'", commandType: CommandType.Text).FirstOrDefault();
+            return employee;
         }
 
         public List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId)
         {
             // Build tham số đầu vào cho store
-            var parameters = new DynamicParameters();
-            parameters.Add("@EmployeeCode", specs);
-            parameters.Add("@FullName", specs);
-            parameters.Add("@PhoneNumber", specs);
-            parameters.Add("@DepartmentId", departmentId);
-            parameters.Add("@PositionId", positionId);
-            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeePaging", parameters, commandType: CommandType.StoredProcedure).ToList();
+            var paramaters = new DynamicParameters();
+            paramaters.Add("EmployeeCode", specs);
+            paramaters.Add("FullName", specs);
+            paramaters.Add("CodeNumber", specs);
+            paramaters.Add("DepartmentId", departmentId);
+            paramaters.Add("PositionId", positionId);
+            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeePaging", paramaters, commandType: CommandType.StoredProcedure).ToList();
             return employees;
-        }
-
-        public int UpdateEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
         }
     }
 }

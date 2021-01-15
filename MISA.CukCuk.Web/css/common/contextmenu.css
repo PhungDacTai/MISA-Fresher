@@ -1,4 +1,4 @@
-﻿#contextMenu {
+#contextMenu {
     position: absolute;
     display: none;
     width: auto;
@@ -33,9 +33,6 @@
 
 .delete-icon {
     background-image: url('../../contents/icons/trash-2.svg');
-}
-tr:nth-child(even) {
-    background: #F5F5F5;
 }
 
 tr {

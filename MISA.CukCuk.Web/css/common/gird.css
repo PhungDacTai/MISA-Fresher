@@ -34,15 +34,15 @@ table {
     overflow: auto;
 }
 
-    table th {
-        position: sticky;
-        top: 0px;
-        background: #fff;
-    }
-    /*Tô màu hàng*/
-    tr:nth-child(even) {
-        /*background-color: #F8f8ff;*/
-    }
+table th {
+    position: sticky;
+    top: 0px;
+    background: #fff;
+}
+/*Tô màu hàng*/
+tr:nth-child(even) {
+    background: #F5F5F5;
+}
 
 /*
 .content-grid table {

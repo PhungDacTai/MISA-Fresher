@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MISA.ApplicationCore.Entities
 {
-    public class CustomerGroup
+    public class CustomerGroup:BaseEntity
     {
         public Guid CustomerGroupId { get; set; }
         public string CustomerGroupName { get; set; }

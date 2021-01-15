@@ -107,35 +107,6 @@ namespace MISA.ApplicationCore.Entities
         #endregion
 
         #region Method
-        public List<Customer> listCustomers()
-        {
-            var customers = new List<Customer>();
-            for (int i = 0; i < 10; i++)
-            {
-                var customer = new Customer();
-                customer.CustomerId = Guid.NewGuid();
-                customer.CustomerCode = $"KH000{i + 1}";
-                customer.FullName = $"Name{i + 1}";
-                customers.Add(customer);
-            }
-            return customers;
-        }
-
-        public Customer filterByName(string name)
-        {
-
-            var result = new Customer();
-
-            foreach (Customer customer in listCustomers())
-            {
-                if (customer.FullName == name)
-                {
-                    result = customer;
-                    break;
-                }
-            }
-            return result;
-        }
         #endregion
     }
 }

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Api\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

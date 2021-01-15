@@ -17,6 +17,7 @@ namespace MISA.CukCuk.Api.Controllers
     public class BaseEntityController<TEntity> : ControllerBase
     {
         IBaseService<TEntity> _baseService;
+
         public BaseEntityController(IBaseService<TEntity> baseService)
         {
             _baseService = baseService;
@@ -54,7 +55,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <summary>
         /// Thêm một đối tượng vào danh sách
         /// </summary>
-        /// <param name="customer">Đối tượng được thêm</param>
+        /// <param name="entity">Đối tượng được thêm</param>
         /// <returns>Khách hàng mới thêm</returns>
         [HttpPost]
         public IActionResult Post(TEntity entity)
@@ -75,8 +76,8 @@ namespace MISA.CukCuk.Api.Controllers
         /// <summary>
         /// Sửa khách hàng qua id truyền vào
         /// </summary>
-        /// <param name="id">id của khách hàng</param>
-        /// <param name="customer"></param>
+        /// <param name="id">id của đối tượng</param>
+        /// <param name="entity"></param>
         /// <returns>Khách hàng mới sửa</returns>
         [HttpPut("{id}")]
         public IActionResult Put([FromRoute] string id, [FromBody] TEntity entity)

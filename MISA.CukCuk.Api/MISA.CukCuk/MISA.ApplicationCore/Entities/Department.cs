@@ -4,10 +4,10 @@ using System.Text;
 
 namespace MISA.ApplicationCore.Entities
 {
-    public class DepartmentGroup
+    public class Department:BaseEntity
     {
-        public Guid DepartmentGroupId { get; set; }
-        public string DepartmentGroupName { get; set; }
+        public Guid DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
         public string Decription { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedBy { get; set; }

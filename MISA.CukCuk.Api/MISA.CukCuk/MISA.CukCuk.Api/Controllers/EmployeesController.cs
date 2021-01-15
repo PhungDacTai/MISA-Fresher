@@ -13,17 +13,18 @@ namespace MISA.CukCuk.Api.Controllers
 
     public class EmployeesController : BaseEntityController<Employee>
     {
-        IBaseService<Employee> _baseService;
-        public EmployeesController(IBaseService<Employee> baseService):base(baseService)
+        IEmployeeService _baseService;
+        public EmployeesController(IEmployeeService baseService) : base(baseService)
         {
             _baseService = baseService;
         }
 
+
         [HttpGet("filter")]
         public IActionResult GetEmployeeFilter([FromQuery] string specs, [FromQuery] Guid? departmentId, [FromQuery] Guid? positonId)
         {
-            //return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positonId));
-            return null;
+            return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positonId));
+
         }
     }
 }
