@@ -33,7 +33,7 @@ namespace MISA.Infrarstructure
         {
             var rowAffects = 0;
             _dbConnection.Open();
-            using(var transaction = _dbConnection.BeginTransaction())
+            using (var transaction = _dbConnection.BeginTransaction())
             {
                 try
                 {
@@ -55,7 +55,7 @@ namespace MISA.Infrarstructure
         {
             var rowAffects = 0;
             _dbConnection.Open();
-            using(var transaction = _dbConnection.BeginTransaction())
+            using (var transaction = _dbConnection.BeginTransaction())
             {
                 //using khởi tạo đối tượng chạy xong tự giải phóng bộ nhớ
                 rowAffects = _dbConnection.Execute($"DELETE FROM {_tableName} WHERE {_tableName}Id = '{entityId}'", commandType: CommandType.Text);//Query: Thực hiện thao tác câu lệnh, commandType: Kiểu câu lệnh thực thi
@@ -67,7 +67,11 @@ namespace MISA.Infrarstructure
 
         public TEntity GetEntityById(Guid entityId)
         {
-            var entity = _dbConnection.Query<TEntity>($"SELECT * FROM {_tableName} WHERE {_tableName}Id = '{entityId}'", commandType: CommandType.Text).FirstOrDefault();
+            string _query = "SELECT c.CustomerId, c.CustomerCode, c.FullName, c.MemberCardCode, c.CustomerGroupId, c.DateOfBirth, c.Gender, " +
+                         "c.Email, c.PhoneNumber, c.CompanyName, c.CompanyTaxCode, c.Address, cg.CustomerGroupName " +
+                         "FROM Customer c INNER JOIN CustomerGroup cg ON c.CustomerGroupId = cg.CustomerGroupId WHERE c.CustomerId = CustomerId";
+            var a = $"{_tableName}Id";
+            var entity = _dbConnection.Query<TEntity>(_query, commandType: CommandType.Text).FirstOrDefault();
             //Trả dữ liệu cho client
             return entity;
         }
@@ -142,8 +146,8 @@ namespace MISA.Infrarstructure
         /// </summary>
         public void Dispose()
         {
-            
-            if(_dbConnection.State == ConnectionState.Open)
+
+            if (_dbConnection.State == ConnectionState.Open)
             {
                 // Khi không dùng nữa tự động đóng kết nối
                 _dbConnection.Close();

@@ -5,7 +5,11 @@ using MISA.ApplicationCore.Entities;
 
 namespace MISA.ApplicationCore.Interfaces
 {
-    public interface IEmployeeRepository:IBaseRepository<Employee>
+    /// <summary>
+    /// Interface danh mục nhân viên
+    /// </summary>
+    /// CreatedBy: PDTAI (15/01/2021)
+    public interface IEmployeeRepository : IBaseRepository<Employee>
     {
         /// <summary>
         /// Lấy nhân viên theo danh mã nhân viên

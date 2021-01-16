@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MISA CukCuk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link href="/css/common/main.css" rel="stylesheet" />
+    <link href="/css/common/common.css" rel="stylesheet" />
+    <link href="../css/common/dialog.css" rel="stylesheet" />
+    <link href="/css/common/header.css" rel="stylesheet" />
+    <link href="/css/common/navbar.css" rel="stylesheet" />
+    <link href="/css/common/content.css" rel="stylesheet" />
+    <link href="/css/common/button.css" rel="stylesheet" />
+    <link href="/css/common/gird.css" rel="stylesheet" />
+    <link href="/css/common/custom.css" rel="stylesheet" />
+    <link href="/css/common/scrollbar.css" rel="stylesheet" />
+    <link href="/css/common/icon.css" rel="stylesheet" />
+    <link href="/css/page/customer.css" rel="stylesheet" />
+    <link href="/css/common/input.css" rel="stylesheet" />
+    <link href="/css/page/customer.css" rel="stylesheet" />
+    <link href="/css/common/toast.css" rel="stylesheet" />
+    <link href="/css/common/contextmenu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-site">
+            <div class="logo-box">
+                <div class="toggle-icon"></div>
+                <div class="cukcuk-logo"></div>
+            </div>
+        </div>
+        <div class="navbar-content">
+            <div class="nav-item">
+                <div class="item-icon icon1"></div>
+                <div class="nav-item-text">Tổng quan</div>
+            </div>
+            <div class="nav-item">
+                <div class="item-icon icon2"></div>
+                <div class="nav-item-text">Báo cáo</div>
+            </div>
+            <div class="nav-item">
+                <div class="item-icon icon3"></div>
+                <div class="nav-item-text">Mua hàng</div>
+            </div>
+            <div class="nav-item">
+                <div class="item-icon icon4"></div>
+                <div class="nav-item-text"><a href="employee.html">Danh mục Nhân viên</a></div>
+            </div>
+            <div class="nav-item custom">
+                <div class="item-icon icon5"></div>
+                <div class="nav-item-text"><a href="customer.html">Danh mục Khách hàng</a></div>
+            </div>
+            <div class="nav-item">
+                <div class="item-icon icon6"></div>
+                <div class="nav-item-text">Thiết lập hệ thống</div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-left">
+            <select>
+                <option value="0">Nhà hàng Biển Đông</option>
+                <option value="1">Nhà hàng Biển Đông</option>
+                <option value="2">Nhà hàng Biển Đông</option>
+                <option value="3">Nhà hàng Biển Đông</option>
+            </select>
+        </div>
+        <div class="header-right">
+            <div class="header-content item-icon avatar-icon"></div>
+            <div class="header-content username" style=" cursor: pointer;">Nguyễn Văn Mạnh</div>
+            <div class="header-content item-icon three-dot"></div>
+        </div>
+
+    </div>
+
+    <div class="content">
+        <div class="content-title">
+            <div class="title">Danh sách Khách hàng</div>
+            <div class="m-btn btn-add" id="btnAdd">
+                <div class="item-icon add-icon"></div>
+                <div class="nav-item-text">Thêm khách hàng</div>
+            </div>
+        </div>
+
+
+        <div class="content-search">
+            <div class="searchbox">
+                <div class="item-icon search-icon"></div>
+                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên khác" /></div>
+            </div>
+
+            <div class="searchbox refresh" id="btnRefresh">
+                <div class="item-icon refresh-icon"></div>
+            </div>
+        </div>
+
+
+        <div class="content-grid">
+            <div class="grid-scroll">
+                <table id="dsTable" cellspacing="0" border="0" cellpadding="0" width="100%" style="overflow:auto">
+                    <thead>
+                        <tr>
+                            <th fieldName="CustomerCode"><span class="text">Mã khách hàng</span></th>
+                            <th fieldName="FullName"><span class="text">Họ tên</span></th>
+                            <th fieldName="Gender"><span class="text">Giới tính</span></th>
+                            <th fieldName="DateOfBirth" formatType="ddmmyy"><span class="text">Ngày sinh</span></th>
+                            <th fieldName="PhoneNumber"><span class="text">Điện thoại</span></th>
+                            <th fieldName="Email"><span class="text">Email</span></th>
+                            <th fieldName="Address" width="215px"><span class="text">Địa chỉ</span></th>
+                            <th fieldName="MemberCardCode"><span class="text">Mã thẻ thành viên</span></th>
+                            <th fieldName="CustomerGroupName"><span class="text">Nhóm khách hàng</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr>
+                            <td>KH001</td>
+                            <td>Bùi Khánh Loan</td>
+                            <td></td>
+                            <td>15/03/1965</td>
+                            <td></td>
+                            <td>0944657834</td>
+                            <td>huonghoa@misa.com</td>
+                            <td style="max-width:215px;"><span style="width:215px">Ngõ 15, Duy Tân, Cầu Giây, Hà Nội, Việt Nam</span></td>
+                            <td></td>
+                            <td>206225549</td>
+
+                        </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="content-bottom">
+            <div class="bottom-left">Hiển thị <b>1-10/1000</b> Khách hàng</div>
+            <div class="bottom-center">
+                <div class="bt-ct item-icon bt-icon1"></div>
+                <div class="bt-ct item-icon bt-icon2"></div>
+                <div class="bt-ct page-number custom"><p class="number">1</p></div>
+                <div class="bt-ct page-number"><p class="number">2</p></div>
+                <div class="bt-ct page-number"><p class="number">3</p></div>
+                <div class="bt-ct page-number"><p class="number">4</p></div>
+                <div class="bt-ct item-icon bt-icon3"></div>
+                <div class="bt-ct item-icon bt-icon4"></div>
+            </div>
+            <div class="bottom-right"><b>10</b>/Khách hàng/trang</div>
+
+        </div>
+    </div>
+
+    <div class="loading">
+        <div class="loading-modal"></div>
+        <div class="loading-icon"></div>
+    </div>
+    <div class="m-dialog dialog-detail" id="dialog">
+        <div class="dialog-modal"></div>
+        <div class="dialog-content">
+            <div class="dialog-title">
+                <div>THÔNG TIN KHÁCH HÀNG</div>
+                <div class="btn-close" id="btnClose"><button></button></div>
+            </div>
+            <div class="dialog-infor-top">
+                <div class="dialog-avatar">
+                    <div class="avatar-icon"></div>
+                    <div class="avatar-type">Vui lòng chọn ảnh có định dạng<br /><b>.jpg, .jpeg, .png, .gif.</b></div>
+                </div>
+
+                <!--================================================================================-->
+                <div class="infor-top-content">
+                    <div class="conten1" style="display: flex;">
+                        <form>
+                            Mã khách hàng (<label style="color: red;">*</label>) <br />
+                            <input fieldName="CustomerCode"  type="text" class="input-required" id="txtCustomerCode" name="customer_id" /><br />
+                        </form>
+                        <form>
+                            Họ và tên (<label style="color: red;">*</label>)<br />
+                            <input class="a input-required" id="txtFullName" fieldName="FullName" type="text" border="1" /><br />
+                        </form>
+                    </div>
+                    <div class="conten2" style="display: flex;">
+                        <form>
+                            Mã thẻ thành viên<br />
+                            <input type="text" id="txtMemberCardCode" fieldName="MemberCardCode" name="customer_member" /><br />
+                        </form>
+                        <form>
+                            Nhóm khách hàng<br />
+                            <select fieldName="CustomerGroupName" fieldValue="CustomerGroupId" api="/api/v1/customergroups" id="cbxCustomerGroup">
+                                <!--<option value="">Khách VIP</option>
+                                <option value="">Khách thường</option>
+                                <option value="">Khách vãng lai</option>-->
+                            </select><br />
+                        </form>
+                    </div>
+                    <div class="conten3" style="display: flex;">
+                        <form>
+                            Ngày sinh<br />
+                            <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth" max="2003-01-01" />
+                        </form>
+                        Giới tính
+                        <div class="radio-gender">
+                            <input fieldName="Gender" checked type="radio" id="male" name="gender" value="1" /><p style="margin-right:30px">Nam</p>
+                            <input fieldName="Gender" type="radio" id="female" name="gender" value="0" /><p style="margin-right:30px">Nữ</p>
+                            <input fieldName="Gender" type="radio" id="other" name="gender" value="2" /><p>Khác</p>
+                        </div>
+                    </div>
+                </div>
+                <!--================================================================================-->
+            </div>
+            <div class="dialog-infor-center1">
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Email <br />
+                        <input fieldName="Email" id="txtCustomerEmail" style="width:490px;" placeholder="example@domain.com" type="email" name="customer_email" /><br />
+                    </form>
+                </div>
+                <div class="dialog-infor infor-top3">
+                    <form>
+                        Số điện thoại (<label style="color: red;">*</label>)<br />
+                        <input fieldName="PhoneNumber" class="a input-required" id="txtPhoneNumber" type="tel" /><br />
+                    </form>
+                </div>
+            </div>
+            <div class="dialog-infor-center2">
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Tên công ty <br />
+                        <input fieldName="CompanyName" style="width:490px;" type="text" name="customer_id" /><br />
+                    </form>
+                </div>
+                <div class="dialog-infor infor-top3">
+                    <form>
+                        Mã số thuế<br />
+                        <input fieldName="CompanyTaxCode" class="a" type="text" placeholder="Mã số thuế của công ty" /><br />
+                    </form>
+                </div>
+            </div>
+            <div class="dialog-infor-center3">
+                <div class="dialog-infor infor-top2">
+                    <form action="">
+                        Địa chỉ <br />
+                        <input fieldName="Address" id="txtAddress" style="width:796px;" type="text" name="customer_id" /><br />
+                    </form>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <div class="btn-cancel" id="btnCancel">
+                    <div class="nav-item-text cancel">Hủy</div>
+                </div>
+                <div class="btn-save" id="btnSave">
+                    <div class="item-icon save-icon"></div>
+                    <div class="nav-item-text">Lưu</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--=====================Toast==============-->
+    <div id="snackbar">Thành công</div>
+    <div id="snackbar_fail">Thất bại</div>
+    <!--=====================ContextMenu==========-->
+    <div id="contextMenu" class="dropdown clearfix">
+        <div class="btn-delete" id="btnDelete">
+            <div class="item-icon delete-icon"></div>
+            <div class="nav-item-text">Xóa</div>
+        </div>
+    </div>
+    <script src="/lib/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/common/common.js"></script>
+    <script src="/js/common/base.js"></script>
+    <script src="/js/page/customer.js"></script>
+</body>
+
+</html>
+<script>
+    $(document).ready(function () {
+        //  $("#txtCustomerCode").focus();
+        $("#btnAdd").click(function () {
+            $("#txtCustomerCode").focus();
+        });
+
+        $('table tbody').on('dblclick', 'tr', function () {
+            $("#txtCustomerCode").focus();
+        });
+    });
+
+</script>

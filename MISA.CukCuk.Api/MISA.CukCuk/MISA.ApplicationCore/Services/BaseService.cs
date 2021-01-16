@@ -6,7 +6,7 @@ using MISA.ApplicationCore.Interfaces;
 
 namespace MISA.ApplicationCore.Services
 {
-    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity:BaseEntity
+    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : BaseEntity
     {
 
         IBaseRepository<TEntity> _baseRepository;

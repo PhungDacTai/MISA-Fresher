@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace MISA.ApplicationCore.Entities
 {
+    /// <summary>
+    /// Lớp khai báo danh mục khách hàng
+    /// </summary>
     public class Customer : BaseEntity
     {
         #region Declare
@@ -27,7 +30,7 @@ namespace MISA.ApplicationCore.Entities
 
         [CheckDuplicate]
         [DisplayName("Mã khách hàng")]
-        [MaxLength(20,"Mã khách hàng không vượt quá 20 ký tự")]
+        [MaxLength(20, "Mã khách hàng không vượt quá 20 ký tự")]
         [Required]
         public string CustomerCode { get; set; }
 
@@ -48,6 +51,11 @@ namespace MISA.ApplicationCore.Entities
         public Guid CustomerGroupId { get; set; }
 
         /// <summary>
+        /// Tên nhóm khách hàng
+        /// </summary>
+        public string CustomerGroupName { get; set; }
+
+        /// <summary>
         /// Ngày sinh
         /// </summary>
         public DateTime? DateOfBirth { get; set; }
@@ -60,7 +68,7 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Email
         /// </summary>
-        
+
         public string Email { get; set; }
 
         /// <summary>
@@ -96,12 +104,12 @@ namespace MISA.ApplicationCore.Entities
         public string CreatedBy { get; set; }
 
         /// <summary>
-        /// Nhày chỉnh sửa gần nhất
+        /// Ngày chỉnh sửa
         /// </summary>
         public DateTime? ModifiedDate { get; set; }
 
         /// <summary>
-        /// Người chỉnh sửa gần nhất
+        /// Người chỉnh sửa
         /// </summary>
         public string ModifiedBy { get; set; }
         #endregion

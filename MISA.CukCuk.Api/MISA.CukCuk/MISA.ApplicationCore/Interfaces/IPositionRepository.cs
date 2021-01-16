@@ -5,7 +5,11 @@ using MISA.ApplicationCore.Entities;
 
 namespace MISA.ApplicationCore.Interfaces
 {
-    public interface IPositionRepository:IBaseRepository<Position>
+    /// <summary>
+    /// Interface danh mục vị trí làm việc của nhân viên
+    /// </summary>
+    /// CreatedBy: PDTAI (15/01/2021)
+    public interface IPositionRepository : IBaseRepository<Position>
     {
     }
 }

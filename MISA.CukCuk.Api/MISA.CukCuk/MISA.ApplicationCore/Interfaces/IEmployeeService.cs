@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using MISA.ApplicationCore.Entities;
 
 namespace MISA.ApplicationCore.Interfaces
 {
-    public interface IEmployeeService:IBaseService<Employee>
+    /// <summary>
+    /// Interface danh mục nhân viên
+    /// </summary>
+    /// CreatedBy: PDTAI (15/01/2021)
+    public interface IEmployeeService : IBaseService<Employee>
     {
         /// <summary>
         /// Lấy dữ liệu danh sách nhân viên theo các tiêu chí

@@ -21,7 +21,10 @@
 
   <ItemGroup>
     <Folder Include="Api\" />
-    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\MISA.CukCuk.Web.sln" />
   </ItemGroup>
 
 </Project>

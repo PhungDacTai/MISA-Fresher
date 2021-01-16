@@ -5,7 +5,11 @@ using MISA.ApplicationCore.Entities;
 
 namespace MISA.ApplicationCore.Interfaces
 {
-    public interface ICustomerGroupService:IBaseService<CustomerGroup>
+    /// <summary>
+    /// Interface danh mục nhóm khách hàng 
+    /// </summary>
+    /// CreatedBy: PDTAI (15/01/2021)
+    public interface ICustomerGroupService : IBaseService<CustomerGroup>
     {
 
     }
