@@ -1,9 +1,9 @@
-.m-dialog{
+.m-dialog {
     position: relative;
-    z-index:100;
+    z-index: 100;
 }
 
-    .m-dialog .dialog-modal{
+    .m-dialog .dialog-modal {
         position: fixed;
         opacity: 0.4;
         top: 0;
@@ -11,9 +11,6 @@
         bottom: 0;
         right: 0;
         background: black;
-        z-index: 20;
-
-
     }
 
 
@@ -27,9 +24,9 @@
         bottom: calc(50% - 750px)
     }
 
-    .infor-top-content{
-        margin-left: 18px;
-    }
+.infor-top-content {
+    margin-left: 18px;
+}
 /*Title*/
 .dialog-content {
     padding: 24px;
@@ -37,7 +34,7 @@
     padding-bottom: 0px;
 }
 
-    .dialog-content .dialog-title{
+    .dialog-content .dialog-title {
         display: flex;
         height: 20px;
         width: 100%;
@@ -61,50 +58,51 @@
             padding: 5px;
             background-color: #ffffff;
         }
+
             .dialog-content .dialog-title button:hover {
                 background-color: #e5e5e5;
                 border-radius: 0px 0px 4px 4px;
             }
 
 
-/*======================AVATAR=================*/
-        .dialog-content .dialog-infor-top {
-            display: flex;
-            height: 218px;
-            width: 100%;
-            margin-bottom: 24px;
-        }
-            .dialog-content .dialog-infor-top .dialog-avatar{
-                width: 190px;
-                margin-right: 0px;
-            }
-
-            .dialog-content .dialog-infor-top .avatar-icon {
-                width: 190px ;
-                height: 190px;
-                background-image: url('../../contents/images/default-avatar.jpg');
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: contain;
-                border-radius: 50%;
-                border: 1px solid #bbb;
-                /* margin-right: 10px; */
-            }
-
-                .dialog-content .dialog-infor-top .avatar-type{
-                    text-align: center;
-                }
-
-
-
-    .dialog-content .dialog-infor-top .dialog-infor {
-     
-        width: 300px;
+    /*======================AVATAR=================*/
+    .dialog-content .dialog-infor-top {
+        display: flex;
+        height: 218px;
+        width: 100%;
+        margin-bottom: 24px;
     }
 
-.dialog-content .dialog-infor-top .infor-top2 {
-    margin: 0px 16px;
-}
+        .dialog-content .dialog-infor-top .dialog-avatar {
+            width: 190px;
+            margin-right: 0px;
+        }
+
+        .dialog-content .dialog-infor-top .avatar-icon {
+            width: 190px;
+            height: 190px;
+            background-image: url('../../contents/images/default-avatar.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 50%;
+            border: 1px solid #bbb;
+            /* margin-right: 10px; */
+        }
+
+        .dialog-content .dialog-infor-top .avatar-type {
+            text-align: center;
+        }
+
+
+
+        .dialog-content .dialog-infor-top .dialog-infor {
+            width: 300px;
+        }
+
+        .dialog-content .dialog-infor-top .infor-top2 {
+            margin: 0px 16px;
+        }
 
 
 
@@ -120,12 +118,10 @@
         cursor: pointer;
     }
 
-    .radio-gender{
-        /* text-align: center; */
-        /* line-height: 60px; */
-        margin-top: 18px !important;
-        margin-left: -50px;
-    }
+.radio-gender {
+    margin-top: 18px !important;
+    margin-left: -50px;
+}
 /*====================*/
     .dialog-content .dialog-infor-center1, .dialog-infor-center2 {
         display: flex;
@@ -156,10 +152,11 @@
         border-radius: 0 0 5px 5px;
     }
 
+
 .save-icon {
     background-image: url('../../contents/icons/save (2).svg');
 }
 
-form{
+form {
     margin-right: 16px;
 }

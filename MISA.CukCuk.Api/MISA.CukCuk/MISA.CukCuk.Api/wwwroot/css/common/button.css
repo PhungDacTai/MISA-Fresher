@@ -1,5 +1,5 @@
 /* Định dạng button*/
-.m-btn{
+.m-btn {
     height: 40px;
     background: #019160;
     border-radius: 4px;
@@ -32,8 +32,9 @@
     color: inherit;
     background: #e5e5e5;
 }
-    .btn-cancel:hover{
-        background-color:#cccccc;
+
+    .btn-cancel:hover {
+        background-color: #cccccc;
     }
 
     .btn-cancel .cancel {
@@ -48,6 +49,7 @@
     right: 0px;
     top: 12px;
 }
+
     .btn-save:hover {
         background-color: #2fbe8e;
     }

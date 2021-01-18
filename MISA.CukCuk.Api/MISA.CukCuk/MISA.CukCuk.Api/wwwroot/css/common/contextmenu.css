@@ -1,3 +1,4 @@
+﻿/*Định dạng content khi kích chuột phải hiện nút xóa*/
 #contextMenu {
     position: absolute;
     display: none;
@@ -7,10 +8,9 @@
     border-radius: 3px;
     z-index: 122;
     background: #EBF9F4;
-
 }
 
-.btn-edit, .btn-delete {
+.btn-delete {
     display: flex;
     width: 80px;
     height: 36px;
@@ -23,9 +23,6 @@
     color: #ffffff;
     cursor: pointer;
 }
-.btn-edit {
-    background: #01B075;
-}
 
 .btn-delete {
     background: #EE0000;
@@ -35,12 +32,4 @@
     background-image: url('../../contents/icons/trash-2.svg');
 }
 
-tr {
-    position: relative;
-}
-
-    tr:hover {
-        background: #c9e8f7;
-        position: relative;
-    }
 

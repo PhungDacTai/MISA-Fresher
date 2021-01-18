@@ -27,5 +27,12 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Danh sách khách hàng</returns>
         /// CreatedBy: PDTAI (12/01/2021)
         IEnumerable<Customer> GetCustomerByGroup(CustomerGroup groupId);
+
+        /// <summary>
+        /// Tìm kiếm khách hàng qua các tiêu chí mã, tên, số điện thoại
+        /// </summary>
+        /// <param name="specs">Tiêu chí truyền vào</param>
+        /// <returns></returns>
+        List<Customer> GetCustomersFilter(string specs);
     }
 }

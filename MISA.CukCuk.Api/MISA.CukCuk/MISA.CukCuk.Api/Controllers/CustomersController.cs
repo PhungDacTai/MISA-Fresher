@@ -24,5 +24,12 @@ namespace MISA.CukCuk.Api.Controllers
         {
             _baseService = baseService;
         }
+
+        [HttpGet("filter")]
+        public IActionResult GetCustomersFilter([FromQuery] string specs)
+        {
+            return Ok(_baseService.GetCustomersFilter(specs));
+
+        }
     }
 }

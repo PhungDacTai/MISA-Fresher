@@ -1,4 +1,4 @@
-.text-right{
+﻿.text-right{
     text-align: right;
 }
 
@@ -42,6 +42,7 @@
     animation: spin 1.5s linear infinite;
 }
 
+/*Image load khi chưa tải xong trang*/
 @keyframes spin{
     0%{
         transform: rotate(0deg);

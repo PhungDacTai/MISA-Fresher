@@ -35,6 +35,11 @@ namespace MISA.ApplicationCore
         {
             throw new NotImplementedException();
         }
+
+        public List<Customer> GetCustomersFilter(string specs)
+        {
+            return _customerRepository.GetCustomersFilter(specs);
+        }
         #endregion
     }
 }

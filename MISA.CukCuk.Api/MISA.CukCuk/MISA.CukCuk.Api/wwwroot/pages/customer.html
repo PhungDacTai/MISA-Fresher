@@ -86,7 +86,7 @@
         <div class="content-search">
             <div class="searchbox">
                 <div class="item-icon search-icon"></div>
-                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên khác" /></div>
+                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên, Số điện thoại" id="txtSearchCustomer" /></div>
             </div>
 
             <div class="searchbox refresh" id="btnRefresh">
@@ -102,11 +102,11 @@
                         <tr>
                             <th fieldName="CustomerCode"><span class="text">Mã khách hàng</span></th>
                             <th fieldName="FullName"><span class="text">Họ tên</span></th>
-                            <th fieldName="Gender"><span class="text">Giới tính</span></th>
+                            <th fieldName="Gender" formatType="Gender"><span class="text">Giới tính</span></th>
                             <th fieldName="DateOfBirth" formatType="ddmmyy"><span class="text">Ngày sinh</span></th>
                             <th fieldName="PhoneNumber"><span class="text">Điện thoại</span></th>
                             <th fieldName="Email"><span class="text">Email</span></th>
-                            <th fieldName="Address" width="215px"><span class="text">Địa chỉ</span></th>
+                            <th fieldName="Address"formatType ="FormatAddress" width="215px"><span class="text">Địa chỉ</span></th>
                             <th fieldName="MemberCardCode"><span class="text">Mã thẻ thành viên</span></th>
                             <th fieldName="CustomerGroupName"><span class="text">Nhóm khách hàng</span></th>
                         </tr>

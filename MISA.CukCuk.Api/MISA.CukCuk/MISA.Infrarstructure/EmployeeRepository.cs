@@ -28,10 +28,10 @@ namespace MISA.Infrarstructure
             var paramaters = new DynamicParameters();
             paramaters.Add("EmployeeCode", specs);
             paramaters.Add("FullName", specs);
-            paramaters.Add("CodeNumber", specs);
+            paramaters.Add("PhoneNumber", specs);
             paramaters.Add("DepartmentId", departmentId);
             paramaters.Add("PositionId", positionId);
-            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeePaging", paramaters, commandType: CommandType.StoredProcedure).ToList();
+            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeesPaging", paramaters, commandType: CommandType.StoredProcedure).ToList();
             return employees;
         }
     }

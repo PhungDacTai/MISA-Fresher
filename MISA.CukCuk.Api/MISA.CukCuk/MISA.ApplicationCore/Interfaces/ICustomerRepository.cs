@@ -18,5 +18,12 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Khách hàng có mã truyền vào</returns>
         /// CreatedBy: PDTAI (12/01/2021)
         Customer GetCustomerByCode(string customerCode);
+
+        /// <summary>
+        /// Tìm kiếm khách hàng qua các tiêu chí mã, tên, số điện thoại
+        /// </summary>
+        /// <param name="specs">Tiêu chí nhập vào</param>
+        /// <returns></returns>
+        List<Customer> GetCustomersFilter(string specs);
     }
 }

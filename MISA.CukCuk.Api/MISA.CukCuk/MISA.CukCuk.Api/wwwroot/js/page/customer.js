@@ -24,6 +24,31 @@ class CustomerJS extends BaseJS {
         super();
     }
 
+    initEvents() {
+        var me = this;
+        super.initEvents();
+        
+        $('#txtSearchCustomer').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                me.setQueryString();
+                me.loadData();
+                debugger;
+            }
+        })
+    }
+
+    setQueryString() {
+        // Lấy thông tin ở input tìm kiếm
+        var inputText = $('#txtSearchCustomer').val().trim();
+        if (inputText != '') {
+            this.queryString = "/filter?specs=" + inputText;
+        } else {
+            this.queryString = '';
+        }
+        
+    }
+
     setApiRouter() {
         //this.apiRouter = "/api/customers";
         this.apiRouter = "/api/v1/customers";
