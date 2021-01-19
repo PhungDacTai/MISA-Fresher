@@ -1,10 +1,11 @@
+﻿/*Định dạng phần nội dung chính*/
 .content {
     position: absolute;
     top: 61px;
     left: 221px;
     width: calc(100% - 237px);
     height: calc(100vh - 61px);
-    background: #ffffff;
+    background: #FFFFFF;
 }
     /* ===================CONTENT-TITLE====================*/
     .content .content-title {
@@ -20,7 +21,7 @@
     }
 
         .content .btn-add:hover {
-            background: #2fbe8e;
+            background: #2FBE8E;
         }
 
         .content .content-title .title {
@@ -40,11 +41,7 @@
             background-image: url('/contents/icons/add.png');
         }
 
-
-
-
     /*=====================SEARCH===============*/
-
 
     .content .content-search {
         height: 60px;
@@ -53,15 +50,15 @@
     }
 
         .content .content-search .searchbox {
-            background: #ffffff;
+            background: #FFFFFF;
             border-radius: 4px;
             height: 40px;
             text-align: left;
             line-height: 40px;
-            color: #bbbbbb;
+            color: #BBBBBB;
             font-size: 12px;
             display: flex !important;
-            border: 1px solid #e5e5e5;
+            border: 1px solid #E5E5E5;
             padding-left: 16px;
             padding-right: 8px;
         }
@@ -80,19 +77,14 @@
         .content .content-search .refresh {
             position: absolute;
             right: 0px;
-            background: #red;
             cursor: pointer;
-            /* padding: 0px; */
         }
 
-        .content .content-search .refresh:hover {
-            background-color: #red;
-        }
         .content .content-search .refresh-icon {
             background-repeat: no-repeat;
             background-image: url('/contents/icons/refresh.png');
             margin-right: 7px;
-            /* width: 24px; */
+          
         }
 
 
@@ -131,10 +123,16 @@
 
 
         .content-bottom .bottom-center .page-number {
-            border: 1px solid #bbbbbb;
-            background: #e5e5e5;
+            border: 1px solid #BBBBBB;
+            background: #E5E5E5;
             border-radius: 50%;
             margin-top: 10px;
+        }
+
+        .content-bottom .bottom-center .page-number:hover {
+            background: #FFFFFF;
+            cursor: pointer;
+            color: inherit;
         }
 
         .content-bottom .bottom-center .custom {
@@ -142,25 +140,17 @@
         }
 
 
-.number {
-    margin-top: -13px;
-}
-
-        .content-bottom .bottom-center .page-number:hover {
-            background: #ffffff;
-            cursor: pointer;
-            color: inherit;
+        .content-bottom .bottom-center .number {
+            margin-top: -13px;
         }
-
 
         .content-bottom .bottom-center .item-icon {
             width: 28px;
             height: 28px;
-            color: #bbbbbb;
+            color: #BBBBBB;
             margin-bottom: 7px;
             cursor: pointer;
         }
-
 
         .content-bottom .bottom-center .bt-icon1 {
             background-image: url('/contents/icons/btn-firstpage.svg');

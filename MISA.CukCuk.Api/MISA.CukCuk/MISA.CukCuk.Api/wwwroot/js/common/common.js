@@ -25,9 +25,9 @@ function formatDate(date) {
 }
 
 /**
- * Định dạng ngày tháng mm/dd/yy
- * 
- * @param {any} date
+ * Định dạng ngày tháng dạng mm/dd/yy
+ * @param {any} datetham số dữ liệu ngày tháng/kiểu dữ liệu bất kỳ
+ * CreatedBy: PDTAI (05/01/2021)
  */
 function formatDate2(date) {
     var date = new Date(date);
@@ -46,7 +46,7 @@ function formatDate2(date) {
             month = '0' + month;
         }
 
-        return year +'-'+ month + '-' + day;
+        return year + '-' + month + '-' + day;
     }
 }
 

@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     new CustomerJS();
-
     //dialog = $(".m-dialog").dialog({
     //    autoOpen: false,
     //    fluid: true,
@@ -11,6 +10,8 @@
     //});
 
     $(".m-dialog").hide();//Sự kiện ẩn dialog
+    $(".popup").hide();//Sự kiện ẩn popup xóa
+
 
 
 })
@@ -27,7 +28,7 @@ class CustomerJS extends BaseJS {
     initEvents() {
         var me = this;
         super.initEvents();
-        
+
         $('#txtSearchCustomer').keypress(function (event) {
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if (keycode == '13') {
@@ -46,7 +47,7 @@ class CustomerJS extends BaseJS {
         } else {
             this.queryString = '';
         }
-        
+
     }
 
     setApiRouter() {

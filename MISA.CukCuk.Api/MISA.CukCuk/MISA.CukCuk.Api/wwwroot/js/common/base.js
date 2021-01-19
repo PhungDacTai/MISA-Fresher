@@ -28,16 +28,21 @@ class BaseJS {
         // Sự kiên click khi nhấn thêm mới =====================================================================
         $('#btnAdd').on('click', me.btnAddOnClick.bind(me));
 
-        // Sự kiên khi click close, hủy ========================================================================
+        // Sự kiên khi click close, hủy đóng dialog, đóng popup ================================================
         $('#btnClose').on('click', function () {
-            // Ẩn dialog
+            $(".m-dialog").hide();
+        })
+        $('#btnCancel').on('click', function () {
             $(".m-dialog").hide();
         })
 
-        $('#btnCancel').on('click', function () {
-            // Ẩn dialog
-            $(".m-dialog").hide();
+        $('#btnClose2').on('click', function () {
+            $(".popup").hide();
         })
+        $('#btnCancel2').on('click', function () {
+            $(".popup").hide();
+        })
+
 
         // Load lại dữ liệu khi nhấn button load ===============================================================
         $('#btnRefresh').on('click', function () {
@@ -49,6 +54,9 @@ class BaseJS {
 
         //Hiển thị thông tin chi tiết khi đúp chuột chọn một bản ghi trên danh sách dữ liệu=====================
         $('table tbody').on('dblclick', 'tr', me.doubleClickEvent.bind(me));
+
+        //Tô màu bản được chọn khi click chuột
+        $('table tbody').on('click', 'tr', me.oneClickEvent.bind(me));
 
         /**=====================================================================================================
          * validated bắt buộc nhập
@@ -144,13 +152,13 @@ class BaseJS {
     }
 
 
-    /**==================================================================================================
+    /**=======================================================================================================
     * Thêm mới dữ liệu
     * CreatedBy: PTTAI (28/12/2020)
     * */
     btnAddOnClick() {
+        var me = this;
         try {
-            var me = this;
             setEmptyValue();
             $('input[type="date"]').val('');
             $('input[id="male"]').attr("checked");
@@ -176,12 +184,10 @@ class BaseJS {
                                 var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
                                 select.append(option);
                             })
-                            console.log(select);
                         }
                     } catch (e) {
                         console.log(e);
                     }
-
                     $('.loading').hide();
                 }).fail(function (res) {
                     $('.loading').hide();
@@ -193,8 +199,8 @@ class BaseJS {
 
     }
 
-    /**=====================================================================================================================================
-    * Sửa, lưu dữ liệu
+    /**=====================================================================================================================
+    * Xử lý nút Save (sửa, lưu) dữ liệu
     * CreatedBy: PTTAI (28/12/2020)
     * */
     btnSaveOnClick() {
@@ -212,25 +218,25 @@ class BaseJS {
                 return;//Dừng chương trình
             }
             // Thu nhập thông tin dữ liệu-> build thành đối tượng
-
             // Lấy tất cả các control nhập liệu
             var inputs = $('input[fieldName], select[fieldName]');
             var entity = {};
             $.each(inputs, function (index, input) {
-                var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
+                var propertyName = $(this).attr('fieldName');
                 var value = '';
                 if (propertyName == "CustomerGroupName") {
                     var propertyName1 = $(this).attr('fieldValue');
                     value = $(this).find(":selected").val();
                     entity[propertyName1] = value;
-                    console.log(value);
                 } else {
                     value = $(this).val();//Lấy giá trị
                 }
 
+                //Format lại ngày tháng
                 if (propertyName == "DateOfBirth") {
                     value = formatDate2(value);
                 }
+
                 //Check với trường hợp input là radio, thì chỉ lấy value có thuộc tính  checked
                 if ($(this).attr('type') == "radio") {
                     if (this.checked) {
@@ -258,17 +264,18 @@ class BaseJS {
                 data: JSON.stringify(entity),
                 contentType: 'application/json'
             }).done(function (res) {
-                //me.loadData();
-                // Sau khi thành công: 
+                // Thông báo sau khi thành công
                 toastSuccess();
-                // - Load lại dữ liệu
+                // Load lại dữ liệu
                 me.loadData();
+                // Ẩn dialog chi tiết
                 $(".m-dialog").hide();
 
             }).fail(function (res) {
+                // Thông báo fail
                 toastFail();
+                // Ẩn dialog chi tiết
                 $(".m-dialog").hide();
-                // - Ẩn dialog chi tiết
             })
 
         } catch (e) {
@@ -277,14 +284,25 @@ class BaseJS {
 
     }
 
+    /**==============================================================================================================================
+     * Xử lý sự kiện kích vào một bản ghi đổi màu background
+     * @param {any} e: Sự kiện được gọi
+     * CreatedBy: PTTAI (19/01/2021)
+     */
+    oneClickEvent(e) {
+        $('tr').find('td').removeClass('selected');
+        $(e.currentTarget).find('td').addClass('selected');
+        console.log(e);
+    }
 
-    /**==================================================================================================================================================================
-     * Xử lý sự kiện kích đúp chuột vào một bản ghi
+    /**===============================================================================================================================
+     * Xử lý sự kiện kích đúp chuột vào một bản ghi hiển thị lại thông tin lên dialog
+     * @param {any} e: Sự kiện được gọi
      * CreatedBy: PTTAI (28/12/2020)
      * */
     doubleClickEvent(e) {
+        var me = this;
         try {
-            var me = this;
             $('tr').find('td').removeClass('selected');
             $(e.currentTarget).find('td').addClass('selected');
             me.FormMode = 'Edit';
@@ -303,10 +321,10 @@ class BaseJS {
                 var inputs = $('input[fieldName], select[fieldName]');
                 var entity = {};
                 $.each(inputs, function (index, input) {
-                    var propertyName = $(this).attr('fieldName');//Lấy giá trị attribute id
+                    var propertyName = $(this).attr('fieldName');
                     var value = res[propertyName];
                     console.log(value);
-                    //Check nhóm
+                    //Check nhóm 
                     if (propertyName == "CustomerGroupName") {
                         var fieldValue1 = $(this).attr('fieldValue');
                         var groupId = res[fieldValue1];
@@ -348,13 +366,12 @@ class BaseJS {
                         })
 
                     }
-
                     //Check ngày sinh
                     if (propertyName == "DateOfBirth") {
                         value = formatDate2(value);
                         $(this).attr('value', value);
                     }
-                    //Check với trường hợp input là radio, thì chỉ lấy value có thuộc tính  checked
+                    //Check với trường hợp input là radio
                     if (propertyName == "Gender") {
                         if (res[propertyName] == "0") {
                             $('input[id="female"]').prop('checked', true);
@@ -394,42 +411,45 @@ class BaseJS {
 
     /**===========================================================================================================================
      * Validate các trường bắt buộc nhập
-     * CreatedBy: PTTAI (29/12/2020
+     * CreatedBy: PTTAI (29/12/2020)
      * */
     validateInput() {
         // Kiểm tra dữ liệu đã nhập nếu để trống thì cảnh báo
-        //this.classList.add('border-red');
         var value = $(this).val();
-        if (!value) {
-            $(this).addClass('border-red');
-            $(this).attr('title', 'Trường này không được phép bỏ trống!');
-            $(this).attr('validate', false);
-        } else {
-            $(this).removeClass('border-red');
-            $(this).attr('validate', true);
+        try {
+            if (!value) {
+                $(this).addClass('border-red');
+                $(this).attr('title', 'Trường này không được phép bỏ trống!');
+                $(this).attr('validate', false);
+            } else {
+                $(this).removeClass('border-red');
+                $(this).attr('validate', true);
+            }
+        } catch (e) {
+            console.log(e);
         }
-
     }
 
-
     /**===========================================================================================================================
-     * Validate các trường email
+     * Validate các trường email đúng định dạng
      * CreatedBy: PTTAI (29/12/2020
      * */
     validateEmail() {
         var value = $(this).val();
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!regex.test(value)) {
-            $(this).addClass('border-red');
-            $(this).attr('title', 'Email không đúng định dạng');
-            $(this).attr('validate', false);
-        } else {
-            $(this).removeClass('border-red');
-            $(this).attr('validate', true);
+        try {
+            if (!regex.test(value)) {
+                $(this).addClass('border-red');
+                $(this).attr('title', 'Email không đúng định dạng');
+                $(this).attr('validate', false);
+            } else {
+                $(this).removeClass('border-red');
+                $(this).attr('validate', true);
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
-
-
 
     /**=============================================================================================================================
      * Context menu kích chuột phải chọn một dòng tr để xóa bản ghi
@@ -437,6 +457,8 @@ class BaseJS {
      * */
     contextMenu() {
         var me = this;
+        $('tr').find('td').removeClass('selected');
+        $(e.currentTarget).find('td').addClass('selected');//Đánh dấu dòng được chọn
         var $contextMenu = $("#contextMenu");
 
         $("body").on("contextmenu", "table tr", function (e) {
@@ -447,26 +469,26 @@ class BaseJS {
                 left: e.pageX,
                 top: e.pageY
             })
-            var recordId = $(e.currentTarget).data('recordId');// Che giấu code dễ hơn
+            var recordId = $(e.currentTarget).data('recordId');
             me.recordId = recordId;
-            console.log(recordId);
-            console.log(e.currentTarget);
             $('#btnDelete').on('click', function () {
+                $('.popup').show();
                 try {
-                    if (confirm("Bạn thật sự muốn xóa?") == true) {
+                    $('#btnDelete2').on('click', function () {
                         $.ajax({
                             url: me.host + me.apiRouter + `/${recordId}`,
                             method: "DELETE",
                             async: true,
 
                         }).done(function (res) {
-                            $('table tbody').empty();
                             me.loadData();
+                            $(".popup").hide();
                             toastSuccess();
                         }).fail(function (res) {
                             toastFail();
+                            $(".popup").hide();
                         })
-                    }
+                    })
                 } catch (e) {
                     console.log(e);
                 }
@@ -485,14 +507,13 @@ class BaseJS {
 }
 
 
-/**
- * Phương thức xử lý làm trống các trường
+/**=================================================
+ * Phương thức xử lý làm trống các trường input
  * CreatedBy: PDTAI (05/01/2021)
  * */
 function setEmptyValue() {
     $('input[type="text"]').val('');
     $('input[type="email"]').val('');
-    $('input[type="tel"]').val('');
 }
 
 /**
@@ -501,9 +522,7 @@ function setEmptyValue() {
  * */
 function toastSuccess() {
     var x = document.getElementById("snackbar");
-    // Add the "show" class to DIV
     x.className = "show";
-
     // Gỡ toast sau 3s
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
@@ -514,7 +533,6 @@ function toastSuccess() {
  * */
 function toastFail() {
     var x = document.getElementById("snackbar_fail");
-    // Add the "show" class to DIV
     x.className = "show";
     // Gỡ toast sau 3s
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);

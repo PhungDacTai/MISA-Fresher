@@ -41,11 +41,10 @@ table {
 }
 
 /*Tô màu hàng*/
-tr:nth-child(even) {
+/*tr:nth-child(even) {
     background: #F5F5F5;
-}
+}*/
 
 tr:hover {
-    background: #c9e8f7;
-    position: relative;
+    background: #E9EBEE;
 }

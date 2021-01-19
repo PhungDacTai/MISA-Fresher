@@ -4,13 +4,11 @@
     display: flex;
     min-width: 250px;
     margin-left: -125px;
-    /*    background-color: #01b075;
-    color: #fff;*/
-    background-color: #FFF;
-    color: #000;
+    background-color: #FFFFFF;
+    color: #000000;
     text-align: center;
     border: 1px solid #E5E5E5;
-    border-radius:5px;
+    border-radius: 5px;
     height: 48px;
     position: fixed;
     z-index: 200;
@@ -26,15 +24,15 @@
         left: 60px;
     }
 
-.fas {
-    color: #BAFFE7 !important;
-    font-size: 24px;
-    line-height: 48px;
-}
+ .fas {
+        color: #BAFFE7 !important;
+        font-size: 24px;
+        line-height: 48px;
+    }
 
-#snackbar_fail .fas{
-    color: #FFCECE !important;
-}
+    #snackbar_fail .fas {
+        color: #FFCECE !important;
+    }
 
 .fa-check-circle, .fa-exclamation-triangle {
     margin-left: 24px;
@@ -45,12 +43,12 @@
     right: 12px;
 }
     /*Hiển thị khi bấm nút */
-    #snackbar.show, #snackbar_fail.show {
-        visibility: visible; /* Hiển thị*/
-        /* Hoạt ảnh xất hiện */
-        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
+#snackbar.show, #snackbar_fail.show {
+    visibility: visible; /* Hiển thị*/
+    /* Hoạt ảnh xất hiện */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
 
 /* Hoạt ảnh ra vào của toast */
 @-webkit-keyframes fadein {

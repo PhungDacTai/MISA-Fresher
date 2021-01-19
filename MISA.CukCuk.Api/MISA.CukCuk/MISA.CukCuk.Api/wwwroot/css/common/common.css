@@ -1,4 +1,5 @@
-﻿.text-right{
+﻿/*Các phần dùng chung cho trang*/
+.text-right {
     text-align: right;
 }
 
@@ -6,16 +7,16 @@
     text-align: center;
 }
 
-    .navbar a{
-        text-decoration: none;
-        color: inherit;
-    }
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+}
 
-.loading{
+.loading {
     display: none;
 }
 
-.loading-modal{
+.loading-modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -26,7 +27,7 @@
     z-index: 100;
 }
 
-.loading-icon{
+.loading-icon {
     position: fixed;
     z-index: 21;
     width: 50px;
@@ -43,15 +44,17 @@
 }
 
 /*Image load khi chưa tải xong trang*/
-@keyframes spin{
-    0%{
+@keyframes spin {
+    0% {
         transform: rotate(0deg);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
 }
 
-.selected{
+/*Background của tr khi được selected*/
+.selected {
     background-color: #EBF9F4;
 }

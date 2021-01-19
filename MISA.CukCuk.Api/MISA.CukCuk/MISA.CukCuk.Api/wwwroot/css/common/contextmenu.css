@@ -14,22 +14,26 @@
     display: flex;
     width: 80px;
     height: 36px;
-    background: #019160;
+    background: #F65454;
     border-radius: 4px;
     margin: 5px;
     padding-left: 20px;
     font-weight: normal;
     line-height: 36px;
-    color: #ffffff;
+    color: #FFFFFF;
     cursor: pointer;
 }
 
-.btn-delete {
-    background: #EE0000;
+    .btn-delete:hover {
+        background: #FF6A6A;
+    }
+
+.fa-trash-alt {
+    margin-right: 10px;
 }
 
-.delete-icon {
+/*.delete-icon {
     background-image: url('../../contents/icons/trash-2.svg');
 }
-
+*/
 
