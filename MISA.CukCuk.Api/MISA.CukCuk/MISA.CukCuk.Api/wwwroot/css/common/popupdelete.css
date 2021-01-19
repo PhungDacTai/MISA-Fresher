@@ -1,0 +1,20 @@
+﻿/*Xử lý popup cảnh báo xóa*/
+.popup{
+    position: relative;
+}
+.popup_delete {
+    position: absolute;
+    left: calc(50% - 160px);
+    top: 30px;
+    background-color: #bbb;
+    height: 160px;
+    width: 350px;
+    z-index: 201;
+    border-radius: 5px;
+}
+
+.popup_delete .popup_title{
+    font-weight: bold;
+    font-size: 15px;
+    margin: 24px;
+}

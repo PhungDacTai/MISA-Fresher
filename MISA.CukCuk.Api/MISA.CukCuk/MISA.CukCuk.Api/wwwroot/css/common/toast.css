@@ -1,21 +1,48 @@
-﻿/* Toast thông báo khi thực hiện các nút thêm, sửa xóa */
+/* Toast thông báo khi thực hiện các nút thêm, sửa xóa */
 #snackbar, #snackbar_fail {
     visibility: hidden;
+    display: flex;
     min-width: 250px;
     margin-left: -125px;
-    background-color: #01b075;
-    color: #fff;
+    /*    background-color: #01b075;
+    color: #fff;*/
+    background-color: #FFF;
+    color: #000;
     text-align: center;
-    border-radius: 2px;
-    padding: 16px;
+    border: 1px solid #E5E5E5;
+    border-radius:5px;
+    height: 48px;
     position: fixed;
     z-index: 200;
     left: 50%;
     top: 30px;
+    font-size: 13px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
 }
 
-#snackbar_fail {
-    background-color: #454545;
+    #snackbar p, #snackbar_fail p {
+        position: absolute;
+        top: 2px;
+        left: 60px;
+    }
+
+.fas {
+    color: #BAFFE7 !important;
+    font-size: 24px;
+    line-height: 48px;
+}
+
+#snackbar_fail .fas{
+    color: #FFCECE !important;
+}
+
+.fa-check-circle, .fa-exclamation-triangle {
+    margin-left: 24px;
+}
+
+.fa-times {
+    position: absolute;
+    right: 12px;
 }
     /*Hiển thị khi bấm nút */
     #snackbar.show, #snackbar_fail.show {

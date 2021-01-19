@@ -67,10 +67,6 @@ namespace MISA.Infrarstructure
 
         public TEntity GetEntityById(Guid entityId)
         {
-            //string _query = "SELECT c.CustomerId, c.CustomerCode, c.FullName, c.MemberCardCode, c.CustomerGroupId, c.DateOfBirth, c.Gender, " +
-            //             "c.Email, c.PhoneNumber, c.CompanyName, c.CompanyTaxCode, c.Address, cg.CustomerGroupName " +
-            //             "FROM Customer c INNER JOIN CustomerGroup cg ON c.CustomerGroupId = cg.CustomerGroupId WHERE c.CustomerId = CustomerId";
-            //var a = $"{_tableName}Id";
             var entity = _dbConnection.Query<TEntity>($"SELECT * FROM {_tableName} WHERE {_tableName}Id = '{entityId}'", commandType: CommandType.Text).FirstOrDefault();
             //Trả dữ liệu cho client
             return entity;
