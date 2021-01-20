@@ -70,11 +70,34 @@ class BaseJS {
         * CreatedBy: PDTAI (1/1/2021)
         * */
         $('input[type="email"]').blur(me.validateEmail);
+        $('#txtSearchCustomer').focus(function () {
+             $('.txtsearch').addClass('border-green');
+        })
 
+        $('#txtSearchCustomer').blur(function () {
+            var value = $(this).val();
+            try {
+                if (!value) {
+                    $('.txtsearch').removeClass('border-green');
+                }
+            } catch {
 
+            }
+        })
     }
 
-
+    search() {
+        // Kiểm tra dữ liệu đã nhập nếu để trống thì cảnh báo
+        var value = $(this).val();
+        try {
+            if (value) {
+                $('.txtsearch').addClass('border-green');
+            } else {
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
     /**=========================================================================================================
      * Load dữ liệu
      * CreatedBy: PDTAI (28/12/2020)
@@ -290,8 +313,13 @@ class BaseJS {
      * CreatedBy: PTTAI (19/01/2021)
      */
     oneClickEvent(e) {
-        $('tr').find('td').removeClass('selected');
-        $(e.currentTarget).find('td').addClass('selected');
+        if ($(e.currentTarget).find('td').attr('class') == 'selected') {
+            $(e.currentTarget).find('td').removeClass('selected');
+            console.log(this);
+        } else {
+            $('tr').find('td').removeClass('selected');
+            $(e.currentTarget).find('td').addClass('selected');
+        }   
         console.log(e);
     }
 
@@ -409,6 +437,7 @@ class BaseJS {
     }
 
 
+
     /**===========================================================================================================================
      * Validate các trường bắt buộc nhập
      * CreatedBy: PTTAI (29/12/2020)
@@ -457,8 +486,6 @@ class BaseJS {
      * */
     contextMenu() {
         var me = this;
-        $('tr').find('td').removeClass('selected');
-        $(e.currentTarget).find('td').addClass('selected');//Đánh dấu dòng được chọn
         var $contextMenu = $("#contextMenu");
 
         $("body").on("contextmenu", "table tr", function (e) {
@@ -469,6 +496,8 @@ class BaseJS {
                 left: e.pageX,
                 top: e.pageY
             })
+            $('tr').find('td').removeClass('selected');
+            $(e.currentTarget).find('td').addClass('selected');//Đánh dấu dòng được chọn
             var recordId = $(e.currentTarget).data('recordId');
             me.recordId = recordId;
             $('#btnDelete').on('click', function () {

@@ -34,7 +34,6 @@ class CustomerJS extends BaseJS {
             if (keycode == '13') {
                 me.setQueryString();
                 me.loadData();
-                debugger;
             }
         })
     }

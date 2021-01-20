@@ -1,4 +1,4 @@
-﻿/*Định dạng phần nội dung chính*/
+/*Định dạng phần nội dung chính*/
 .content {
     position: absolute;
     top: 61px;
@@ -62,15 +62,14 @@
             padding-left: 16px;
             padding-right: 8px;
         }
-
-        .content .content-search .item-icon {
-            width: 16px;
-            height: 16px;
-        }
+            .content .content-search .item-icon {
+                width: 16px;
+                height: 16px;
+            }
 
         .content .content-search .search-icon {
             background-repeat: no-repeat;
-            padding-right: 8px;
+            margin-right: 8px;
             background-image: url('/contents/icons/search.png');
         }
 
@@ -173,4 +172,8 @@
     font-family: inherit;
     font-size: inherit;
     padding-right: 10px;
+}
+
+.border-green{
+    border-color:#019160 !important;
 }
