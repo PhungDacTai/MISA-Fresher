@@ -45,6 +45,7 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
+
             var entity = _baseService.GetEntityId(Guid.Parse(id));
             //Trả dữ liệu cho client
             return Ok(entity);

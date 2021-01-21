@@ -1,7 +1,11 @@
 ﻿$(document).ready(function () {
-    new EmployeeJS();
-
+    var emplpoyee = new EmployeeJS();
+    //var select2 = $('select[index2]');
+    //emplpoyee.comboBox(select2);
+    //var select3 = $('select[index3]');
+    //emplpoyee.comboBox(select3);
     $(".m-dialog").hide();//Sự kiện ẩn dialog
+
 })
 
 /**
@@ -12,6 +16,11 @@ class EmployeeJS extends BaseJS {
     constructor() {
         //this.loadData();
         super();
+
+    }
+
+    setObject() {
+        this.object = "Employee";
     }
 
     setApiRouter() {

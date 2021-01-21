@@ -8,7 +8,9 @@ class BaseJS {
         this.loadData();
         this.initEvents();
         this.contextMenu();
-
+        this.object = null;
+        this.setObject();
+    
     }
 
     setQueryString() {
@@ -18,6 +20,9 @@ class BaseJS {
 
     }
 
+    setObject() {
+
+    }
 
     /**
      * Khởi tạo sự kiện các button
@@ -119,7 +124,12 @@ class BaseJS {
                 // Chạy đúng
                 $.each(res, function (index, obj) {
                     var tr = $(`<tr></tr>`);
-                    $(tr).data('recordId', obj.CustomerId);
+                    debugger;
+                    if (me.object == "Customer")
+                        $(tr).data('recordId', obj.CustomerId);
+                    else
+                        $(tr).data('recordId', obj.EmployeeId);
+                    debugger;
                     //Lấy thông tin dữ liệu sẽ map tương ứng với các cột
                     $.each(ths, function (index, th) {
                         var td = $(`<td><div><span></span></div></td>`);
@@ -190,33 +200,13 @@ class BaseJS {
             // Hiển thị dialog thông tin chi tiết
             $(".m-dialog").show();
             // Load dữ liệu cho combobox
-            var select = $('select[fieldName]');
+            var select = $('select[index]');
             select.empty();
-            $.each(select, function (index, value) {
-                // Lấy dữ liệu nhóm khách hàng
-                var api = $(select).attr('api');
-                var fieldName = $(select).attr('fieldName');
-                var fieldValue = $(select).attr('fieldValue');
-                $('.loading').show();
-                $.ajax({
-                    url: me.host + api,
-                    method: "GET"
-                }).done(function (res) {
-                    try {
-                        if (res) {
-                            $.each(res, function (index, obj) {
-                                var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
-                                select.append(option);
-                            })
-                        }
-                    } catch (e) {
-                        console.log(e);
-                    }
-                    $('.loading').hide();
-                }).fail(function (res) {
-                    $('.loading').hide();
-                })
-            })
+            me.comboBox(select);
+            var select1 = $('select[index1]');
+            select1.empty();
+            me.comboBox(select1);
+            
         } catch (e) {
             console.log(e);
         }
@@ -533,6 +523,37 @@ class BaseJS {
         $("#contextMenu").click(function (e) {
             var f = $(this);
         });
+    }
+
+
+    comboBox(select) {
+        var me = this;
+
+        $.each(select, function (index, value) {
+            // Lấy dữ liệu nhóm khách hàng
+            var api = $(select).attr('api');
+            var fieldName = $(select).attr('fieldName');
+            var fieldValue = $(select).attr('fieldValue');
+            $('.loading').show();
+            $.ajax({
+                url: me.host + api,
+                method: "GET"
+            }).done(function (res) {
+                try {
+                    if (res) {
+                        $.each(res, function (index, obj) {
+                            var option = $(`<option height="40px" value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
+                            select.append(option);
+                        })
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+                $('.loading').hide();
+            }).fail(function (res) {
+                $('.loading').hide();
+            })
+        })
     }
 }
 

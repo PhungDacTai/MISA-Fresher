@@ -17,6 +17,7 @@
     <link href="/css/common/input.css" rel="stylesheet" />
     <link href="/css/common/select.css" rel="stylesheet" />
     <link href="/css/page/employee.css" rel="stylesheet" />
+    <link href="/css/common/option.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar">
@@ -86,12 +87,12 @@
                 <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên khác" /></div>
             </div>
             <div class="department-group">
-                <select fieldName1="EmployeeGroupName" fieldValue="EmployeeGroupId" api="/api/v1/departments" id="cbxEmployeeGroup">
+                <select index2 fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
                     <option value="0">Tất cả phòng ban</option>
                 </select><br />
             </div>
             <div class="position-group">
-                <select fieldName2="EmployeeGroupName" fieldValue="EmployeeGroupId" api="/api/v1/positions" id="cbxEmployeeGroup">
+                <select index3 fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
                     <option value="0">Tất cả vị trí </option>
                 </select><br />
             </div>
@@ -172,7 +173,7 @@
                             </form>
                             <form>
                                 Giới tính<br />
-                                <select fieldName3="Gender" id="GenderId">
+                                <select fieldName6="Gender" id="GenderId">
                                     <option value="1">Nam</option>
                                     <option value="0">Nữ</option>
                                     <option value="2">Khác</option>
@@ -214,13 +215,13 @@
                         <div class="conten3" style="display: flex;">
                             <form>
                                 Vị trí<br />
-                                <select fieldName4="PositionName" fieldValue1="PositionId" api="/api/v1/positions" id="cbxDepartment">
+                                <select index fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
                                     <!--<option> </option>-->
                                 </select><br />
                             </form>
                             <form>
                                 Phòng ban<br />
-                                <select fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
+                                <select index1 fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
                                     <!--<option> </option>-->
                                 </select><br />
                             </form>
@@ -241,7 +242,7 @@
                                 Ngày gia nhập công ty<br />
                                 <input type="date" id="DateOfJoin" fieldName="DateOfJoin" name="Employee_dateofjoin" />
                             </form>
-                            <form>
+                            <form>  
                                 Tình trạng công việc<br />
                                 <select fieldName5="WorkStatus" id="WorkStatus">
                                     <option>Đang làm việc</option>
