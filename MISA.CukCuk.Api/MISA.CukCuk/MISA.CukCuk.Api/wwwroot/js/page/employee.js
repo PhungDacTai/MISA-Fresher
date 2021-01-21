@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     new EmployeeJS();
+
+    $(".m-dialog").hide();//Sự kiện ẩn dialog
 })
 
 /**
@@ -13,7 +15,7 @@ class EmployeeJS extends BaseJS {
     }
 
     setApiRouter() {
-        this.apiRouter = "/api/employees";
+        this.apiRouter = "/api/v1/employees";
     }
 
 }

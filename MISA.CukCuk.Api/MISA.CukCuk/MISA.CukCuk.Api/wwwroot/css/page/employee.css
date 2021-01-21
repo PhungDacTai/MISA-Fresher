@@ -1,0 +1,8 @@
+﻿.department-group{
+    margin: 0px 16px;
+   
+}
+
+.department-group, .position-group {
+    margin-top: -4px;
+}

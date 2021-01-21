@@ -28,7 +28,7 @@ class CustomerJS extends BaseJS {
     initEvents() {
         var me = this;
         super.initEvents();
-
+        //Sự kiện bấm enter tìm kiếm
         $('#txtSearchCustomer').keypress(function (event) {
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if (keycode == '13') {

@@ -26,7 +26,8 @@ class BaseJS {
     initEvents() {
         var me = this;
         // Sự kiên click khi nhấn thêm mới =====================================================================
-        $('#btnAdd').on('click', me.btnAddOnClick.bind(me));
+        $('#btnAddCustomer').on('click', me.btnAddOnClick.bind(me));
+        $('#btnAddEmployee').on('click', me.btnAddOnClick.bind(me));
 
         // Sự kiên khi click close, hủy đóng dialog, đóng popup ================================================
         $('#btnClose').on('click', function () {

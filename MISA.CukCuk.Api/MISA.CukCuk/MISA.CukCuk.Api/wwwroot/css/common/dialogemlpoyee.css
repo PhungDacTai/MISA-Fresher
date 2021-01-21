@@ -7,12 +7,12 @@
     .m-dialog .dialog-content {
         position: absolute;
         width: 800px;
-        height: 597px;
+        height: auto;
         border-radius: 5px;
         background: #ffffff;
         z-index: 21;
-        left: calc(50% - 400px);
-        bottom: calc(50% - 750px);
+        left: calc(50% - 525px);
+        top: -850px;
     }
 
 .dialog-modal {
@@ -68,7 +68,7 @@
     /*======================AVATAR=================*/
     .dialog-content .dialog-infor-top {
         display: flex;
-        height: 218px;
+        height: auto;
         width: 100%;
         margin-bottom: 24px;
     }
@@ -129,6 +129,7 @@
 }
 
 .dialog-content .dialog-footer {
+    margin-top: -17px;
     position: absolute;
     display: flex;
     background-color: #E9EBEE;
