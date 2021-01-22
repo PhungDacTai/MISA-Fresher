@@ -1,4 +1,4 @@
-﻿.department-group{
+.department-group{
     margin: 0px 16px;
    
 }
@@ -6,3 +6,38 @@
 .department-group, .position-group {
     margin-top: -4px;
 }
+
+.hr-format {
+    height:5px;
+    border-width:0; 
+    width:75px; 
+    margin-left: 0px; 
+    text-align:left;
+    margin-bottom: 16px;
+    background-color:#019160;
+}
+
+input[id="txtSalary"]{
+    width: 213px;
+    border: none;
+    margin: 0px;
+    height: 35px;
+    text-align: right;
+}
+
+.salary{
+    width: 285px;
+    height: 38px;
+    line-height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    margin-top: 4px;
+    padding: 0px;
+    font-size: 13px;
+}
+
+.focus{
+    border-color: #019160;
+}
+
+

@@ -16,16 +16,22 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Id nhân viên
         /// </summary>
+        [Primarykey]
         public Guid EmployeeId { get; set; }
 
         /// <summary>
         /// Mã nhân viên
         /// </summary>
+        [CheckDuplicate]
+        [DisplayName("Mã nhân viên")]
+        [@MaxLength(20, "Mã nhân viên không vượt quá 20 ký tự")]
+        [@Required]
         public string EmployeeCode { get; set; }
 
         /// <summary>
         /// Tên đầy đủ nhân viên
         /// </summary>
+        [DisplayName("Họ và tên")]
         public string FullName { get; set; }
 
         /// <summary>
@@ -37,6 +43,9 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Chứng minh thư nhân dân, thẻ căn cước
         /// </summary>
+        [DisplayName("CMTND/Thẻ căn cước")]
+        [CheckDuplicate]
+        [@Required]
         public string IdentifyCardNumber { get; set; }
 
         /// <summary>
@@ -52,6 +61,9 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Email
         /// </summary>
+        [EmailFormat]
+        [DisplayName("Email")]
+        [@Required]
         public string Email { get; set; }
 
         /// <summary>
@@ -62,6 +74,9 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Số điện thoại
         /// </summary>
+        [DisplayName("Số điện thoại")]
+        [@Required]
+        [CheckDuplicate]
         public string PhoneNumber { get; set; }
 
         /// <summary>

@@ -129,6 +129,9 @@
   <data name="Msg_Duplicate" xml:space="preserve">
     <value>Thông tin {0} đã có trên hệ thống.</value>
   </data>
+  <data name="Msg_EmailFormat" xml:space="preserve">
+    <value>Email không đúng định dạng.</value>
+  </data>
   <data name="Msg_Error" xml:space="preserve">
     <value>Có lỗi xảy ra vui lòng liên hệ MISA</value>
   </data>

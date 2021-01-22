@@ -124,12 +124,10 @@ class BaseJS {
                 // Chạy đúng
                 $.each(res, function (index, obj) {
                     var tr = $(`<tr></tr>`);
-                    debugger;
                     if (me.object == "Customer")
                         $(tr).data('recordId', obj.CustomerId);
                     else
                         $(tr).data('recordId', obj.EmployeeId);
-                    debugger;
                     //Lấy thông tin dữ liệu sẽ map tương ứng với các cột
                     $.each(ths, function (index, th) {
                         var td = $(`<td><div><span></span></div></td>`);
@@ -238,7 +236,7 @@ class BaseJS {
             $.each(inputs, function (index, input) {
                 var propertyName = $(this).attr('fieldName');
                 var value = '';
-                if (propertyName == "CustomerGroupName") {
+                if (propertyName == "CustomerGroupName" || propertyName == "PositionName" || propertyName == "DepartmentName") {
                     var propertyName1 = $(this).attr('fieldValue');
                     value = $(this).find(":selected").val();
                     entity[propertyName1] = value;
@@ -263,15 +261,23 @@ class BaseJS {
             })
             console.log(entity);
             var method = "POST";
+            debugger;
             if (me.FormMode == 'Edit') {
                 method = "PUT";
-                entity.CustomerId = me.recordId;
-                var id = `/${entity.CustomerId}`;
+                if (me.object == "Customer") {
+                    entity.CustomerId = me.recordId;
+                    var id = `/${entity.CustomerId}`;
+                }
+                else {
+                    entity.EmployeeId = me.recordId;
+                    var id = `/${entity.EmployeeId}`;
+                }
             } else {
                 id = '';
             }
             console.log(me.apiRouter);
             //Gọi service tương ứng thực hiện dữ liệu
+            debugger;
             $.ajax({
                 url: me.host + me.apiRouter + id,
                 method: method,
@@ -344,11 +350,22 @@ class BaseJS {
                     var value = res[propertyName];
                     console.log(value);
                     //Check nhóm 
-                    if (propertyName == "CustomerGroupName") {
+                    debugger;
+                    var select = $('');
+                    switch (propertyName) {
+                        case "CustomerGroupName": case "PositionName":
+                            select = $('select[index]');
+                            break;
+                        case "DepartmentName":
+                            select = $('select[index1]');
+                            break;
+                        default:
+                            
+                    }
                         var fieldValue1 = $(this).attr('fieldValue');
                         var groupId = res[fieldValue1];
                         console.log(groupId);
-                        var select = $('select[fieldName]');
+
                         select.empty();
                         $.each(select, function (index, value) {
                             // Lấy dữ liệu nhóm khách hàng
@@ -384,9 +401,10 @@ class BaseJS {
                             })
                         })
 
-                    }
+                    
+
                     //Check ngày sinh
-                    if (propertyName == "DateOfBirth") {
+                    if (propertyName == "DateOfBirth" || propertyName == "DateOfJoin"||propertyName == "IssuedDate") {
                         value = formatDate2(value);
                         $(this).attr('value', value);
                     }
@@ -528,7 +546,6 @@ class BaseJS {
 
     comboBox(select) {
         var me = this;
-
         $.each(select, function (index, value) {
             // Lấy dữ liệu nhóm khách hàng
             var api = $(select).attr('api');

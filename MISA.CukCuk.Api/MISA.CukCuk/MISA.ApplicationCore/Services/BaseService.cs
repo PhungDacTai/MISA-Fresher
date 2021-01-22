@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using MISA.ApplicationCore.Entities;
 using MISA.ApplicationCore.Interfaces;
 
@@ -91,7 +92,7 @@ namespace MISA.ApplicationCore.Services
                 {
                     displayName = (displayNameAttributes[0] as DisplayName).Name;
                 }
-                // Kiểm tra xem có attribute cần phải validate không
+                // Kiểm tra xem có attribute cần phải validate không, check bắt buộc nhập
                 if (property.IsDefined(typeof(Required), false))
                 {
                     // Check bắt buộc nhập
@@ -105,6 +106,7 @@ namespace MISA.ApplicationCore.Services
                     }
                 }
 
+                // Check trùng lặp
                 if (property.IsDefined(typeof(CheckDuplicate), false))
                 {
                     // Check trùng dữ liệu
@@ -119,6 +121,7 @@ namespace MISA.ApplicationCore.Services
                     }
                 }
 
+                // Check độ dài giới hạn
                 if (property.IsDefined(typeof(MaxLength), false))
                 {
                     // Lấy độ dài đã khai báo
@@ -133,6 +136,22 @@ namespace MISA.ApplicationCore.Services
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
                     }
 
+                }
+
+                // Check định dạng email
+                if (property.IsDefined(typeof(EmailFormat), false))
+                {
+                    bool checkEmail = false;
+                    if(propertyValue.ToString() != null && new EmailAddressAttribute().IsValid(propertyValue.ToString())){
+                        checkEmail = true;
+                    }
+                    if (checkEmail == false)
+                    {
+                        isValidate = false;
+                        mesArrayError.Add(Properties.Resources.Msg_EmailFormat);
+                        _serviceResult.MISACode = Enums.MISACode.NotValid;
+                        _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
+                    }
                 }
             }
             _serviceResult.Data = mesArrayError;

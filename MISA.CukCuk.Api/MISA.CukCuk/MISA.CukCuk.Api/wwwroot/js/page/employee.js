@@ -5,7 +5,14 @@
     //var select3 = $('select[index3]');
     //emplpoyee.comboBox(select3);
     $(".m-dialog").hide();//Sự kiện ẩn dialog
+    //$(".popup").hide();//Sự kiện ẩn popup xóa
+    $("#txtSalary").focus(function(){
+        $(".salary").addClass('focus');
+    })
 
+    $("#txtSalary").blur(function () {
+        $(".salary").removeClass('focus');
+    })
 })
 
 /**

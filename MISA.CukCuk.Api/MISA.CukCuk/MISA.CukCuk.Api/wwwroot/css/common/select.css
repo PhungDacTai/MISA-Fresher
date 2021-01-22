@@ -1,6 +1,6 @@
 select {
-    width: 290px;
-    height: 43px;
+    width: 288px;
+    height: 40px;
     margin-bottom: 16px;
     margin-top: 4px;
     padding-left: 16px;
@@ -10,5 +10,10 @@ select {
     padding-right: 12px;
     cursor: pointer;
     color: #000000;
+    font-weight: normal;
+    font-size: 13px;
 }
 
+    select:focus {
+        border-color: #019160;
+    }

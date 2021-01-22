@@ -83,5 +83,14 @@ namespace MISA.ApplicationCore.Entities
             this.ErrorMsg = errorMsg;
         }
     }
+
+    public class EmailFormat : Attribute
+    {
+        public string Email { get; set; }
+        public EmailFormat()
+        {
+
+        }
+    }
     #endregion
 }

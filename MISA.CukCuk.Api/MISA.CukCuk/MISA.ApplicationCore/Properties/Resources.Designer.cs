@@ -97,6 +97,15 @@ namespace MISA.ApplicationCore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email không đúng định dạng..
+        /// </summary>
+        public static string Msg_EmailFormat {
+            get {
+                return ResourceManager.GetString("Msg_EmailFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Có lỗi xảy ra vui lòng liên hệ MISA.
         /// </summary>
         public static string Msg_Error {

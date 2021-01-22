@@ -11,8 +11,8 @@
         border-radius: 5px;
         background: #ffffff;
         z-index: 21;
-        left: calc(50% - 525px);
-        top: -850px;
+        left: calc(50% - 400px);
+        bottom: calc(50% - 810px);
     }
 
 .dialog-modal {
@@ -149,5 +149,6 @@
 }
 
 form {
+    /* height: 40px; */
     margin-right: 16px;
 }

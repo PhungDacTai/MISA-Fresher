@@ -58,7 +58,7 @@
             color: #BBBBBB;
             font-size: 12px;
             display: flex !important;
-            border: 1px solid #E5E5E5;
+            border: 1px solid #BBBBBB;
             padding-left: 16px;
             padding-right: 8px;
         }
@@ -136,6 +136,7 @@
 
         .content-bottom .bottom-center .custom {
             background: #019160;
+            color: #FFFFFF;
         }
 
 
@@ -166,13 +167,6 @@
         .content-bottom .bottom-center .bt-icon4 {
             background-image: url('/contents/icons/btn-lastpage.svg');
         }
-
-#DateOfBirth{
-    width: 275px;
-    font-family: inherit;
-    font-size: inherit;
-    padding-right: 10px;
-}
 
 .border-green{
     border-color:#019160 !important;
