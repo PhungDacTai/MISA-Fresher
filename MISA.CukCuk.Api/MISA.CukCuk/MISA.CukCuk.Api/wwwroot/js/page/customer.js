@@ -9,7 +9,10 @@
     //    modal: true,
     //});
 
-    $(".m-dialog").hide();//Sự kiện ẩn dialog
+    // $(".m-dialog").hide();//Sự kiện ẩn dialog
+    //$(".check-infor").hide();
+    //$(".check-infor-1").hide();
+    //$(".check-infor-2").hide();
     $(".popup").hide();//Sự kiện ẩn popup xóa
 
 

@@ -291,9 +291,41 @@
     </div>
 
     <!--=====================Toast thông báo thành công, thất bại=============================================-->
-    <div id="snackbar">Thành công</div>
+    <div id="snackbar"><i class="fas fa-check-circle"></i><p>Thành công</p><i class="fas fa-times"></i></div>
 
-    <div id="snackbar_fail">Thất bại</div>
+    <div id="snackbar_fail"><i class="fas fa-exclamation-triangle"></i><p>Thất bại</p><i class="fas fa-times"></i></div>
+
+
+    <!--=====================CONTEXTMUNU (Kích chuột phải để xóa bản ghi) ==========-->
+    <div id="contextMenu" class="dropdown clearfix">
+        <div class="btn-delete" id="btnDelete">
+            <div class="nav-item-text"><i class="far fa-trash-alt"></i>Xóa</div>
+        </div>
+    </div>
+
+    <!--================================== POPUP Cảnh báo xóa ===========================================-->
+    <div class="popup">
+        <div class="dialog-modal"></div>
+
+        <div class="popup_delete">
+            <div class="popup_title">
+                <div>Cảnh báo xóa</div>
+                <div class="btn-close" id="btnClose2"><button></button></div>
+            </div>
+            <div class="popup_confirm">
+                <div class="warn_icon"><i class="fas fa-exclamation-triangle"></i></div>
+                Bạn có thật sự muốn xóa?
+            </div>
+            <div class="dialog-footer">
+                <div class="btn-cancel" id="btnCancel2">
+                    <div class="nav-item-text cancel">Hủy</div>
+                </div>
+                <div class="btn-save" id="btnDelete2">
+                    <div class="delete2">Xóa</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/lib/jquery-3.5.1.min.js"></script>
     <script src="/js/common/focus.js"></script>

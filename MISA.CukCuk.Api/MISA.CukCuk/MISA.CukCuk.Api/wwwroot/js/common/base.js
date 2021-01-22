@@ -221,14 +221,19 @@ class BaseJS {
             // Validated dữ liệu
             var inputValidates = $('.input-required, input[type="email"]');
             $.each(inputValidates, function (index, input) {
-                $(input).trigger('blur');// Trigger: Kích  hoạt tự động sự kiện của chính nó
+                $(input).trigger('blur');// Trigger: Thực hiện tất cả các xử lý và đính kèm các loại sự kiện nhất định tới thành phần được chọn
+                console.log(this);
             })
             var inputNotVlidates = $('input[validate="false"]');
             if (inputNotVlidates && inputNotVlidates.length > 0) {
-                alert("Dữ liệu không hợp lệ, vui lòng kiểm tra lại!");
-                inputNotVlidates[0].focus();
+                console.log(inputNotVlidates);
+                //alert("Dữ liệu không hợp lệ, vui lòng kiểm tra lại!");
+                inputNotVlidates[0].focus(function () {
+                    $(".check-infor").show();
+                    console.log(this);
+                });
                 return;//Dừng chương trình
-            }
+            } 
             // Thu nhập thông tin dữ liệu-> build thành đối tượng
             // Lấy tất cả các control nhập liệu
             var inputs = $('input[fieldName], select[fieldName]');
@@ -457,12 +462,18 @@ class BaseJS {
         try {
             if (!value) {
                 $(this).addClass('border-red');
-                $(this).attr('title', 'Trường này không được phép bỏ trống!');
+                //$(".check-infor").show();//attr('title',truong nay khong duoc trong);
                 $(this).attr('validate', false);
             } else {
+                $(".check-infor").hide();
                 $(this).removeClass('border-red');
+                
                 $(this).attr('validate', true);
             }
+            $(this).keypress(function () {
+                $(".check-infor").hide();
+            })
+
         } catch (e) {
             console.log(e);
         }
