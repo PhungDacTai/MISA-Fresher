@@ -100,7 +100,7 @@
             width: 300px;
         }
 
-        .dialog-content .dialog-infor-top .infor-top2 {
+        .dialog-content .dialog-infor-top .infor-top-2 {
             margin: 0px 16px;
         }
 
@@ -109,7 +109,7 @@
     margin-left: -50px;
 }
 /*====================*/
-.dialog-content .dialog-infor-center1, .dialog-infor-center2 {
+.dialog-content .dialog-infor-center-1, .dialog-infor-center-2 {
     display: flex;
     height: 65px;
     width: 100%;
@@ -117,12 +117,12 @@
 }
 
 
-.dialog-content .dialog-infor-center2 {
+.dialog-content .dialog-infor-center-2 {
     height: 65px;
     width: 100%;
 }
 
-.dialog-content .dialog-infor-center3 {
+.dialog-content .dialog-infor-center-3 {
     height: 65px;
     width: 100%;
     margin-bottom: 24px;

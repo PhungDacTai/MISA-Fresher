@@ -28,5 +28,12 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Danh sách nhân viên theo các tiêu chí</returns>
         /// CreatedBy: PDTAI (14/01/2021)
         List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId);
+
+        /// <summary>
+        /// Lấy mã của các đối tượng đã sắp xếp giảm
+        /// </summary>
+        /// <returns>Mã đối tượng/returns>
+        /// CreatedBy: PDTAI (23/01/2021)
+        Employee GetEmployeeCode();
     }
 }

@@ -1,17 +1,25 @@
 ﻿$(document).ready(function () {
     var emplpoyee = new EmployeeJS();
-    //var select2 = $('select[index2]');
-    //emplpoyee.comboBox(select2);
-    //var select3 = $('select[index3]');
-    //emplpoyee.comboBox(select3);
+    var selectDepartment = $('select[index-2]');
+    emplpoyee.comboBox(selectDepartment);
+    var selectPosition = $('select[index-3]');
+    emplpoyee.comboBox(selectPosition);
+
+
     $(".m-dialog").hide();//Sự kiện ẩn dialog
     $(".popup").hide();//Sự kiện ẩn popup xóa
     $("#txtSalary").focus(function(){
-        $(".salary").addClass('focus');
+        $(".salary").addClass('border-green');
+    })
+    $("#txtSalary").blur(function () {
+        $(".salary").removeClass('border-green');
     })
 
-    $("#txtSalary").blur(function () {
-        $(".salary").removeClass('focus');
+    $("#txtSearchEmployee").focus(function (){
+        $('.search-box').addClass('border-green');
+    })
+    $("#txtSearchEmployee").blur(function (){
+        $('.search-box').removeClass('border-green');
     })
 })
 

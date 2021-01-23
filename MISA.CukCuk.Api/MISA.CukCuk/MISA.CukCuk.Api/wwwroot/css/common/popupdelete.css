@@ -14,7 +14,7 @@
         background: black;
     }
 
-    .popup .popup_delete {
+    .popup .popup-delete {
         position: absolute;
         left: calc(50% - 220px);
         top: 30px;
@@ -25,7 +25,7 @@
         border-radius: 5px;
     }
 
-        .popup .popup_delete .popup_title {
+        .popup .popup-delete .popup-title {
             display: flex;
             font-weight: bold;
             font-size: 15px;
@@ -36,7 +36,7 @@
         }
 
 
-            .popup .popup_delete .popup_title button {
+            .popup .popup-delete .popup-title button {
                 position: absolute;
                 height: 20px;
                 width: 20px;
@@ -53,12 +53,12 @@
                 border-top-right-radius: 5px;
             }
 
-                .popup .popup_delete .popup_title button:hover {
+                .popup .popup-delete .popup-title button:hover {
                     background-color: #e5e5e5;
                     border-radius: 0px 0px 4px 4px;
                 }
 
-        .popup .popup_delete .popup_confirm {
+        .popup .popup-delete .popup-confirm {
             width: 100%;
             height: 40px;
             background: #FFF;
@@ -67,7 +67,7 @@
             margin-bottom: 24px;
         }
 
-            .popup .popup_delete .popup_confirm .warn_icon {
+            .popup .popup-delete .popup-confirm .warn-icon {
                 width: 40px;
                 height: 40px;
                 background: #e5e5e5;
@@ -76,7 +76,7 @@
                 margin-right: 10px;
             }
 
-                .popup .popup_delete .popup_confirm .warn_icon .fas {
+                .popup .popup-delete .popup-confirm .warn-icon .fas {
                     font-size: 17px;
                     margin: 0px;
                     transform: translate(11px, -6px);
@@ -84,7 +84,7 @@
                     position: absolute;
                 }
 
-        .popup .popup_delete .dialog-footer {
+        .popup .popup-delete .dialog-footer {
             position: absolute;
             display: flex;
             background-color: #E9EBEE;
@@ -94,13 +94,23 @@
             border-radius: 0 0 5px 5px;
         }
 
-            .popup .popup_delete .dialog-footer .btn-save {
+            .popup .popup-delete .dialog-footer .btn-save {
                 background-color: #F65454;
             }
 
-                .popup .popup_delete .dialog-footer .btn-save:hover {
+                .popup .popup-delete .dialog-footer .btn-save:hover {
                     background-color: #FF6A6A;
                 }
-                .popup .popup_delete .dialog-footer .btn-save .delete2 {
+                .popup .popup-delete .dialog-footer .btn-save .delete-2 {
                     margin-left: 15px;
                 }
+
+            .popup .popup-delete .dialog-footer #btnCancel-2 {
+            
+            }
+
+        .popup .popup-delete #question-delete {
+            width: 325px;
+            height: 40px;
+            overflow: hidden;
+        }

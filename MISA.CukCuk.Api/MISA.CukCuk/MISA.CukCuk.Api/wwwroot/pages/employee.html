@@ -32,27 +32,27 @@
         </div>
         <div class="navbar-content">
             <div class="nav-item">
-                <div class="item-icon icon1"></div>
+                <div class="item-icon icon-dashboard"></div>
                 <div class="nav-item-text">Tổng quan</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon2"></div>
+                <div class="item-icon icon-report"></div>
                 <div class="nav-item-text">Báo cáo</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon3"></div>
+                <div class="item-icon icon-dashboard"></div>
                 <div class="nav-item-text">Mua hàng</div>
             </div>
-            <div class="nav-item custom">
-                <div class="item-icon icon4"></div>
+            <div class="nav-item">
+                <div class="item-icon icon-dic-employee"></div>
                 <div class="nav-item-text"><a href="employee.html">Danh mục Nhân viên</a></div>
             </div>
-            <div class="nav-item">
-                <div class="item-icon icon5"></div>
-                <div class="nav-item-text"><a href="Employee.html">Danh mục Khách hàng</a></div>
+            <div class="nav-item custom">
+                <div class="item-icon icon-dic-employee"></div>
+                <div class="nav-item-text"><a href="customer.html">Danh mục Khách hàng</a></div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon6"></div>
+                <div class="item-icon icon-setting"></div>
                 <div class="nav-item-text">Thiết lập hệ thống</div>
             </div>
         </div>
@@ -60,15 +60,15 @@
     <div class="header">
         <div class="header-left">
             <select>
-                <option value="0">Nhà hàng Biển Đông</option>
-                <option value="1">Nhà hàng Biển Đông</option>
-                <option value="2">Nhà hàng Biển Đông</option>
-                <option value="3">Nhà hàng Biển Đông</option>
+                <option>Nhà hàng Biển Đông</option>
+                <option>Nhà hàng Biển Tây</option>
+                <option>Nhà hàng Biển Nam</option>
+                <option>Nhà hàng Biển Bắc</option>
             </select>
         </div>
         <div class="header-right">
             <div class="header-content item-icon avatar-icon"></div>
-            <div class="header-content username" style=" cursor: pointer;">Nguyễn Văn Mạnh</div>
+            <div class="header-content username" style=" cursor: pointer;">Phùng Đắc Tài</div>
             <div class="header-content item-icon three-dot"></div>
         </div>
 
@@ -85,21 +85,21 @@
 
 
         <div class="content-search">
-            <div class="searchbox">
+            <div class="search-box">
                 <div class="item-icon search-icon"></div>
-                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên khác" /></div>
+                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên khác" id="txtSearchEmployee"/></div>
             </div>
             <div class="department-group">
-                <select index2 fieldName1="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
-                    <option value="0">Tất cả phòng ban</option>
+                <select index-2 fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
+                    <option value="0" selected="selected">Tất cả phòng ban</option>
                 </select><br />
             </div>
             <div class="position-group">
-                <select index3 fieldName1="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
-                    <option value="0">Tất cả vị trí </option>
+                <select index-3 fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
+                    <option value="1" selected ="selected">Tất cả vị trí </option>
                 </select><br />
             </div>
-            <div class="searchbox refresh">
+            <div class="search-box refresh" id="btnRefresh">
                 <div class="item-icon refresh-icon"></div>
             </div>
 
@@ -142,14 +142,14 @@
         <div class="content-bottom">
             <div class="bottom-left">Hiển thị <b>1-10/1000</b> Khách hàng</div>
             <div class="bottom-center">
-                <div class="bt-ct item-icon bt-icon1"></div>
-                <div class="bt-ct item-icon bt-icon2"></div>
+                <div class="bt-ct item-icon bt-btn-firstpage"></div>
+                <div class="bt-ct item-icon bt-prev-page"></div>
                 <div class="bt-ct page-number custom"><p class="number">1</p></div>
                 <div class="bt-ct page-number"><p class="number">2</p></div>
                 <div class="bt-ct page-number"><p class="number">3</p></div>
                 <div class="bt-ct page-number"><p class="number">4</p></div>
-                <div class="bt-ct item-icon bt-icon3"></div>
-                <div class="bt-ct item-icon bt-icon4"></div>
+                <div class="bt-ct item-icon bt-next-page"></div>
+                <div class="bt-ct item-icon bt-btn-lastpage"></div>
             </div>
             <div class="bottom-right"><b>10</b>/Khách hàng/trang</div>
         </div>
@@ -174,7 +174,7 @@
                 <div class="infor-top-content">
                     <div class="infor-common">A. THÔNG TIN CHUNG:</div>
                     <hr class="hr-format" />
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Mã nhân viên (<label style="color: red;">*</label>) <br />
                             <input fieldName="EmployeeCode" type="text" class="input-required" id="txtEmployeeCode" name="Employee_id" /><br />
@@ -185,7 +185,7 @@
                         </form>
                     </div>
 
-                    <div class="conten3" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Ngày sinh<br />
                             <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="Employee_dateofbirth" max="2003-01-01" />
@@ -200,7 +200,7 @@
                         </form>
                     </div>
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form title="Số chứng minh thư nhân dân/ Thẻ căn cước">
                             Số CMTND/ Căn cước (<label style="color: red;">*</label>) <br />
                             <input fieldName="IdentifyCardNumber" type="text" class="input-required" id="txtIdentifyCardNumber" /><br />
@@ -212,26 +212,26 @@
                     </div>
 
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Nơi cấp <br />
                             <input fieldName="IssuedLocation" type="text" id="txtIssuedLocation" /><br />
                         </form>
                     </div>
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Email (<label style="color: red;">*</label>) <br />
                             <input fieldName="Email" type="text" class="input-required" id="txtEmployeeEmail" name="Employee_id" /><br />
                         </form>
                         <form>
                             Số điện thoại (<label style="color: red;">*</label>)<br />
-                            <input class="a input-required" id="txtPhoneNumber" fieldName="PhoneNumber" type="tel" /><br />
+                            <input class="input-required" id="txtPhoneNumber" fieldName="PhoneNumber" type="tel" /><br />
                         </form>
                     </div>
                     <div class="infor-common">B. THÔNG TIN CÔNG VIỆC:</div>
                     <hr class="hr-format" />
-                    <div class="conten3" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Vị trí<br />
                             <select index="Position" fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
@@ -240,12 +240,12 @@
                         </form>
                         <form>
                             Phòng ban<br />
-                            <select index1="Department" fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
+                            <select index-1="Department" fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
                                 <!--<option> </option>-->
                             </select><br />
                         </form>
                     </div>
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Mã số thuế cá nhân <br />
                             <input fieldName="PersonalCardCode" type="text" id="txtPersonalCardCode" /><br />
@@ -253,12 +253,12 @@
                         <form>
                             Mức lương cơ bản<br />
                             <div class="salary">
-                                <input id="txtSalary" fieldName="Salary" type="text" />&nbsp;<i>(VNĐ)</i><br />
+                                <input class="format-currency" id="txtSalary" fieldName="Salary" type="text" />&nbsp;<i>(VNĐ)</i><br />
                             </div>
                         </form>
                     </div>
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Ngày gia nhập công ty<br />
                             <input type="date" id="DateOfJoin" fieldName="DateOfJoin" name="Employee_dateofjoin" />
@@ -267,7 +267,7 @@
                             Tình trạng công việc<br />
                             <select fieldName="WorkStatus" id="WorkStatus">
                                 <option>Đang làm việc</option>
-                                <option>Nghỉ phép</option>
+                                <option>Đang thử việc</option>
                                 <option>Đã nghỉ việc</option>
                             </select><br />
                         </form>
@@ -307,21 +307,19 @@
     <div class="popup">
         <div class="dialog-modal"></div>
 
-        <div class="popup_delete">
-            <div class="popup_title">
+        <div class="popup-delete">
+            <div class="popup-title">
                 <div>Cảnh báo xóa</div>
-                <div class="btn-close" id="btnClose2"><button></button></div>
+                <div class="btn-close" id="btnClose-2"><button></button></div>
             </div>
-            <div class="popup_confirm">
-                <div class="warn_icon"><i class="fas fa-exclamation-triangle"></i></div>
-                Bạn có thật sự muốn xóa?
+            <div class="popup-confirm">
+                <div class="warn-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div id="question-delete"></div>
             </div>
             <div class="dialog-footer">
-                <div class="btn-cancel" id="btnCancel2">
-                    <div class="nav-item-text cancel">Hủy</div>
-                </div>
-                <div class="btn-save" id="btnDelete2">
-                    <div class="delete2">Xóa</div>
+                <div class="btn-cancel" id="btnCancel-2">Không</div>
+                <div class="btn-save" id="btnDelete-2">
+                    <div class="delete-2">Có</div>
                 </div>
             </div>
         </div>
@@ -332,6 +330,7 @@
     <script src="/js/common/common.js"></script>
     <script src="/js/common/base.js"></script>
     <script src="/js/page/employee.js"></script>
+    <script src="/js/common/formatcurrency.js"></script>
 </body>
 </html>
 <script>

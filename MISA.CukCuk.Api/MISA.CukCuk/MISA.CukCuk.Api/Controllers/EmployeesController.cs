@@ -26,5 +26,11 @@ namespace MISA.CukCuk.Api.Controllers
             return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positonId));
 
         }
+
+        [HttpGet("getcode")]
+        public IActionResult GetEmployeeCode()
+        {
+            return Ok(_baseService.GetEmployeeCode());
+        }
     }
 }

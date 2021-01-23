@@ -42,11 +42,12 @@ class BaseJS {
             $(".m-dialog").hide();
         })
 
-        $('#btnClose2').on('click', function () {
+        $('#btnClose-2').on('click', function () {
             $(".popup").hide();
         })
-        $('#btnCancel2').on('click', function () {
+        $('#btnCancel-2').on('click', function () {
             $(".popup").hide();
+
         })
 
 
@@ -97,7 +98,7 @@ class BaseJS {
         var value = $(this).val();
         try {
             if (value) {
-                $('.txtsearch').addClass('border-green');
+                $('.search-box').addClass('border-green');
             } else {
             }
         } catch (e) {
@@ -195,15 +196,33 @@ class BaseJS {
             $('input[type="date"]').val('');
             $('input[id="male"]').attr("checked");
             me.FormMode = 'Add';
+            $.ajax({
+                url: me.host + me.apiRouter + "/getcode",
+                method: "GET",
+                async: true,
+            }).done(function (res) {
+                var objectCode = me.object + "Code";
+                objectCode = res[objectCode];
+                var objectFirt = objectCode.slice(0, 2);
+                objectCode = objectCode.slice(2);
+                objectCode = parseInt(objectCode) + 1;
+                objectCode = objectFirt + objectCode;
+                $('input[id="txtEmployeeCode"]').val(objectCode);
+                console.log(objectCode);
+                console.log(objectFirt);
+                debugger;
+            }).fail(function (res) {
+
+            })
             // Hiển thị dialog thông tin chi tiết
             $(".m-dialog").show();
             // Load dữ liệu cho combobox
-            var select = $('select[index]');
-            select.empty();
-            me.comboBox(select);
-            var select1 = $('select[index1]');
-            select1.empty();
-            me.comboBox(select1);
+            var selectPosition = $('select[index]');
+            selectPosition.empty();
+            me.comboBox(selectPosition);
+            var selectDepartment = $('select[index-1]');
+            selectDepartment.empty();
+            me.comboBox(selectDepartment);
             
         } catch (e) {
             console.log(e);
@@ -249,8 +268,14 @@ class BaseJS {
                     value = $(this).val();//Lấy giá trị
                 }
 
+                //Convert currency
+                if (propertyName == "Salary") {
+                    value = value.split(',').join('');
+                    value = parseInt(value);
+                }
+
                 //Format lại ngày tháng
-                if (propertyName == "DateOfBirth") {
+                if (propertyName == "DateOfBirth" || propertyName == "DateOfJoin" || propertyName == "IssuedDate") {
                     value = formatDate2(value);
                 }
 
@@ -362,7 +387,7 @@ class BaseJS {
                             select = $('select[index]');
                             break;
                         case "DepartmentName":
-                            select = $('select[index1]');
+                            select = $('select[index-1]');
                             break;
                         default:
                             
@@ -385,7 +410,7 @@ class BaseJS {
                                 try {
                                     if (res) {
                                         $.each(res, function (index, obj) {
-                                            var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
+                                            var option = $(``);
                                             if (obj[fieldValue] == groupId) {
                                                 option = $(`<option value="${obj[fieldValue]}" selected = "selected">${obj[fieldName]}</option>`);
                                             } else {
@@ -407,8 +432,13 @@ class BaseJS {
                         })
 
                     
+                    // Check tiền tệ/lương
+                    if (propertyName == "Salary") {
+                        value = formatMoney(value);
+                        $(this).attr('value', value);
+                    }
 
-                    //Check ngày sinh
+                    //Check ngày tháng
                     if (propertyName == "DateOfBirth" || propertyName == "DateOfJoin"||propertyName == "IssuedDate") {
                         value = formatDate2(value);
                         $(this).attr('value', value);
@@ -507,7 +537,9 @@ class BaseJS {
     contextMenu() {
         var me = this;
         var $contextMenu = $("#contextMenu");
-
+        var objectCode = '';
+        var messenger = '';
+        $('#question-delete').empty();
         $("body").on("contextmenu", "table tr", function (e) {
             var me2 = this;
             console.log(me2);
@@ -520,10 +552,26 @@ class BaseJS {
             $(e.currentTarget).find('td').addClass('selected');//Đánh dấu dòng được chọn
             var recordId = $(e.currentTarget).data('recordId');
             me.recordId = recordId;
+            $.ajax({
+                url: me.host + me.apiRouter + `/${recordId}`,
+                method: "GET",
+                async: true,
+
+            }).done(function (res) {
+                $('#question-delete').empty();
+                objectCode = me.object + "Code";
+                objectCode = res[objectCode];
+                console.log(objectCode);
+
+            }).fail(function (res) {
+
+            })
             $('#btnDelete').on('click', function () {
+                messenger = $(`<label>Bạn có chắc chắn muốn xóa nhân viên ${objectCode} không?</label>`);
+                $('#question-delete').append(messenger);
                 $('.popup').show();
                 try {
-                    $('#btnDelete2').on('click', function () {
+                    $('#btnDelete-2').on('click', function () {
                         $.ajax({
                             url: me.host + me.apiRouter + `/${recordId}`,
                             method: "DELETE",
@@ -531,13 +579,17 @@ class BaseJS {
 
                         }).done(function (res) {
                             me.loadData();
+                            $('#question-delete').remove(messenger);
+                            debugger;
                             $(".popup").hide();
+                   
                             toastSuccess();
                         }).fail(function (res) {
                             toastFail();
                             $(".popup").hide();
                         })
                     })
+
                 } catch (e) {
                     console.log(e);
                 }
@@ -593,6 +645,7 @@ class BaseJS {
 function setEmptyValue() {
     $('input[type="text"]').val('');
     $('input[type="email"]').val('');
+    $('input[type="tel"]').val('');
 }
 
 /**

@@ -22,13 +22,13 @@
     line-height: 38px;
     color: #FFFFFF;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-cancel {
     position: absolute;
     right: 145px;
     top: 12px;
-    width: 60px;
     color: inherit;
     background-color: #E9EBEE;
 }
@@ -39,7 +39,7 @@
 
     .btn-cancel .cancel {
         width: inherit;
-        margin-left: 5px;
+        margin-left: 17px;
     }
 
 .btn-save {

@@ -58,3 +58,7 @@
 .selected {
     background-color: #EBF9F4;
 }
+
+.border-green {
+    border-color: #019160 !important;
+}

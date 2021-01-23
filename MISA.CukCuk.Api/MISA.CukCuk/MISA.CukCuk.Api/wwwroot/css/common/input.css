@@ -10,19 +10,6 @@ input {
     font-size: 13px;
 }
 
-.searchbox input {
-    border: none;
-    margin: 0px;
-    padding: 0px;
-}
-
-    .searchbox input:focus {
-        border: none;
-        margin: 0px;
-        padding: 0px;
-        outline: none;
-    }       
-
 input[type="radio"] {
     width: 15px;
     height: 15px;
@@ -48,10 +35,6 @@ input[type="radio"] {
         margin: 0;
         margin-right: 4px;
     }
-
-.border-red {
-    border: 1px solid #FF4747;
-}
 
 .m-dialog input:focus {
     outline: none;

@@ -32,27 +32,27 @@
 
         <div class="navbar-content">
             <div class="nav-item">
-                <div class="item-icon icon1"></div>
+                <div class="item-icon icon-dashboard"></div>
                 <div class="nav-item-text">Tổng quan</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon2"></div>
+                <div class="item-icon icon-report"></div>
                 <div class="nav-item-text">Báo cáo</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon3"></div>
+                <div class="item-icon icon-dashboard"></div>
                 <div class="nav-item-text">Mua hàng</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon4"></div>
+                <div class="item-icon icon-dic-employee"></div>
                 <div class="nav-item-text"><a href="employee.html">Danh mục Nhân viên</a></div>
             </div>
             <div class="nav-item custom">
-                <div class="item-icon icon5"></div>
+                <div class="item-icon icon-dic-employee"></div>
                 <div class="nav-item-text"><a href="customer.html">Danh mục Khách hàng</a></div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon6"></div>
+                <div class="item-icon icon-setting"></div>
                 <div class="nav-item-text">Thiết lập hệ thống</div>
             </div>
         </div>
@@ -63,10 +63,10 @@
     <div class="header">
         <div class="header-left">
             <select>
-                <option value="0">Nhà hàng Biển Đông</option>
-                <option value="1">Nhà hàng Biển Đông</option>
-                <option value="2">Nhà hàng Biển Đông</option>
-                <option value="3">Nhà hàng Biển Đông</option>
+                <option>Nhà hàng Biển Đông</option>
+                <option>Nhà hàng Biển Tây</option>
+                <option>Nhà hàng Biển Nam</option>
+                <option>Nhà hàng Biển Bắc</option>
             </select>
         </div>
 
@@ -89,12 +89,12 @@
         </div>
 
         <div class="content-search">
-            <div class="searchbox txtsearch">
+            <div class="search-box">
                 <div class="item-icon search-icon"></div>
                 <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên, Số điện thoại" id="txtSearchCustomer" /></div>
             </div>
 
-            <div class="searchbox refresh" id="btnRefresh">
+            <div class="search-box refresh" id="btnRefresh">
                 <div class="item-icon refresh-icon"></div>
             </div>
         </div>
@@ -124,14 +124,14 @@
         <div class="content-bottom">
             <div class="bottom-left">Hiển thị <b>1-10/1000</b> Khách hàng</div>
             <div class="bottom-center">
-                <div class="bt-ct item-icon bt-icon1"></div>
-                <div class="bt-ct item-icon bt-icon2"></div>
+                <div class="bt-ct item-icon bt-btn-firstpage"></div>
+                <div class="bt-ct item-icon bt-prev-page"></div>
                 <div class="bt-ct page-number custom"><p class="number">1</p></div>
                 <div class="bt-ct page-number"><p class="number">2</p></div>
                 <div class="bt-ct page-number"><p class="number">3</p></div>
                 <div class="bt-ct page-number"><p class="number">4</p></div>
-                <div class="bt-ct item-icon bt-icon3"></div>
-                <div class="bt-ct item-icon bt-icon4"></div>
+                <div class="bt-ct item-icon bt-next-page"></div>
+                <div class="bt-ct item-icon bt-btn-lastpage"></div>
             </div>
             <div class="bottom-right"><b>10</b>/Khách hàng/trang</div>
         </div>
@@ -170,7 +170,7 @@
                     <div class="avatar-type">Vui lòng chọn ảnh có định dạng<br /><b>.jpg, .jpeg, .png, .gif.</b></div>
                 </div>
                 <div class="infor-top-content">
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             <div class="check-infor">
                                 <div class="rectangle">
@@ -186,7 +186,7 @@
                             <input class="a input-required" id="txtFullName" fieldName="FullName" type="text" border="1" /><br />
                         </form>
                     </div>
-                    <div class="conten2" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Mã thẻ thành viên<br />
                             <input type="text" id="txtMemberCardCode" fieldName="MemberCardCode" name="customer_member" /><br />
@@ -198,7 +198,7 @@
                             </select><br />
                         </form>
                     </div>
-                    <div class="conten3" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Ngày sinh<br />
                             <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="customer_dateofbirth" max="2003-01-01" />
@@ -213,29 +213,29 @@
                 </div>
             </div>
 
-            <div class="dialog-infor-center1">
-                <div class="dialog-infor infor-top2">
+            <div class="dialog-infor-center-1">
+                <div class="dialog-infor infor-top-2">
                     <form action="">
                         Email <br />
                         <input fieldName="Email" id="txtCustomerEmail" style="width:490px;" placeholder="example@domain.com" type="email" name="customer_email" /><br />
                     </form>
                 </div>
-                <div class="dialog-infor infor-top3">
+                <div class="dialog-infor infor-top-3">
                     <form>
                         Số điện thoại (<label style="color: red;">*</label>)<br />
-                        <input fieldName="PhoneNumber" class="a input-required" id="txtPhoneNumber" type="tel" /><br />
+                        <input fieldName="PhoneNumber" class="input-required" id="txtPhoneNumber" type="tel" /><br />
                     </form>
                 </div>
             </div>
 
-            <div class="dialog-infor-center2">
-                <div class="dialog-infor infor-top2">
+            <div class="dialog-infor-center-2">
+                <div class="dialog-infor infor-top-2">
                     <form action="">
                         Tên công ty <br />
                         <input fieldName="CompanyName" style="width:490px;" type="text" name="customer_id" /><br />
                     </form>
                 </div>
-                <div class="dialog-infor infor-top3">
+                <div class="dialog-infor infor-top-3">
                     <form>
                         Mã số thuế<br />
                         <input fieldName="CompanyTaxCode" class="a" type="text" placeholder="Mã số thuế của công ty" /><br />
@@ -243,8 +243,8 @@
                 </div>
             </div>
 
-            <div class="dialog-infor-center3">
-                <div class="dialog-infor infor-top2">
+            <div class="dialog-infor-center-3">
+                <div class="dialog-infor infor-top-2">
                     <form action="">
                         Địa chỉ <br />
                         <input fieldName="Address" id="txtAddress" style="width:796px;" type="text" name="customer_id" /><br />
@@ -282,21 +282,21 @@
     <div class="popup">
         <div class="dialog-modal"></div>
 
-        <div class="popup_delete">
-            <div class="popup_title">
+        <div class="popup-delete">
+            <div class="popup-title">
                 <div>Cảnh báo xóa</div>
-                <div class="btn-close" id="btnClose2"><button></button></div>
+                <div class="btn-close" id="btnClose-2"><button></button></div>
             </div>
-            <div class="popup_confirm">
-                <div class="warn_icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="popup-confirm">
+                <div class="warn-icon"><i class="fas fa-exclamation-triangle"></i></div>
                 Bạn có thật sự muốn xóa?
             </div>
             <div class="dialog-footer">
-                <div class="btn-cancel" id="btnCancel2">
+                <div class="btn-cancel" id="btnCancel-2">
                     <div class="nav-item-text cancel">Hủy</div>
                 </div>
-                <div class="btn-save" id="btnDelete2">
-                    <div class="delete2">Xóa</div>
+                <div class="btn-save" id="btnDelete-2">
+                    <div class="delete-2">Xóa</div>
                 </div>
             </div>
         </div>

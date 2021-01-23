@@ -17,6 +17,12 @@ namespace MISA.ApplicationCore
             _baseRepository = baseRepository;
             _employeeRepository = employeeRepository;
         }
+
+        public Employee GetEmployeeCode()
+        {
+            return _employeeRepository.GetEmployeeCode();
+        }
+
         public List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId)
         {
             return _employeeRepository.GetEmployeesFilter(specs, departmentId, positionId);
