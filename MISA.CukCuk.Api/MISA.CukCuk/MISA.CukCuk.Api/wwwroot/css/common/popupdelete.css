@@ -102,7 +102,7 @@
                     background-color: #FF6A6A;
                 }
                 .popup .popup-delete .dialog-footer .btn-save .delete-2 {
-                    margin-left: 15px;
+                    margin-left: 18px;
                 }
 
             .popup .popup-delete .dialog-footer #btnCancel-2 {
@@ -110,7 +110,11 @@
             }
 
         .popup .popup-delete #question-delete {
-            width: 325px;
+            width: 330px;
             height: 40px;
             overflow: hidden;
+        }
+
+        .popup .popup-delete .dialog-footer .btn-no {
+            margin-left: 12px;
         }

@@ -51,7 +51,7 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Ngày cấp
         /// </summary>
-        public DateTime IssuedDate { get; set; }
+        public DateTime? IssuedDate { get; set; }
 
         /// <summary>
         /// Nơi cấp

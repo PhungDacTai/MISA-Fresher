@@ -305,9 +305,7 @@ class BaseJS {
             } else {
                 id = '';
             }
-            console.log(me.apiRouter);
-            //Gọi service tương ứng thực hiện dữ liệu
-            debugger;
+
             $.ajax({
                 url: me.host + me.apiRouter + id,
                 method: method,
@@ -323,6 +321,9 @@ class BaseJS {
 
             }).fail(function (res) {
                 // Thông báo fail
+                var messenger = res.responseText.split(',');
+                messenger = messenger[0].slice(10, messenger[0].length - 2);
+                alert(messenger);
                 toastFail();
                 // Ẩn dialog chi tiết
                 $(".m-dialog").hide();
@@ -371,6 +372,7 @@ class BaseJS {
                 method: "GET"
             }).done(function (res) {
                 // Binding dữ liệu lên form chi tiết
+                console.log(res["EmployeeCode"]);
                 console.table(res);
                 //Lấy tất cả các control nhập liệu
                 var inputs = $('input[fieldName], select[fieldName]');
