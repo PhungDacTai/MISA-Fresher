@@ -21,9 +21,9 @@ namespace MISA.CukCuk.Api.Controllers
 
 
         [HttpGet("filter")]
-        public IActionResult GetEmployeeFilter([FromQuery] string specs, [FromQuery] Guid? departmentId, [FromQuery] Guid? positonId)
+        public IActionResult GetEmployeeFilter([FromQuery] string specs, [FromQuery] Guid? departmentId, [FromQuery] Guid? positionId)
         {
-            return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positonId));
+            return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positionId));
 
         }
 

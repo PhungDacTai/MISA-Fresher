@@ -103,6 +103,7 @@ namespace MISA.ApplicationCore.Services
                         mesArrayError.Add(string.Format(Properties.Resources.Msg_Required, displayName));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
+                        _serviceResult.ObjectName = displayName;
                     }
                 }
 
@@ -118,6 +119,7 @@ namespace MISA.ApplicationCore.Services
                         mesArrayError.Add(string.Format(Properties.Resources.Msg_Duplicate, displayName));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
+                        _serviceResult.ObjectName = displayName;
                     }
                 }
 
@@ -134,6 +136,7 @@ namespace MISA.ApplicationCore.Services
                         mesArrayError.Add(msg ?? string.Format(Properties.Resources.Msg_MaxLength, length));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
+                    
                     }
 
                 }
@@ -151,12 +154,13 @@ namespace MISA.ApplicationCore.Services
                         mesArrayError.Add(Properties.Resources.Msg_EmailFormat);
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
+                        _serviceResult.ObjectName = "Email";
                     }
                 }
             }
             _serviceResult.Data = mesArrayError;
 
-            // Cho thằng con validate thêm
+            // Cho con validate thêm
             if (isValidate == true)
             {
                 isValidate = ValidateCustom(entity);

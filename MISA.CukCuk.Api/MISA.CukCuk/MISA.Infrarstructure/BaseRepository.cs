@@ -114,7 +114,13 @@ namespace MISA.Infrarstructure
 
             return parameters;
         }
-
+        /// <summary>
+        /// Lấy thuộc tính 
+        /// </summary>
+        /// <param name="entity">Đoói tượng</param>
+        /// <param name="property">Thuộc tính</param>
+        /// <returns>Đối tượng lấy được</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         public TEntity GetEntityByProperty(TEntity entity, PropertyInfo property)
         {
             var propertyName = property.Name;

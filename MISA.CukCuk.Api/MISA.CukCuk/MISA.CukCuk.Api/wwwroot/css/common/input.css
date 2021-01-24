@@ -10,19 +10,19 @@ input {
     font-size: 13px;
 }
 
-input[type="radio"] {
-    width: 15px;
-    height: 15px;
-    margin-top: 7px;
-}
-
-    input[type='radio']:before {
-        background: red;
+    input[type="radio"] {
+        width: 15px;
+        height: 15px;
+        margin-top: 7px;
     }
 
-    input[type="radio"]:checked {
-        color: red;
-    }
+        input[type='radio']:before {
+            background: red;
+        }
+
+        input[type="radio"]:checked {
+            color: red;
+        }
 
 .radio-gender {
     display: flex;
@@ -48,4 +48,8 @@ input[type="date"] {
     font-size: 13px;
     padding-right: 10px;
     font-weight: normal;
+}
+
+input::placeholder {
+    font-size: 11px;
 }

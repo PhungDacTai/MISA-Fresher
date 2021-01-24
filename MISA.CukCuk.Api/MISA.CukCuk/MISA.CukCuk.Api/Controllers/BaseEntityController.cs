@@ -58,6 +58,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// </summary>
         /// <param name="entity">Đối tượng được thêm</param>
         /// <returns>Khách hàng mới thêm</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         [HttpPost]
         public IActionResult Post(TEntity entity)
         {
@@ -80,6 +81,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="id">id của đối tượng</param>
         /// <param name="entity"></param>
         /// <returns>Khách hàng mới sửa</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         [HttpPut("{id}")]
         public IActionResult Put([FromRoute] string id, [FromBody] TEntity entity)
         {
@@ -106,7 +108,12 @@ namespace MISA.CukCuk.Api.Controllers
                 return Ok(serviceResult);
             }
         }
-
+        /// <summary>
+        /// Xóa qua id
+        /// </summary>
+        /// <param name="id">IId truyền vào</param>
+        /// <returns>Số dòng ảnh hưởng</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

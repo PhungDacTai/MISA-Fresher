@@ -40,3 +40,54 @@ input[id="txtSalary"]{
     border-color: #019160;
 }
 
+.check {
+    position: absolute;
+    height: 60px;
+    width: 170px;
+    z-index: 200;
+}
+
+.check-infor {
+    left: 338px;
+    top: 77px;
+}
+
+.check-email {
+    display: normal;
+    left: 338px;
+    top: 385px;
+    z-index: 202;
+}
+
+.check-identify-card {
+    top: 231px;
+    left: 335px;
+}
+
+.check-phone {
+    right: 40px;
+    top: 385px;
+}
+
+.rectangle {
+    position: absolute;
+    height: 45px;
+    background: red;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: #F65454;
+    color: #FFFFFF;
+}
+
+.triangle {
+    position: absolute;
+    bottom: 0px;
+    left: 75px;
+    width: 10px;
+    height: 10px;
+    background-color: #F65454;
+    transform: rotate(45deg);
+}

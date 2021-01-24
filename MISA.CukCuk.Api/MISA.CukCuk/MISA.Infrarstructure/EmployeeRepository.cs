@@ -11,7 +11,7 @@ namespace MISA.Infrarstructure
 {
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
-        public EmployeeRepository(IConfiguration configuration):base(configuration)
+        public EmployeeRepository(IConfiguration configuration) : base(configuration)
         {
 
         }
@@ -32,12 +32,13 @@ namespace MISA.Infrarstructure
         {
             // Build tham số đầu vào cho store
             var paramaters = new DynamicParameters();
-            paramaters.Add("EmployeeCode", specs);
-            paramaters.Add("FullName", specs);
-            paramaters.Add("PhoneNumber", specs);
-            paramaters.Add("DepartmentId", departmentId);
-            paramaters.Add("PositionId", positionId);
-            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeesPaging", paramaters, commandType: CommandType.StoredProcedure).ToList();
+            var input = (specs != null) ? specs : string.Empty;
+            paramaters.Add("@EmployeeCode", input, DbType.String);
+            paramaters.Add("@FullName", input, DbType.String);
+            paramaters.Add("@PhoneNumber", input, DbType.String);
+            paramaters.Add("@DepartmentId", departmentId, DbType.String);
+            paramaters.Add("@PositionId", positionId, DbType.String);
+            var employees = _dbConnection.Query<Employee>("Proc_GetEmployeesFilter", paramaters, commandType: CommandType.StoredProcedure).ToList();
             return employees;
         }
     }

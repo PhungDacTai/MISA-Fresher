@@ -51,6 +51,7 @@ namespace MISA.ApplicationCore.Entities
         /// Người chỉnh sửa
         /// </summary>
         public string ModifiedBy { get; set; }
+        #endregion
     }
-    #endregion
+
 }
