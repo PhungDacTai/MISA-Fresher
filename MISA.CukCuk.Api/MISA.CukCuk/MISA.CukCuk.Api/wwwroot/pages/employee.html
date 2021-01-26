@@ -4,23 +4,28 @@
     <meta charset="utf-8" />
     <title>MISA CukCuk Nhân viên</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link href="/lib/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
     <link href="/css/common/main.css?v=1.1" rel="stylesheet" />
     <link href="/css/common/common.css" rel="stylesheet" />
-    <link href="/css/common/dialogemlpoyee.css" rel="stylesheet" />
+    <link href="/css/common/button.css" rel="stylesheet" />
+    <link href="/css/common/dialog.css" rel="stylesheet" />
     <link href="/css/common/header.css" rel="stylesheet" />
     <link href="/css/common/navbar.css" rel="stylesheet" />
-    <link href="/css/common/button.css" rel="stylesheet" />
     <link href="/css/common/gird.css" rel="stylesheet" />
     <link href="/css/common/scrollbar.css" rel="stylesheet" />
+    <link href="/css/common/pagecontent.css" rel="stylesheet" />
     <link href="/css/common/icon.css" rel="stylesheet" />
-    <link href="/css/page/customer.css" rel="stylesheet" />
     <link href="/css/common/input.css" rel="stylesheet" />
     <link href="/css/common/select.css" rel="stylesheet" />
+    <link href="/css/common/toast.css" rel="stylesheet" />
     <link href="/css/page/employee.css" rel="stylesheet" />
     <link href="/css/common/option.css" rel="stylesheet" />
+    <link href="/css/common/modal.css" rel="stylesheet" />
+    <link href="/css/common/popup.css" rel="stylesheet" />
     <link href="/css/common/contextmenu.css" rel="stylesheet" />
-    <link href="/css/common/toast.css" rel="stylesheet" />
     <link href="/css/common/popupdelete.css" rel="stylesheet" />
+    <link href="/css/common/popuppromt.css" rel="stylesheet" />
+    <link href="/css/common/popuplist.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar">
@@ -32,27 +37,27 @@
         </div>
         <div class="navbar-content">
             <div class="nav-item">
-                <div class="item-icon icon1"></div>
+                <div class="item-icon icon-dashboard"></div>
                 <div class="nav-item-text">Tổng quan</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon2"></div>
+                <div class="item-icon icon-report"></div>
                 <div class="nav-item-text">Báo cáo</div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon3"></div>
+                <div class="item-icon icon-dashboard"></div>
                 <div class="nav-item-text">Mua hàng</div>
             </div>
-            <div class="nav-item custom">
-                <div class="item-icon icon4"></div>
+            <div class="nav-item">
+                <div class="item-icon icon-dic-employee"></div>
                 <div class="nav-item-text"><a href="employee.html">Danh mục Nhân viên</a></div>
             </div>
-            <div class="nav-item">
-                <div class="item-icon icon5"></div>
-                <div class="nav-item-text"><a href="Employee.html">Danh mục Khách hàng</a></div>
+            <div class="nav-item custom">
+                <div class="item-icon icon-dic-employee"></div>
+                <div class="nav-item-text"><a href="customer.html">Danh mục Khách hàng</a></div>
             </div>
             <div class="nav-item">
-                <div class="item-icon icon6"></div>
+                <div class="item-icon icon-setting"></div>
                 <div class="nav-item-text">Thiết lập hệ thống</div>
             </div>
         </div>
@@ -60,15 +65,15 @@
     <div class="header">
         <div class="header-left">
             <select>
-                <option value="0">Nhà hàng Biển Đông</option>
-                <option value="1">Nhà hàng Biển Đông</option>
-                <option value="2">Nhà hàng Biển Đông</option>
-                <option value="3">Nhà hàng Biển Đông</option>
+                <option>Nhà hàng Biển Đông</option>
+                <option>Nhà hàng Biển Tây</option>
+                <option>Nhà hàng Biển Nam</option>
+                <option>Nhà hàng Biển Bắc</option>
             </select>
         </div>
         <div class="header-right">
             <div class="header-content item-icon avatar-icon"></div>
-            <div class="header-content username" style=" cursor: pointer;">Nguyễn Văn Mạnh</div>
+            <div class="header-content username" style=" cursor: pointer;">Phùng Đắc Tài</div>
             <div class="header-content item-icon three-dot"></div>
         </div>
 
@@ -85,21 +90,30 @@
 
 
         <div class="content-search">
-            <div class="searchbox">
+            <div class="search-box search-text">
                 <div class="item-icon search-icon"></div>
-                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên khác" /></div>
+                <div class="nav-item-text"><input type="text" placeholder="Tìm kiếm theo Mã, Tên, Số điện thoại" id="txtSearchEmployee" /></div>
             </div>
             <div class="department-group">
-                <select index2 fieldName1="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
-                    <option value="0">Tất cả phòng ban</option>
+                <select fieldName-1="DepartmentName" fieldValue="DepartmentId" id="selectDepartment">
+                    <option value="">Tất cả phòng ban</option>
+                    <option value="35e773ea-5d44-2dda-26a8-6d513e380bde">Hành chính</option>
+                    <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">Đào tạo</option>
+                    <option value="45ac3d26-18f2-18a9-3031-644313fbb055">Kinh doanh</option>
+                    <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">Nhân sự</option>
+                    <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">Sản xuất</option>
                 </select><br />
             </div>
             <div class="position-group">
-                <select index3 fieldName1="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
-                    <option value="0">Tất cả vị trí </option>
+                <select fieldName-1="PositionName" fieldValue="PositionId" id="selectPosition">
+                    <option value="">Tất cả vị trí </option>
+                    <option value="27f91d6c-14b1-6c74-92ef-c9d5c2d91e91">Thư ký</option>
+                    <option value="30007451-29ff-4fe4-3707-70859f4ff30d">Trưởng phòng</option>
+                    <option value="3e39129b-279f-623f-88ea-778aee59fea3">Phó phòng</option>
+                    <option value="6528b15d-6674-724f-79a4-4b24de418577">Nhân viên</option>
                 </select><br />
             </div>
-            <div class="searchbox refresh">
+            <div class="search-box refresh" id="btnRefresh">
                 <div class="item-icon refresh-icon"></div>
             </div>
 
@@ -108,6 +122,7 @@
 
         <div class="content-grid">
             <div class="grid-scroll">
+                <div class="not-find"><i>Không tìm thấy đối tượng nào!</i></div>
                 <table cellspacing="0" border="0" cellpadding="0" width="100%" style="overflow:auto">
                     <thead>
                         <tr>
@@ -116,10 +131,10 @@
                             <th fieldName="Gender" formatType="Gender"><span class="text">Giới tính</span></th>
                             <th fieldName="DateOfBirth" formatType="ddmmyy"><span class="text">Ngày sinh</span></th>
                             <th fieldName="PhoneNumber"><span class="text">Số điện thoại</span></th>
-                            <th fieldName="Email" formatType="Email"><span class="text">Email</span></th>
+                            <th fieldName="Email" formatType="Email" style="width: 200px;"><span class="text">Email</span></th>
                             <th fieldName="PositionName"><span class="text">Chức vụ</span></th>
                             <th fieldName="DepartmentName"><span class="text">Phòng ban</span></th>
-                            <th fieldName="Salary" formatType="Money"><span class="text">Mức lương hiện tại</span></th>
+                            <th fieldName="Salary" style="text-align:right; width:130px;" formatType="Money"><span class="text">Mức lương hiện tại</span></th>
                             <th fieldName="WorkStatus"><span class="text">Tình trạng công việc</span></th>
                         </tr>
                     </thead>
@@ -142,14 +157,14 @@
         <div class="content-bottom">
             <div class="bottom-left">Hiển thị <b>1-10/1000</b> Khách hàng</div>
             <div class="bottom-center">
-                <div class="bt-ct item-icon bt-icon1"></div>
-                <div class="bt-ct item-icon bt-icon2"></div>
+                <div class="bt-ct item-icon bt-btn-firstpage"></div>
+                <div class="bt-ct item-icon bt-prev-page"></div>
                 <div class="bt-ct page-number custom"><p class="number">1</p></div>
                 <div class="bt-ct page-number"><p class="number">2</p></div>
                 <div class="bt-ct page-number"><p class="number">3</p></div>
                 <div class="bt-ct page-number"><p class="number">4</p></div>
-                <div class="bt-ct item-icon bt-icon3"></div>
-                <div class="bt-ct item-icon bt-icon4"></div>
+                <div class="bt-ct item-icon bt-next-page"></div>
+                <div class="bt-ct item-icon bt-btn-lastpage"></div>
             </div>
             <div class="bottom-right"><b>10</b>/Khách hàng/trang</div>
         </div>
@@ -163,7 +178,7 @@
         <div class="dialog-content">
             <div class="dialog-title">
                 <div>THÔNG TIN NHÂN VIÊN</div>
-                <div class="btn-close" id="btnClose"><button></button></div>
+                <div class="btn-close" id="btnCloseDialog"><button></button></div>
             </div>
             <!--================================== Các thẻ input nhập thông tin  ===========================================-->
             <div class="dialog-infor-top">
@@ -174,25 +189,31 @@
                 <div class="infor-top-content">
                     <div class="infor-common">A. THÔNG TIN CHUNG:</div>
                     <hr class="hr-format" />
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
+                            <div class="check check-infor">
+                                <div class="rectangle">
+                                    Mã nhân viên đã tồn tại trên hệ thống
+                                </div>
+                                <div class="triangle"></div>
+                            </div>
                             Mã nhân viên (<label style="color: red;">*</label>) <br />
-                            <input fieldName="EmployeeCode" type="text" class="input-required" id="txtEmployeeCode" name="Employee_id" /><br />
+                            <input tabindex="1" fieldName="EmployeeCode" type="text" class="input-required" id="txtEmployeeCode" name="Employee_id" /><br />
                         </form>
                         <form>
                             Họ và tên (<label style="color: red;">*</label>)<br />
-                            <input class="a input-required" id="txtFullName" fieldName="FullName" type="text" border="1" /><br />
+                            <input tabindex="2" class="input-required" id="txtFullName" fieldName="FullName" type="text" border="1" placeholder="Họ tên đầy đủ" /><br />
                         </form>
                     </div>
-
-                    <div class="conten3" style="display: flex;">
+                   
+                    <div style="display: flex;">
                         <form>
                             Ngày sinh<br />
-                            <input type="date" id="DateOfBirth" fieldName="DateOfBirth" name="Employee_dateofbirth" max="2003-01-01" />
+                            <input tabindex="3" type="date" id="DateOfBirth" fieldName="DateOfBirth" name="Employee_dateofbirth" max="2003-01-01" />
                         </form>
                         <form>
                             Giới tính<br />
-                            <select fieldName="Gender" id="GenderId">
+                            <select tabindex="4" fieldName="Gender" id="GenderId">
                                 <option value="1">Nam</option>
                                 <option value="0">Nữ</option>
                                 <option value="2">Khác</option>
@@ -200,74 +221,93 @@
                         </form>
                     </div>
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
+                        <div class="check check-identify-card">
+                            <div class="rectangle">
+                                Số CMTND/ Căn cước đã tồn tại trên hệ thống
+                            </div>
+                            <div class="triangle"></div>
+                        </div>
                         <form title="Số chứng minh thư nhân dân/ Thẻ căn cước">
                             Số CMTND/ Căn cước (<label style="color: red;">*</label>) <br />
-                            <input fieldName="IdentifyCardNumber" type="text" class="input-required" id="txtIdentifyCardNumber" /><br />
+                            <input tabindex="5" fieldName="IdentifyCardNumber" type="text" class="input-required" id="txtIdentifyCardNumber" placeholder="Số chứng minh thư nhân dân/ Thẻ căn cước" /><br />
                         </form>
                         <form>
                             Ngày cấp<br />
-                            <input type="date" id="IssuedDate" fieldName="IssuedDate" name="Employee_issueDate" />
+                            <input tabindex="6" type="date" id="IssuedDate" fieldName="IssuedDate" name="Employee_issueDate" />
                         </form>
                     </div>
 
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Nơi cấp <br />
-                            <input fieldName="IssuedLocation" type="text" id="txtIssuedLocation" /><br />
+                            <input tabindex="7" fieldName="IssuedLocation" type="text" id="txtIssuedLocation" placeholder="Nơi cấp CMTND/ Căn cước" /><br />
                         </form>
                     </div>
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
+                        <div class="check check-email">
+                            <div class="rectangle">
+                                Email không đúng định dạng
+                            </div>
+                            <div class="triangle"></div>
+                        </div>
                         <form>
                             Email (<label style="color: red;">*</label>) <br />
-                            <input fieldName="Email" type="text" class="input-required" id="txtEmployeeEmail" name="Employee_id" /><br />
+                            <input tabindex="8" fieldName="Email" type="text" class="input-required" id="txtEmployeeEmail" name="Employee_id" placeholder="email@example.com" /><br />
                         </form>
+
+                        <div class="check check-phone">
+                            <div class="rectangle">
+                                Số điện thoại trên hệ thống đã tồn tại
+                            </div>
+                            <div class="triangle"></div>
+                        </div>
                         <form>
                             Số điện thoại (<label style="color: red;">*</label>)<br />
-                            <input class="a input-required" id="txtPhoneNumber" fieldName="PhoneNumber" type="tel" /><br />
+                            <input tabindex="9" class="input-required" id="txtPhoneNumber" fieldName="PhoneNumber" type="tel" placeholder="Số điện thoại" /><br />
                         </form>
                     </div>
                     <div class="infor-common">B. THÔNG TIN CÔNG VIỆC:</div>
                     <hr class="hr-format" />
-                    <div class="conten3" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Vị trí<br />
-                            <select index="Position" fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
+                            <select tabindex="10" index="Position" fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" id="cbxPosition">
                                 <!--<option> </option>-->
                             </select><br />
                         </form>
                         <form>
                             Phòng ban<br />
-                            <select index1="Department" fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
+                            <select tabindex="11" index-1="Department" fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" id="cbxDepartment">
                                 <!--<option> </option>-->
                             </select><br />
                         </form>
                     </div>
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Mã số thuế cá nhân <br />
-                            <input fieldName="PersonalCardCode" type="text" id="txtPersonalCardCode" /><br />
+                            <input tabindex="12" fieldName="PersonalCardCode" type="text" id="txtPersonalCardCode" placeholder="Mã số thuế cá nhân" /><br />
                         </form>
                         <form>
                             Mức lương cơ bản<br />
                             <div class="salary">
-                                <input id="txtSalary" fieldName="Salary" type="text" />&nbsp;<i>(VNĐ)</i><br />
+                                <input tabindex="13" class="format-currency" id="txtSalary" fieldName="Salary" type="text" placeholder="Mức lương cơ bản" />&nbsp;<i>(VNĐ)</i><br />
                             </div>
                         </form>
                     </div>
 
-                    <div class="conten1" style="display: flex;">
+                    <div style="display: flex;">
                         <form>
                             Ngày gia nhập công ty<br />
-                            <input type="date" id="DateOfJoin" fieldName="DateOfJoin" name="Employee_dateofjoin" />
+                            <input tabindex="14" type="date" id="DateOfJoin" fieldName="DateOfJoin" name="Employee_dateofjoin" />
                         </form>
                         <form>
                             Tình trạng công việc<br />
-                            <select fieldName="WorkStatus" id="WorkStatus">
+                            <select tabindex="15" fieldName="WorkStatus" id="WorkStatus">
                                 <option>Đang làm việc</option>
-                                <option>Nghỉ phép</option>
+                                <option>Đang thử việc</option>
                                 <option>Đã nghỉ việc</option>
                             </select><br />
                         </form>
@@ -280,10 +320,8 @@
 
             <!--================================== Nút hủy, lưu  ===========================================-->
             <div class="dialog-footer">
-                <div class="btn-cancel" id="btnCancel">
-                    <div class="nav-item-text cancel">Hủy</div>
-                </div>
-                <div class="btn-save" id="btnSave">
+                <div tabindex="17" class="btn-cancel" id="btnCancelDialog"><label>Hủy</label></div>
+                <div tabindex="16" class="btn-save" id="btnSaveDialog">
                     <div class="nav-item-text"><i class="far fa-save"></i>Lưu</div>
                 </div>
             </div>
@@ -291,15 +329,92 @@
     </div>
 
     <!--=====================Toast thông báo thành công, thất bại=============================================-->
-    <div id="snackbar">Thành công</div>
+    <div id="snackbar">Đã duyệt</div>
 
-    <div id="snackbar_fail">Thất bại</div>
+    <div id="snackbar_fail">Bị từ chối</i></div>
 
+
+    <!--=====================CONTEXTMUNU (Kích chuột phải để xóa bản ghi) ==========-->
+    <div id="contextMenu" class="dropdown clearfix">
+        <div class="btn-delete" id="btnDelete">
+            <div class="nav-item-text"><i class="far fa-trash-alt"></i>Xóa</div>
+        </div>
+    </div>
+
+    <!--================================== POPUP Cảnh báo xóa ===========================================-->
+    <div class="popup popup-confirm-delete" id="popup">
+        <div class="dialog-modal"></div>
+
+        <div class="popup-2 popup-delete">
+            <div class="popup-title">
+                <div>Xóa bản ghi</div>
+                <div class="btn-close" id="btnClosePopupDelete"><button></button></div>
+            </div>
+            <div class="popup-confirm">
+                <div class="warn-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div id="question-delete"></div>
+            </div>
+            <div class="dialog-footer">
+                <div class="btn-cancel" id="btnCancelPopupDelete"><div class="btn-no">Không</div></div>
+                <div class="btn-save" id="btnDeleteYes">
+                    <div class="delete-2">Có</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--================================== POPUP Nhắc nhập ===========================================-->
+    <div class="popup popup-promt" id="popup-promt">
+        <div class="dialog-modal"></div>
+
+        <div class="popup-2 popup-promt-2">
+            <div class="popup-title">
+                <div>Đóng Form thông tin chung</div>
+                <div class="btn-close" id="btnClosePromt"><button></button></div>
+            </div>
+            <div class="popup-confirm">
+                <div class="warn-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div id="question-continue">
+                    <div style="margin-bottom: -14px;">Bạn có chắc chắn muốn đóng Form <b>"Thông tin chung của</b></div> 
+                    <div><b> Nhân viên"</b> hay không?</div>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <div class="btn-continue" id="btnCancelPromt"><div class="continue">Tiếp tục nhập</div></div>
+                <div class="btn-save" id="btnClosePromtDialog">
+                    <div class="delete-3">Đóng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--POPUP hiện thị lý do từ chối-->
+    <div class="popup popup-refuse" id="popup-refuse">
+        <div class="dialog-modal"></div>
+
+        <div class="popup-2 popup-refuse-2">
+            <div class="popup-title">
+                <div>Lý do bị từ chối</div>
+                <div class="btn-close" id="btnCloseRefuse"><button></button></div>
+            </div>
+            <div class="popup-confirm">
+                <div id="refuseStatus"></div>
+                <div class="popuplist-footer">
+                    <div class="btn-save" id="btnCloseRefuse-2">
+                        <div class="delete-3">Đóng</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <script src="/lib/jquery-3.5.1.min.js"></script>
+    <script src="/lib/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="/js/common/focus.js"></script>
     <script src="/js/common/common.js"></script>
     <script src="/js/common/base.js"></script>
     <script src="/js/page/employee.js"></script>
+    <script src="/js/common/formatcurrency.js"></script>
 </body>
 </html>
 <script>

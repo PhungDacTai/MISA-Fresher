@@ -1,0 +1,35 @@
+﻿/*POPUP List*/
+#refuseStatus {
+    position: absolute;
+    top: 44px;
+    height: auto;
+    width: 100%;
+}
+
+    #refuseStatus .fas {
+        height: 13px;
+        width: 13px;
+        color: #F65454;
+    }
+
+.popup-refuse-2 {
+    position: absolute;
+    height: 248px;
+}
+
+.popup-refuse-2 div{
+    margin-bottom: -14px;
+}
+
+    .popup-refuse-2 .popuplist-footer {
+        position: absolute;
+        background-color: #E9EBEE;
+        height: 60px;
+        width: 100%;
+        bottom: 14px;
+        border-radius: 0 0 5px 5px;
+    }
+
+.popuplist-footer .delete-3{
+    margin-left: 12px;
+}

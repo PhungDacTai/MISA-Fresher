@@ -10,33 +10,22 @@ input {
     font-size: 13px;
 }
 
-.searchbox input {
-    border: none;
-    margin: 0px;
-    padding: 0px;
-}
-
-    .searchbox input:focus {
-        border: none;
-        margin: 0px;
-        padding: 0px;
-        outline: none;
-    }       
-
-input[type="radio"] {
-    width: 15px;
-    height: 15px;
-    margin-top: 7px;
-}
-
-    input[type='radio']:before {
-        background: red;
+    /*Format input dạng radio*/
+    input[type="radio"] {
+        width: 15px;
+        height: 15px;
+        margin-top: 7px;
     }
 
-    input[type="radio"]:checked {
-        color: red;
-    }
+        input[type='radio']:before {
+            background: red;
+        }
 
+        input[type="radio"]:checked {
+            color: red;
+        }
+
+/*Nhóm giới tính*/
 .radio-gender {
     display: flex;
     align-items: center;
@@ -49,15 +38,7 @@ input[type="radio"] {
         margin-right: 4px;
     }
 
-.border-red {
-    border: 1px solid #FF4747;
-}
-
-.m-dialog input:focus {
-    outline: none;
-    border-color: #019160;
-}
-
+/*Format input dạng ngày tháng*/
 input[type="date"] {
     height: 38px !important;
     width: 258px;
@@ -65,4 +46,9 @@ input[type="date"] {
     font-size: 13px;
     padding-right: 10px;
     font-weight: normal;
+}
+
+/*Set kích thước hint-text*/
+input::placeholder {
+    font-size: 11px;
 }

@@ -11,6 +11,7 @@ namespace MISA.ApplicationCore.Interfaces
     /// CreatedBy: PDTAI (11/01/2021)
     public interface ICustomerRepository : IBaseRepository<Customer>
     {
+        #region Method
         /// <summary>
         /// Lấy thông tin khách hàng theo mã
         /// </summary>
@@ -25,5 +26,6 @@ namespace MISA.ApplicationCore.Interfaces
         /// <param name="specs">Tiêu chí nhập vào</param>
         /// <returns></returns>
         List<Customer> GetCustomersFilter(string specs);
+        #endregion
     }
 }

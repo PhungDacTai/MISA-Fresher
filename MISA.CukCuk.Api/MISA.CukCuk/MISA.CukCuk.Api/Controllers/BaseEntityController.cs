@@ -11,17 +11,26 @@ using MySql.Data.MySqlClient;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MISA.CukCuk.Api.Controllers
-{
+{    /// <summary>
+     /// Api dùng chung
+     /// </summary>
+     /// CreatedBy: PDTAI (12/01/2021)
     [Route("api/v1/[controller]")]
     [ApiController]
     public class BaseEntityController<TEntity> : ControllerBase
     {
+        #region Declare
         IBaseService<TEntity> _baseService;
+        #endregion
 
+        #region Constructor
         public BaseEntityController(IBaseService<TEntity> baseService)
         {
             _baseService = baseService;
         }
+        #endregion
+
+        #region Get
         /// <summary>
         /// Lấy dữ liệu khách hàng
         /// </summary>
@@ -33,7 +42,6 @@ namespace MISA.CukCuk.Api.Controllers
             var entities = _baseService.GetEntities();
             return Ok(entities);
         }
-
 
 
         /// <summary>
@@ -50,14 +58,15 @@ namespace MISA.CukCuk.Api.Controllers
             //Trả dữ liệu cho client
             return Ok(entity);
         }
+        #endregion
 
-
-
+        #region Post
         /// <summary>
         /// Thêm một đối tượng vào danh sách
         /// </summary>
         /// <param name="entity">Đối tượng được thêm</param>
         /// <returns>Khách hàng mới thêm</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         [HttpPost]
         public IActionResult Post(TEntity entity)
         {
@@ -72,14 +81,16 @@ namespace MISA.CukCuk.Api.Controllers
             }
             
         }
+        #endregion
 
-
+        #region Put
         /// <summary>
         /// Sửa khách hàng qua id truyền vào
         /// </summary>
         /// <param name="id">id của đối tượng</param>
         /// <param name="entity"></param>
         /// <returns>Khách hàng mới sửa</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         [HttpPut("{id}")]
         public IActionResult Put([FromRoute] string id, [FromBody] TEntity entity)
         {
@@ -106,7 +117,15 @@ namespace MISA.CukCuk.Api.Controllers
                 return Ok(serviceResult);
             }
         }
+        #endregion 
 
+        #region Delete
+        /// <summary>
+        /// Xóa qua id
+        /// </summary>
+        /// <param name="id">IId truyền vào</param>
+        /// <returns>Số dòng ảnh hưởng</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -114,5 +133,7 @@ namespace MISA.CukCuk.Api.Controllers
             //Trả dữ liệu cho client
             return Ok(rowAffects);
         }
+
+        #endregion
     }
 }

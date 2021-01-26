@@ -12,6 +12,7 @@ namespace MISA.ApplicationCore.Interfaces
     /// CreatedBy: PhungDacTai (14/01/2021)
     public interface IBaseRepository<TEntity>
     {
+        #region Method
         /// <summary>
         /// Lấy toàn bộ dữ liệu
         /// </summary>
@@ -61,5 +62,6 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Đối tượng</returns>
         /// CreatedBy: PDTAI (14/01/2021)
         TEntity GetEntityByProperty(TEntity entity, PropertyInfo property);
+        #endregion
     }
 }

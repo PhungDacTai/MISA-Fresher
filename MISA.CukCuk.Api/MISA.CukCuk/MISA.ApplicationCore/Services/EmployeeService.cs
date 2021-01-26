@@ -7,20 +7,35 @@ using MISA.ApplicationCore.Services;
 
 namespace MISA.ApplicationCore
 {
+    /// <summary>
+    /// Xử lý nghiệp vụ nhân viên
+    /// </summary>
+    /// CreatedBy: PDTAI (20/01/2021)
     public class EmployeeService : BaseService<Employee>, IEmployeeService
     {
+        #region Declare
         IBaseRepository<Employee> _baseRepository;
         IEmployeeRepository _employeeRepository;
+        #endregion
 
+        #region Constructor
         public EmployeeService(IBaseRepository<Employee> baseRepository, IEmployeeRepository employeeRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _employeeRepository = employeeRepository;
         }
+        #endregion
+
+        #region Method
+        public Employee GetEmployeeCode()
+        {
+            return _employeeRepository.GetEmployeeCode();
+        }
+
         public List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId)
         {
             return _employeeRepository.GetEmployeesFilter(specs, departmentId, positionId);
         }
-
+        #endregion
     }
 }

@@ -1,3 +1,7 @@
+﻿/*Định dạng dialog*/
+
+
+
 .m-dialog {
     position: relative;
     z-index: 100;
@@ -15,19 +19,17 @@
         bottom: calc(50% - 750px);
     }
 
-.dialog-modal {
-    position: fixed;
-    opacity: 0.4;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: black;
-}
 
 .infor-top-content {
     margin-left: 18px;
 }
+
+/*.dialog-content {
+    resize: both;
+    overflow: auto;
+    max-height: fit-content;
+    max-width: fit-content;
+}*/
 /*Title*/
 .dialog-content {
     padding: 24px;
@@ -57,6 +59,7 @@
             outline: none;
             padding: 5px;
             background-color: #ffffff;
+            border-top-right-radius: 5px;
         }
 
             .dialog-content .dialog-title button:hover {
@@ -100,7 +103,7 @@
             width: 300px;
         }
 
-        .dialog-content .dialog-infor-top .infor-top2 {
+        .dialog-content .dialog-infor-top .infor-top-2 {
             margin: 0px 16px;
         }
 
@@ -109,7 +112,7 @@
     margin-left: -50px;
 }
 /*====================*/
-.dialog-content .dialog-infor-center1, .dialog-infor-center2 {
+.dialog-content .dialog-infor-center-1, .dialog-infor-center-2 {
     display: flex;
     height: 65px;
     width: 100%;
@@ -117,12 +120,12 @@
 }
 
 
-.dialog-content .dialog-infor-center2 {
+.dialog-content .dialog-infor-center-2 {
     height: 65px;
     width: 100%;
 }
 
-.dialog-content .dialog-infor-center3 {
+.dialog-content .dialog-infor-center-3 {
     height: 65px;
     width: 100%;
     margin-bottom: 24px;
@@ -138,15 +141,19 @@
     border-radius: 0 0 5px 5px;
 }
 
-/*    .save-icon {
-        background-image: url('../../contents/icons/save (2).svg');
-    }*/
-
-.fa-save {
-    font-size: 15px;
-    margin-right: 10px;
+.dialog-footer .btn-cancel label {
+    margin-left: 17px;
 }
+    .fa-save {
+        font-size: 15px;
+        margin-right: 10px;
+    }
 
 form {
     margin-right: 16px;
+}
+
+.m-dialog input:focus {
+    outline: none;
+    border-color: #019160;
 }

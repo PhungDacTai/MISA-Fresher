@@ -11,7 +11,10 @@ using Newtonsoft.Json;
 
 namespace MISA.CukCuk.Api.Middwares
 {
-    //Middware can thiệp các request gửi lên gửi về giữa client và server
+    /// <summary>
+    /// Middware can thiệp các request gửi lên gửi về giữa client và server
+    /// </summary>
+    /// CreatedBy: PDTAI (20/01/2021)
     public class ErrorHandlingMiddleWare
     {
         private readonly RequestDelegate next;
@@ -31,6 +34,13 @@ namespace MISA.CukCuk.Api.Middwares
             }
         }
 
+        /// <summary>
+        /// Xử lý lỗi ngoại lệ
+        /// </summary>
+        /// <param name="context">Mã lỗi</param>
+        /// <param name="ex">Exeption trả về</param>
+        /// <returns>Công việc thực hiện</returns>
+        /// CreatedBy: PDTAI (20/01/2021)
         private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             var code = HttpStatusCode.InternalServerError;//500 if unexpected

@@ -12,6 +12,7 @@ namespace MISA.ApplicationCore.Interfaces
     /// CreatedBy: PhungDacTai (14/01/2021)
     public interface IBaseService<TEntity>
     {
+        #region Method
         /// <summary>
         /// Lấy toàn bộ danh sách các đối tượng
         /// </summary>
@@ -50,5 +51,6 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Các trạng thái thông báo trả về được cài đặt trong ServiceResult</returns>
         /// CreatedBy: PDTAI (14/01/2021)
         ServiceResult Delete(Guid entityId);
+        #endregion
     }
 }

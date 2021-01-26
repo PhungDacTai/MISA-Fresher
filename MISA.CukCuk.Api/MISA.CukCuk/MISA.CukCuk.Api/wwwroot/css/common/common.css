@@ -58,3 +58,21 @@
 .selected {
     background-color: #EBF9F4;
 }
+
+.border-green {
+    border-color: #019160 !important;
+}
+
+.border-red {
+    border: 1px solid #FF4747;
+}
+
+.not-find {
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    z-index: 210;
+    border: none;
+    top: 80px;
+    left: 450px;
+}

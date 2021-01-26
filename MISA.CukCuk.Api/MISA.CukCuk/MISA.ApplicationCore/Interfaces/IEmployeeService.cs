@@ -10,6 +10,7 @@ namespace MISA.ApplicationCore.Interfaces
     /// CreatedBy: PDTAI (15/01/2021)
     public interface IEmployeeService : IBaseService<Employee>
     {
+        #region Method
         /// <summary>
         /// Lấy dữ liệu danh sách nhân viên theo các tiêu chí
         /// </summary>
@@ -19,5 +20,14 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Danh sách nhân viên theo các tiêu chí</returns>
         /// CreatedBy: PDTAI (14/01/2021)
         List<Employee> GetEmployeesFilter(string specs, Guid? departmentId, Guid? positionId);
+
+
+        /// <summary>
+        /// Lấy mã của các đối tượng đã sắp xếp giảm
+        /// </summary>
+        /// <returns>Mã đối tượng/returns>
+        /// CreatedBy: PDTAI (23/01/2021)
+        Employee GetEmployeeCode();
+        #endregion
     }
 }

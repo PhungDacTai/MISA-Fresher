@@ -58,4 +58,22 @@ class CustomerJS extends BaseJS {
         this.apiRouter = "/api/v1/customers";
         
     }
+
+ //   /**
+ //* 
+ //* */
+ //   $('#txtSearchCustomer').focus(function() {
+ //       $('.txtsearch').addClass('border-green');
+ //   })
+
+ //   $('#txtSearchCustomer').blur(function() {
+ //       var value = $(this).val();
+ //       try {
+ //           if (!value) {
+ //               $('.txtsearch').removeClass('border-green');
+ //           }
+ //       } catch {
+
+ //       }
+ //   })
 }

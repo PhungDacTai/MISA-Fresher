@@ -1,4 +1,4 @@
-﻿/* Định dạng header*/
+﻿/* Định dạng header web*/
 .header {
     float: left;
     width: calc(100% - 221px);
@@ -35,15 +35,3 @@
         .header .header-right .header-content {
             margin-right: 16px;
         }
-
-/*Thẻ select*/
-select {
-    -webkit-appearance: button;
-    -webkit-border-radius: 2px;
-    -webkit-padding-end: 15px;
-    -webkit-user-select: none;
-    border-style: none;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}

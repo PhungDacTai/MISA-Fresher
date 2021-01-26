@@ -10,16 +10,37 @@ class BaseJS {
         this.contextMenu();
         this.object = null;
         this.setObject();
-    
+        this.propertyCode = '';
+        this.setPropertyCode();
     }
-
+    /**
+     * Hàm set câu truy vấn để lọc dữ liệu
+     * CreatedBy: PDTAI (22/01/2021)
+     * */
     setQueryString() {
 
     }
+
+    /**
+    * Hàm lấy địa chỉ router
+    * CreatedBy: PDTAI (18/01/2021)
+    * */
     setApiRouter() {
 
     }
 
+    /**
+    * Hàm set thuộc tính mã để so sánh trùng lặp
+    * CreatedBy: PDTAI (24/01/2021)
+    * */
+    setPropertyCode() {
+
+    }
+
+    /**
+    * Hàm lấy ra đối tượng thực thi (Employee, Customer)
+    * CreatedBy: PDTAI (22/01/2021)
+    * */
     setObject() {
 
     }
@@ -30,82 +51,116 @@ class BaseJS {
      * */
     initEvents() {
         var me = this;
-        // Sự kiên click khi nhấn thêm mới =====================================================================
+        // Sự kiên click khi nhấn thêm mới ===========================================================================================
         $('#btnAddCustomer').on('click', me.btnAddOnClick.bind(me));
         $('#btnAddEmployee').on('click', me.btnAddOnClick.bind(me));
 
-        // Sự kiên khi click close, hủy đóng dialog, đóng popup ================================================
-        $('#btnClose').on('click', function () {
+        // Các sự kiện click để đóng form, popup======================================================================================
+        // Sự kiên khi click close, hủy để hiển thị popup cảnh báo đóng form thông tin 
+        $('#btnCloseDialog').on('click', function () {
+            $("#popup-promt").show();
+        })
+        $('#btnCancelDialog').on('click', function () {
+            $("#popup-promt").show();
+
+        })
+        // Enter vào nút hủy
+        $('#btnCancelDialog').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                $("#popup-promt").show();
+            }
+        })
+
+        //Sự kiện click để đóng popup cảnh báo đóng form thông tin
+        $('#btnClosePromt').on('click', function () {
+            $("#popup-promt").hide();
+        })
+        $('#btnCancelPromt').on('click', function () {
+            $("#popup-promt").hide();
+        })
+
+        //Sự kiên click đóng popup cảnh báo xóa
+        $('#btnClosePopupDelete').on('click', function () {
+            $("#popup").hide();
+        })
+        $('#btnCancelPopupDelete').on('click', function () {
+            $("#popup").hide();
+
+        })
+
+        // Sự kiện click nút "Đóng" đóng popup cảnh cáo và dialog
+        $('#btnClosePromtDialog').on('click', function () {
+            $("#popup-promt").hide();
             $(".m-dialog").hide();
         })
-        $('#btnCancel').on('click', function () {
-            $(".m-dialog").hide();
-        })
 
-        $('#btnClose2').on('click', function () {
-            $(".popup").hide();
+        //Sự kiện đóng popup dạng list
+        $('#btnCloseRefuse-2').on('click', function () {
+            $("#popup-refuse").hide();
         })
-        $('#btnCancel2').on('click', function () {
-            $(".popup").hide();
+        $('#btnCloseRefuse').on('click', function () {
+            $("#popup-refuse").hide();
         })
 
 
-        // Load lại dữ liệu khi nhấn button load ===============================================================
+
+        // Load lại dữ liệu khi nhấn button load =====================================================================================
         $('#btnRefresh').on('click', function () {
             me.loadData();
         })
 
-        // Thực hiện lưu dữ liệu khi nhấn button ['Lưu']========================================================
-        $('#btnSave').on('click', me.btnSaveOnClick.bind(me));
+        // Thực hiện lưu dữ liệu khi nhấn button ['Lưu']hoặc nhấn enter ==============================================================
+        $('#btnSaveDialog').on('click', me.btnSaveOnClick.bind(me));
 
-        //Hiển thị thông tin chi tiết khi đúp chuột chọn một bản ghi trên danh sách dữ liệu=====================
+        $('#btnSaveDialog').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                me.btnSaveOnClick();
+            }
+
+        })
+
+        //Hiển thị thông tin chi tiết khi đúp chuột chọn một bản ghi trên danh sách dữ liệu===========================================
         $('table tbody').on('dblclick', 'tr', me.doubleClickEvent.bind(me));
 
-        //Tô màu bản được chọn khi click chuột
+
+        //Tô màu bản ghi được chọn khi click chuột====================================================================================
         $('table tbody').on('click', 'tr', me.oneClickEvent.bind(me));
 
-        /**=====================================================================================================
+
+        /**===========================================================================================================================
          * validated bắt buộc nhập
-         * CreatedBy: PDTAI (1/1/2021)
+         * CreatedBy: PDTAI (01/01/2021)
          * */
         $('.input-required').blur(me.validateInput);
 
 
-        /**=====================================================================================================
+        /**===========================================================================================================================
         * validated email đúng định dạng
-        * CreatedBy: PDTAI (1/1/2021)
+        * CreatedBy: PDTAI (01/01/2021)
         * */
         $('input[type="email"]').blur(me.validateEmail);
-        $('#txtSearchCustomer').focus(function () {
-             $('.txtsearch').addClass('border-green');
-        })
 
-        $('#txtSearchCustomer').blur(function () {
-            var value = $(this).val();
-            try {
-                if (!value) {
-                    $('.txtsearch').removeClass('border-green');
-                }
-            } catch {
-
-            }
-        })
     }
 
+    /**===============================================================================================================================
+     * Kiểm tra thẻ input tìm kiếm có giá trị thì đổ màu border
+     * CreatedBy: PDTAI(20/02/2021)
+     * */
     search() {
-        // Kiểm tra dữ liệu đã nhập nếu để trống thì cảnh báo
         var value = $(this).val();
         try {
             if (value) {
-                $('.txtsearch').addClass('border-green');
+                $('.search-text').addClass('border-green');
             } else {
             }
         } catch (e) {
             console.log(e);
         }
     }
-    /**=========================================================================================================
-     * Load dữ liệu
+    /**===============================================================================================================================
+     * Xử lý load dữ liệu
      * CreatedBy: PDTAI (28/12/2020)
      * */
     loadData() {
@@ -121,7 +176,14 @@ class BaseJS {
                 method: "GET",
                 async: true,
             }).done(function (res) {
-                // Chạy đúng
+                  // ajax Chạy đúng
+                if (res.length == 0) {
+                    $('.loading').hide();
+                    $(".not-find").show();//Hiển thị nội dung không tìm thấy bản ghi nào
+                } else {
+                    $(".not-find").hide();
+                }
+
                 $.each(res, function (index, obj) {
                     var tr = $(`<tr></tr>`);
                     if (me.object == "Customer")
@@ -133,8 +195,8 @@ class BaseJS {
                         var td = $(`<td><div><span></span></div></td>`);
                         var fieldName = $(th).attr('fieldName');//Lấy giá trị attribute fieldname
                         var value = obj[fieldName];//Lấy giá trị của đối tượng
-
                         var formatType = $(th).attr('formatType');//Lấy giá trị attribute formatType
+                        // Định dạng các trường
                         switch (formatType) {
                             case "ddmmyy":
                                 td.addClass("text-center");
@@ -149,10 +211,7 @@ class BaseJS {
                                 td.attr('title', obj[fieldName]);
                                 break;
                             case "Gender":
-                                //td.addClass("text-center");
-                                //var value = '<input type="checkbox"/>';
-                                // 1 là nam , còn lại là nữ
-                                // Nếu checkbox là checked thì là nam
+                                // 1 là nam , 0 là nữ, còn lại là khác
                                 if (obj[fieldName] == 1) {
                                     //var value = '<input type="checkbox" checked/>';
                                     value = "Nam";
@@ -161,7 +220,6 @@ class BaseJS {
                                 } else {
                                     value = "Khác";
                                 }
-                                //td.append(checkbox);
                                 break;
                             default:
                                 break;
@@ -173,7 +231,7 @@ class BaseJS {
                     $('.loading').hide();
                 })
             }).fail(function (res) {
-                // Chạy fail
+                // ajax chạy fail
                 $('.loading').hide();
             })
         } catch (e) {
@@ -184,34 +242,53 @@ class BaseJS {
     }
 
 
-    /**=======================================================================================================
-    * Thêm mới dữ liệu
+    /**===============================================================================================================================
+    * Xử khi khi bấm nút thêm
     * CreatedBy: PTTAI (28/12/2020)
     * */
     btnAddOnClick() {
         var me = this;
+        $(".check-email").hide();
+        $(".not-find").hide();
         try {
             setEmptyValue();
             $('input[type="date"]').val('');
             $('input[id="male"]').attr("checked");
             me.FormMode = 'Add';
+            //Lấy mã lớn nhất
+            $.ajax({
+                url: me.host + me.apiRouter + "/getcode",
+                method: "GET",
+                async: true,
+            }).done(function (res) {
+                var objectCode = me.object + "Code";//Lấy mã của đối tượng
+                var txtInput = "txt" + objectCode;
+                objectCode = res[objectCode];
+                var objectFirt = objectCode.slice(0, 2);//Tách mã thành chữ và số
+                objectCode = objectCode.slice(2);
+                objectCode = parseInt(objectCode) + 1;
+                objectCode = objectFirt + objectCode;
+                $('input[id=\"' + txtInput + '\"]').val(objectCode);//Gán mã cho thẻ input mã
+            }).fail(function (res) {
+
+            })
             // Hiển thị dialog thông tin chi tiết
             $(".m-dialog").show();
             // Load dữ liệu cho combobox
-            var select = $('select[index]');
-            select.empty();
-            me.comboBox(select);
-            var select1 = $('select[index1]');
-            select1.empty();
-            me.comboBox(select1);
-            
+            var selectPosition = $('select[index]');
+            selectPosition.empty();
+            me.comboBox(selectPosition);
+            var selectDepartment = $('select[index-1]');
+            selectDepartment.empty();
+            me.comboBox(selectDepartment);
+
         } catch (e) {
             console.log(e);
         }
 
     }
 
-    /**=====================================================================================================================
+    /**===============================================================================================================================
     * Xử lý nút Save (sửa, lưu) dữ liệu
     * CreatedBy: PTTAI (28/12/2020)
     * */
@@ -219,13 +296,36 @@ class BaseJS {
         var me = this;
         try {
             // Validated dữ liệu
+            $(".check-email").hide();
+            $("#refuseStatus div").remove();
             var inputValidates = $('.input-required, input[type="email"]');
             $.each(inputValidates, function (index, input) {
-                $(input).trigger('blur');// Trigger: Kích  hoạt tự động sự kiện của chính nó
+                $(input).trigger('blur');// Trigger: Thực hiện tất cả các xử lý và đính kèm các loại sự kiện nhất định tới thành phần được chọn
             })
+
             var inputNotVlidates = $('input[validate="false"]');
             if (inputNotVlidates && inputNotVlidates.length > 0) {
-                alert("Dữ liệu không hợp lệ, vui lòng kiểm tra lại!");
+                var messenger = $(``);
+                if ($('#txtFullName').val() == '') {
+                    messenger = $(`<div><i class="fas fa-exclamation-triangle"></i> &nbsp;&nbsp;&nbsp;<label>Họ và tên không được để trống</div>`);
+                    $("#refuseStatus").append(messenger);
+                }
+                if ($('#txtIdentifyCardNumber').val() == '') {
+                    messenger = $(`<div><i class="fas fa-exclamation-triangle"></i> &nbsp;&nbsp;&nbsp;<label>Số CMTND/ Căn cước không được để trống</div>`);
+                    $("#refuseStatus").append(messenger);
+                }
+                if ($('#txtEmployeeEmail').val() == '') {
+                    messenger = $(`<div><i class="fas fa-exclamation-triangle"></i> &nbsp;&nbsp;&nbsp;<label>Email không được để trống</div>`);
+                    $("#refuseStatus").append(messenger);
+                }
+                if ($('#txtPhoneNumber').val() == '') {
+                    messenger = $(`<div><i class="fas fa-exclamation-triangle"></i> &nbsp;&nbsp;&nbsp;<label>Số điện thoại không được để trống</div>`);
+                    $("#refuseStatus").append(messenger);
+                }
+
+                //alert("Các trường có dấu (*) không được để trống hoặc dữ liệu không hợp lệ, vui lòng kiểm tra lại!");
+                $("#popup-refuse").show();
+                toastFail();
                 inputNotVlidates[0].focus();
                 return;//Dừng chương trình
             }
@@ -236,6 +336,7 @@ class BaseJS {
             $.each(inputs, function (index, input) {
                 var propertyName = $(this).attr('fieldName');
                 var value = '';
+                // Lấy giá trị được chọn trong selectbox
                 if (propertyName == "CustomerGroupName" || propertyName == "PositionName" || propertyName == "DepartmentName") {
                     var propertyName1 = $(this).attr('fieldValue');
                     value = $(this).find(":selected").val();
@@ -244,8 +345,15 @@ class BaseJS {
                     value = $(this).val();//Lấy giá trị
                 }
 
+                //Chuyển tiền tệ sang số
+                if (propertyName == "Salary") {
+                    value = value.split(',').join('');
+                    value = value.split('.').join('');
+                    value = parseInt(value);
+                }
+
                 //Format lại ngày tháng
-                if (propertyName == "DateOfBirth") {
+                if (propertyName == "DateOfBirth" || propertyName == "DateOfJoin" || propertyName == "IssuedDate") {
                     value = formatDate2(value);
                 }
 
@@ -254,30 +362,27 @@ class BaseJS {
                     if (this.checked) {
                         entity[propertyName] = value;
                     }
-
                 } else {
                     entity[propertyName] = value;
                 }
             })
-            console.log(entity);
             var method = "POST";
-            debugger;
             if (me.FormMode == 'Edit') {
                 method = "PUT";
+                // Lấy đối tượng thực thi
                 if (me.object == "Customer") {
                     entity.CustomerId = me.recordId;
                     var id = `/${entity.CustomerId}`;
                 }
                 else {
+                    //Đối tượng Employee
                     entity.EmployeeId = me.recordId;
                     var id = `/${entity.EmployeeId}`;
                 }
             } else {
                 id = '';
             }
-            console.log(me.apiRouter);
-            //Gọi service tương ứng thực hiện dữ liệu
-            debugger;
+
             $.ajax({
                 url: me.host + me.apiRouter + id,
                 method: method,
@@ -292,10 +397,37 @@ class BaseJS {
                 $(".m-dialog").hide();
 
             }).fail(function (res) {
-                // Thông báo fail
-                toastFail();
-                // Ẩn dialog chi tiết
-                $(".m-dialog").hide();
+                // Thông báo khi fail
+                var messenger = res.responseText.split(',');
+                messenger = messenger[0].slice(10, messenger[0].length - 2);
+                var value = res.responseJSON.ObjectName;
+                switch (value) {
+                    case me.propertyCode:
+                        $(".check-infor").show();
+                        toastFail();
+                        $("#txtEmployeeCode").focus();
+                        break;
+                    case "Email":
+                        $(".check-email").show();
+                        toastFail();
+                        $("#txtEmployeeEmail").focus();
+                        break;
+                    case "Số điện thoại":
+                        $(".check-phone").show();
+                        toastFail();
+                        $("#txtPhoneNumber").focus();
+                        break;
+                    case "Số CMTND/ Căn cước":
+                        $(".check-identify-card").show();
+                        toastFail();
+                        $("#txtIdentifyCardNumber").focus();
+                        break;
+                    default:
+                        //Ẩn dialog chi tiết
+                        $(".m-dialog").hide();
+                        toastFail();
+                        break;
+                }
             })
 
         } catch (e) {
@@ -304,7 +436,7 @@ class BaseJS {
 
     }
 
-    /**==============================================================================================================================
+    /**===============================================================================================================================
      * Xử lý sự kiện kích vào một bản ghi đổi màu background
      * @param {any} e: Sự kiện được gọi
      * CreatedBy: PTTAI (19/01/2021)
@@ -312,11 +444,10 @@ class BaseJS {
     oneClickEvent(e) {
         if ($(e.currentTarget).find('td').attr('class') == 'selected') {
             $(e.currentTarget).find('td').removeClass('selected');
-            console.log(this);
         } else {
             $('tr').find('td').removeClass('selected');
             $(e.currentTarget).find('td').addClass('selected');
-        }   
+        }
         console.log(e);
     }
 
@@ -327,6 +458,7 @@ class BaseJS {
      * */
     doubleClickEvent(e) {
         var me = this;
+        $(".check-email").hide();
         try {
             $('tr').find('td').removeClass('selected');
             $(e.currentTarget).find('td').addClass('selected');
@@ -340,8 +472,6 @@ class BaseJS {
                 url: me.host + me.apiRouter + `/${recordId}`,
                 method: "GET"
             }).done(function (res) {
-                // Binding dữ liệu lên form chi tiết
-                console.table(res);
                 //Lấy tất cả các control nhập liệu
                 var inputs = $('input[fieldName], select[fieldName]');
                 var entity = {};
@@ -349,66 +479,65 @@ class BaseJS {
                     var propertyName = $(this).attr('fieldName');
                     var value = res[propertyName];
                     console.log(value);
-                    //Check nhóm 
-                    debugger;
+                    //Check nhóm (các combobox)
                     var select = $('');
                     switch (propertyName) {
                         case "CustomerGroupName": case "PositionName":
                             select = $('select[index]');
                             break;
                         case "DepartmentName":
-                            select = $('select[index1]');
+                            select = $('select[index-1]');
                             break;
                         default:
-                            
+
                     }
-                        var fieldValue1 = $(this).attr('fieldValue');
-                        var groupId = res[fieldValue1];
-                        console.log(groupId);
-
-                        select.empty();
-                        $.each(select, function (index, value) {
-                            // Lấy dữ liệu nhóm khách hàng
-                            var api = $(select).attr('api');
-                            var fieldName = $(select).attr('fieldName');
-                            var fieldValue = $(select).attr('fieldValue');
-                            $('.loading').show();
-                            $.ajax({
-                                url: me.host + api,
-                                method: "GET"
-                            }).done(function (res) {
-                                try {
-                                    if (res) {
-                                        $.each(res, function (index, obj) {
-                                            var option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
-                                            if (obj[fieldValue] == groupId) {
-                                                option = $(`<option value="${obj[fieldValue]}" selected = "selected">${obj[fieldName]}</option>`);
-                                            } else {
-                                                option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
-                                            }
-                                            select.append(option);
-                                            console.log(res[fieldName]);
-                                        })
-                                        console.log(select);
-                                    }
-                                } catch (e) {
-                                    console.log(e);
+                    var fieldValue1 = $(this).attr('fieldValue');
+                    var groupId = res[fieldValue1];
+                    select.empty();
+                    $.each(select, function (index, value) {
+                        // Lấy dữ liệu nhóm khách hàng, hiển thị lại giá trị lên combobox
+                        var api = $(select).attr('api');
+                        var fieldName = $(select).attr('fieldName');
+                        var fieldValue = $(select).attr('fieldValue');
+                        $('.loading').show();
+                        $.ajax({
+                            url: me.host + api,
+                            method: "GET"
+                        }).done(function (res) {
+                            try {
+                                if (res) {
+                                    $.each(res, function (index, obj) {
+                                        var option = $(``);
+                                        if (obj[fieldValue] == groupId) {
+                                            option = $(`<option value="${obj[fieldValue]}" selected = "selected">${obj[fieldName]}</option>`);
+                                        } else {
+                                            option = $(`<option value="${obj[fieldValue]}">${obj[fieldName]}</option>`);
+                                        }
+                                        select.append(option);
+                                    })
                                 }
-
-                                $('.loading').hide();
-                            }).fail(function (res) {
-                                $('.loading').hide();
-                            })
+                            } catch (e) {
+                                console.log(e);
+                            }
+                            $('.loading').hide();
+                        }).fail(function (res) {
+                            $('.loading').hide();
                         })
+                    })
 
-                    
 
-                    //Check ngày sinh
-                    if (propertyName == "DateOfBirth" || propertyName == "DateOfJoin"||propertyName == "IssuedDate") {
+                    // Check tiền tệ
+                    if (propertyName == "Salary") {
+                        value = formatMoney(value);
+                        $(this).attr('value', value);
+                    }
+
+                    //Check ngày tháng
+                    if (propertyName == "DateOfBirth" || propertyName == "DateOfJoin" || propertyName == "IssuedDate") {
                         value = formatDate2(value);
                         $(this).attr('value', value);
                     }
-                    //Check với trường hợp input là radio
+                    //Check với trường hợp input là radio, check giới tính
                     if (propertyName == "Gender") {
                         if (res[propertyName] == "0") {
                             $('input[id="female"]').prop('checked', true);
@@ -447,7 +576,7 @@ class BaseJS {
 
 
 
-    /**===========================================================================================================================
+    /**===============================================================================================================================
      * Validate các trường bắt buộc nhập
      * CreatedBy: PTTAI (29/12/2020)
      * */
@@ -457,18 +586,19 @@ class BaseJS {
         try {
             if (!value) {
                 $(this).addClass('border-red');
-                $(this).attr('title', 'Trường này không được phép bỏ trống!');
+                $(this).attr('title', 'Trường này không được phép để trống');
                 $(this).attr('validate', false);
             } else {
                 $(this).removeClass('border-red');
                 $(this).attr('validate', true);
             }
+
         } catch (e) {
             console.log(e);
         }
     }
 
-    /**===========================================================================================================================
+    /**===============================================================================================================================
      * Validate các trường email đúng định dạng
      * CreatedBy: PTTAI (29/12/2020
      * */
@@ -478,7 +608,8 @@ class BaseJS {
         try {
             if (!regex.test(value)) {
                 $(this).addClass('border-red');
-                $(this).attr('title', 'Email không đúng định dạng');
+                $(".check-email").show();
+                $(".check-email").focus();
                 $(this).attr('validate', false);
             } else {
                 $(this).removeClass('border-red');
@@ -489,17 +620,17 @@ class BaseJS {
         }
     }
 
-    /**=============================================================================================================================
+    /**===============================================================================================================================
      * Context menu kích chuột phải chọn một dòng tr để xóa bản ghi
      * CreatedBy: PDTAI (05/01/2021)
      * */
     contextMenu() {
         var me = this;
         var $contextMenu = $("#contextMenu");
-
+        var objectCode = '';
+        var messenger = '';
+        $('#question-delete').empty();
         $("body").on("contextmenu", "table tr", function (e) {
-            var me2 = this;
-            console.log(me2);
             $contextMenu.css({
                 display: "block",
                 left: e.pageX,
@@ -509,10 +640,24 @@ class BaseJS {
             $(e.currentTarget).find('td').addClass('selected');//Đánh dấu dòng được chọn
             var recordId = $(e.currentTarget).data('recordId');
             me.recordId = recordId;
+            $.ajax({
+                url: me.host + me.apiRouter + `/${recordId}`,
+                method: "GET",
+                async: true,
+
+            }).done(function (res) {
+                $('#question-delete').empty();
+                objectCode = me.object + "Code";
+                objectCode = res[objectCode];
+            }).fail(function (res) {
+
+            })
             $('#btnDelete').on('click', function () {
-                $('.popup').show();
+                messenger = $(`<label>Bạn có chắc chắn muốn xóa nhân viên ${objectCode} không?</label>`);
+                $('#question-delete').append(messenger);
+                $('#popup').show();
                 try {
-                    $('#btnDelete2').on('click', function () {
+                    $('#btnDeleteYes').on('click', function () {
                         $.ajax({
                             url: me.host + me.apiRouter + `/${recordId}`,
                             method: "DELETE",
@@ -520,13 +665,16 @@ class BaseJS {
 
                         }).done(function (res) {
                             me.loadData();
-                            $(".popup").hide();
+                            $('#question-delete').remove(messenger);
+                            $("#popup").hide();
+
                             toastSuccess();
                         }).fail(function (res) {
                             toastFail();
-                            $(".popup").hide();
+                            $("#popup").hide();
                         })
                     })
+
                 } catch (e) {
                     console.log(e);
                 }
@@ -543,7 +691,11 @@ class BaseJS {
         });
     }
 
-
+    /**
+     * xử lý đổ dữ liệu lên các combobox =============================================================================================
+     * @param {any} select thể select truyền vào
+     * CreatedBy: PDTAI(20/02/2021)
+     */
     comboBox(select) {
         var me = this;
         $.each(select, function (index, value) {
@@ -575,33 +727,4 @@ class BaseJS {
 }
 
 
-/**=================================================
- * Phương thức xử lý làm trống các trường input
- * CreatedBy: PDTAI (05/01/2021)
- * */
-function setEmptyValue() {
-    $('input[type="text"]').val('');
-    $('input[type="email"]').val('');
-}
 
-/**
- * Phương thức hiển thị toast thông báo thành công
- * CreatedBy: PDTAI (05/01/2021)
- * */
-function toastSuccess() {
-    var x = document.getElementById("snackbar");
-    x.className = "show";
-    // Gỡ toast sau 3s
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-}
-
-/**
- * Phương thức hiển thị toast thông báo thất bại
- * CreatedBy: PDTAI (05/01/2021)
- * */
-function toastFail() {
-    var x = document.getElementById("snackbar_fail");
-    x.className = "show";
-    // Gỡ toast sau 3s
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-}

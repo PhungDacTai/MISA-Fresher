@@ -7,11 +7,17 @@ using MISA.ApplicationCore.Interfaces;
 
 namespace MISA.Infrarstructure
 {
+    /// <summary>
+    /// Xử lý tương tác database phòng ban
+    /// </summary>
+    /// CreatedBy: PDTAI (20/01/2021)
     public class DepartmentRepository:BaseRepository<Department>,IDepartmentRepository
     {
+        #region Constructor
         public DepartmentRepository(IConfiguration configuration) : base(configuration)
         {
 
         }
+        #endregion
     }
 }

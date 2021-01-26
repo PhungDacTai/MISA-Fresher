@@ -1,4 +1,4 @@
-﻿/*Định dạng navbar*/
+﻿/*Định dạng navbar điều hướnng*/
 .navbar {
     float: left;
     width: 220px;
@@ -56,26 +56,26 @@
                 color: #000000;
             }
 
-            .navbar .navbar-content .nav-item .icon1 {
+            .navbar .navbar-content .nav-item .icon-dashboard {
                 background-image: url('/contents/icons/dashboard.png');
             }
 
-            .navbar .navbar-content .nav-item .icon2 {
+            .navbar .navbar-content .nav-item .icon-report {
                 background-image: url('/contents/icons/report.png');
             }
 
-            .navbar .navbar-content .nav-item .icon3 {
+            .navbar .navbar-content .nav-item .icon-dashboard {
                 background-image: url('/contents/icons/dashboard.png');
             }
 
-            .navbar .navbar-content .nav-item .icon4 {
+            .navbar .navbar-content .nav-item .icon-dic-employee {
                 background-image: url('/contents/icons/dic-employee.png');
             }
 
-            .navbar .navbar-content .nav-item .icon5 {
+            .navbar .navbar-content .nav-item .icon-dic-employee {
                 background-image: url('/contents/icons/dic-employee.png');
             }
 
-            .navbar .navbar-content .nav-item .icon6 {
+            .navbar .navbar-content .nav-item .icon-setting {
                 background-image: url('/contents/icons/setting.png');
             }

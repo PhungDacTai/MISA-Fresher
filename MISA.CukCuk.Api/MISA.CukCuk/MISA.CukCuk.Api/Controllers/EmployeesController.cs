@@ -10,21 +10,52 @@ using MISA.ApplicationCore.Interfaces;
 
 namespace MISA.CukCuk.Api.Controllers
 {
-
+    ///<summary>
+    /// Api danh mục nhân viên
+    /// </summary>
+    /// CreatedBy: PDTAI (15/01/2021)
     public class EmployeesController : BaseEntityController<Employee>
     {
+        #region Declare
         IEmployeeService _baseService;
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Hào khởi tạo
+        /// </summary>
+        /// <param name="baseService"></param>
         public EmployeesController(IEmployeeService baseService) : base(baseService)
         {
             _baseService = baseService;
         }
+        #endregion
 
-
+        #region Get
+        /// <summary>
+        /// Lọc danh sách qua tiêu chí (mã, họ tên, số điện thoại), phòng ban, vị trí làm việc
+        /// </summary>
+        /// <param name="specs"></param>
+        /// <param name="departmentId"></param>
+        /// <param name="positionId"></param>
+        /// <returns></returns>
         [HttpGet("filter")]
-        public IActionResult GetEmployeeFilter([FromQuery] string specs, [FromQuery] Guid? departmentId, [FromQuery] Guid? positonId)
+        public IActionResult GetEmployeeFilter([FromQuery] string specs, [FromQuery] Guid? departmentId, [FromQuery] Guid? positionId)
         {
-            return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positonId));
+            return Ok(_baseService.GetEmployeesFilter(specs, departmentId, positionId));
 
         }
+
+        /// <summary>
+        /// Lấy đối tượng có mã nhân viên lớn nhất
+        /// </summary>
+        /// <returns>Đối tượng lấy được</returns>
+        /// CreatedBy: PDTAI (23/01/2021)
+        [HttpGet("getcode")]
+        public IActionResult GetEmployeeCode()
+        {
+            return Ok(_baseService.GetEmployeeCode());
+        }
+        #endregion
     }
 }

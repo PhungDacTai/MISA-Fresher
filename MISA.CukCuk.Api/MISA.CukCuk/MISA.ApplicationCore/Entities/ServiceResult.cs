@@ -27,5 +27,10 @@ namespace MISA.ApplicationCore.Entities
         /// </summary>
         public MISACode MISACode { get; set; }
         #endregion
+
+        /// <summary>
+        /// Tên đối tượng
+        /// </summary>
+        public string ObjectName { get; set; }
     }
 }

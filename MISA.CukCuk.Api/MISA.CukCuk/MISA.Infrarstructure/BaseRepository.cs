@@ -13,6 +13,11 @@ using MySql.Data.MySqlClient;
 
 namespace MISA.Infrarstructure
 {
+    /// <summary>
+    /// Xử lý tưong tác database chung
+    /// </summary>
+    /// <typeparam name="TEntity">Đối tượng thực thi</typeparam>
+    /// CreatedBy: PDTAI (20/01/2021)
     public class BaseRepository<TEntity> : IBaseRepository<TEntity>, IDisposable where TEntity : BaseEntity
     {
         #region DECLARE
@@ -22,6 +27,7 @@ namespace MISA.Infrarstructure
         protected string _tableName;
         #endregion
 
+        #region CONSTRUCTOR
         public BaseRepository(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -29,6 +35,9 @@ namespace MISA.Infrarstructure
             _dbConnection = new MySqlConnection(_connectionString);
             _tableName = typeof(TEntity).Name;
         }
+        #endregion
+
+        #region METHOD
         public int Add(TEntity entity)
         {
             var rowAffects = 0;
@@ -92,6 +101,11 @@ namespace MISA.Infrarstructure
             return rowAffects;
         }
 
+        /// <summary>
+        /// Build tham số đầu vào cho store truy vấn
+        /// </summary>
+        /// <param name="entity">Đối tượng cần lấy tham số</param>
+        /// <returns>Đối tượng đã truyền tham số</returns>
         private DynamicParameters MappingDbType(TEntity entity)
         {
             // Xử lý các kiểu dữ liệu
@@ -114,7 +128,13 @@ namespace MISA.Infrarstructure
 
             return parameters;
         }
-
+        /// <summary>
+        /// Lấy thuộc tính 
+        /// </summary>
+        /// <param name="entity">Đoói tượng</param>
+        /// <param name="property">Thuộc tính</param>
+        /// <returns>Đối tượng lấy được</returns>
+        /// CreatedBy: PDTAI (10/1/2021)
         public TEntity GetEntityByProperty(TEntity entity, PropertyInfo property)
         {
             var propertyName = property.Name;
@@ -149,5 +169,7 @@ namespace MISA.Infrarstructure
                 _dbConnection.Close();
             }
         }
+
+        #endregion
     }
 }

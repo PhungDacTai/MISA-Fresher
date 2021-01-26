@@ -1,0 +1,49 @@
+﻿/*Xử lý popup cảnh báo đóng form thông tin*/
+.popup-promt .popup-promt-2 {
+    top: 90px;
+    height: 192px;
+}
+
+    .popup-promt .popup-promt-2 .popup-confirm .warn-icon .fas {
+        color: #FF8C00 !important;
+    }
+
+
+    .popup-promt .popup-promt-2 .dialog-footer .btn-save {
+        background-color: #019160;
+    }
+
+        .popup-promt .popup-promt-2 .dialog-footer .btn-save:hover {
+            background-color: #2FBE8E;
+        }
+
+        .popup-promt .popup-promt-2 .dialog-footer .btn-save .delete-3 {
+            margin-left: 15px;
+        }
+
+.popup-promt .continue {
+    width: 150px;
+    width: 150px;
+    height: 38px;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 4px;
+}
+
+    .popup-promt .continue:hover {
+        background: #BBB;
+    }
+
+.popup-promt .btn-continue {
+    position: absolute;
+    right: 145px;
+    top: 12px;
+    color: inherit;
+    background-color: #E9EBEE;
+}
+
+.popup-promt #question-continue {
+    position: absolute;
+    left: 80px;
+    top: 56px;
+}

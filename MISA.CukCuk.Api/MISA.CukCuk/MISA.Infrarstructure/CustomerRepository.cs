@@ -9,12 +9,20 @@ using MISA.ApplicationCore.Interfaces;
 
 namespace MISA.Infrarstructure
 {
+    /// <summary>
+    /// Xử lý tương tác database khách hàng
+    /// </summary>
+    /// CreatedBy: PDTAI (20/01/2021)
     public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
+        #region Constructor
         public CustomerRepository(IConfiguration configuration) : base(configuration)
         {
 
         }
+        #endregion
+
+        #region Method
         public Customer GetCustomerByCode(string customerCode)
         {
             var customer= _dbConnection.Query<Customer>($"SELECT*FROM Customer WHERE CustomerCode = '{customerCode}'", commandType: CommandType.Text).FirstOrDefault();
@@ -33,5 +41,6 @@ namespace MISA.Infrarstructure
                 return customers;
             }
         }
+        #endregion
     }
 }

@@ -43,7 +43,7 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Chứng minh thư nhân dân, thẻ căn cước
         /// </summary>
-        [DisplayName("CMTND/Thẻ căn cước")]
+        [DisplayName("Số CMTND/ Căn cước")]
         [CheckDuplicate]
         [@Required]
         public string IdentifyCardNumber { get; set; }
@@ -51,7 +51,7 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Ngày cấp
         /// </summary>
-        public DateTime IssuedDate { get; set; }
+        public DateTime? IssuedDate { get; set; }
 
         /// <summary>
         /// Nơi cấp

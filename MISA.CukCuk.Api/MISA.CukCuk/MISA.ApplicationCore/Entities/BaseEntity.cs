@@ -83,7 +83,10 @@ namespace MISA.ApplicationCore.Entities
             this.ErrorMsg = errorMsg;
         }
     }
-
+    /// <summary>
+    /// Check email
+    /// </summary>
+    /// CreatedBy: PDTAI (20/01/2021)
     public class EmailFormat : Attribute
     {
         public string Email { get; set; }

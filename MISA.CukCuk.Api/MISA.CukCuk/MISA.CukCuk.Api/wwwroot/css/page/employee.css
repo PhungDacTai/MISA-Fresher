@@ -1,3 +1,4 @@
+﻿/*================Định dạng trang Employee==================*/
 .department-group{
     margin: 0px 16px;
    
@@ -5,16 +6,6 @@
 
 .department-group, .position-group {
     margin-top: -4px;
-}
-
-.hr-format {
-    height:5px;
-    border-width:0; 
-    width:75px; 
-    margin-left: 0px; 
-    text-align:left;
-    margin-bottom: 16px;
-    background-color:#019160;
 }
 
 input[id="txtSalary"]{
@@ -40,4 +31,84 @@ input[id="txtSalary"]{
     border-color: #019160;
 }
 
+/* ===============Định dạng hiển thị các thông báo lỗi khi thực hiện nhập liệu==================*/
+.check {
+    position: absolute;
+    height: 60px;
+    width: 170px;
+    z-index: 200;
+}
+/*Check trùng mã nhân viên*/
+.check-infor {
+    left: 338px;
+    top: 77px;
+}
+/*Check email không đúng định dạng*/
+.check-email {
+    display: normal;
+    left: 338px;
+    top: 385px;
+    z-index: 202;
+}
+/*Check trùng CMTND/ Căn cước*/
+.check-identify-card {
+    top: 231px;
+    left: 335px;
+}
+/*Check trùng số định thoại*/
+.check-phone {
+    right: 40px;
+    top: 385px;
+}
 
+/*Khung chứa thông báo lỗi*/
+.rectangle {
+    position: absolute;
+    height: 45px;
+    background: red;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: #F65454;
+    color: #FFFFFF;
+}
+
+.triangle {
+    position: absolute;
+    bottom: 0px;
+    left: 75px;
+    width: 10px;
+    height: 10px;
+    background-color: #F65454;
+    transform: rotate(45deg);
+}
+
+/*==========================Dialog Employee====================================*/
+
+.m-dialog .dialog-content {
+    height: auto;
+    z-index: 21;
+    left: calc(50% - 400px);
+    bottom: calc(50% - 810px);
+}
+
+.dialog-content .dialog-infor-top {
+    height: auto;
+}
+
+.dialog-content .dialog-footer {
+    margin-top: -17px;
+}
+
+/* Đường kẻ*/
+.hr-format {
+    height: 5px;
+    border-width: 0;
+    width: 75px;
+    margin-left: 0px;
+    text-align: left;
+    margin-bottom: 16px;
+    background-color: #019160;
+}

@@ -61,3 +61,35 @@ function formatMoney(money) {
     }
     return "";
 }
+
+/**=================================================
+ * Phương thức xử lý làm trống các trường input
+ * CreatedBy: PDTAI (05/01/2021)
+ * */
+function setEmptyValue() {
+    $('input[type="text"]').val('');
+    $('input[type="email"]').val('');
+    $('input[type="tel"]').val('');
+}
+
+/**
+ * Phương thức hiển thị toast thông báo thành công
+ * CreatedBy: PDTAI (05/01/2021)
+ * */
+function toastSuccess() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    // Gỡ toast sau 3s
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+/**
+ * Phương thức hiển thị toast thông báo thất bại
+ * CreatedBy: PDTAI (05/01/2021)
+ * */
+function toastFail() {
+    var x = document.getElementById("snackbar_fail");
+    x.className = "show";
+    // Gỡ toast sau 3s
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
