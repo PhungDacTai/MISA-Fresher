@@ -10,7 +10,10 @@ input {
     font-size: 13px;
 }
 
+<<<<<<< HEAD
     /*Format input dạng radio*/
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
     input[type="radio"] {
         width: 15px;
         height: 15px;
@@ -38,7 +41,15 @@ input {
         margin-right: 4px;
     }
 
+<<<<<<< HEAD
 /*Format input dạng ngày tháng*/
+=======
+.m-dialog input:focus {
+    outline: none;
+    border-color: #019160;
+}
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 input[type="date"] {
     height: 38px !important;
     width: 258px;
@@ -48,7 +59,10 @@ input[type="date"] {
     font-weight: normal;
 }
 
+<<<<<<< HEAD
 /*Set kích thước hint-text*/
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 input::placeholder {
     font-size: 11px;
 }

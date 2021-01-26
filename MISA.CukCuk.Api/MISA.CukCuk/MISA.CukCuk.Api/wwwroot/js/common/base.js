@@ -55,6 +55,7 @@ class BaseJS {
         $('#btnAddCustomer').on('click', me.btnAddOnClick.bind(me));
         $('#btnAddEmployee').on('click', me.btnAddOnClick.bind(me));
 
+<<<<<<< HEAD
         // Các sự kiện click để đóng form, popup======================================================================================
         // Sự kiên khi click close, hủy để hiển thị popup cảnh báo đóng form thông tin 
         $('#btnCloseDialog').on('click', function () {
@@ -101,6 +102,36 @@ class BaseJS {
         })
         $('#btnCloseRefuse').on('click', function () {
             $("#popup-refuse").hide();
+=======
+        // Sự kiên khi click close, hủy để đóng dialog, đóng popup, thông báo ================================================
+        $('#btnClose').on('click', function () {
+            $(".popup-promt").show();
+
+        })
+        $('#btnCancel').on('click', function () {
+            $(".popup-promt").show();
+
+        })
+
+        $('#btnClose-2').on('click', function () {
+            $(".popup").hide();
+        })
+
+        $('#btnClose-3').on('click', function () {
+            $(".popup-promt").hide();
+        })
+        $('#btnCancel-2').on('click', function () {
+            $(".popup").hide();
+
+        })
+        $('#btnCancel-3').on('click', function () {
+            $(".popup-promt").hide();
+
+        })
+        $('#btnDelete-3').on('click', function () {
+            $(".popup-promt").hide();
+            $(".m-dialog").hide();
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
         })
 
 
@@ -141,10 +172,20 @@ class BaseJS {
         * CreatedBy: PDTAI (01/01/2021)
         * */
         $('input[type="email"]').blur(me.validateEmail);
+<<<<<<< HEAD
+=======
+        $('#txtSearchCustomer').focus(function () {
+            $('.txtsearch').addClass('border-green');
+        })
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 
     }
 
+<<<<<<< HEAD
     /**===============================================================================================================================
+=======
+    /**
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
      * Kiểm tra thẻ input tìm kiếm có giá trị thì đổ màu border
      * CreatedBy: PDTAI(20/02/2021)
      * */
@@ -176,6 +217,7 @@ class BaseJS {
                 method: "GET",
                 async: true,
             }).done(function (res) {
+<<<<<<< HEAD
                   // ajax Chạy đúng
                 if (res.length == 0) {
                     $('.loading').hide();
@@ -184,6 +226,16 @@ class BaseJS {
                     $(".not-find").hide();
                 }
 
+=======
+                if (res.length == 0) {
+                    $('.loading').hide();
+                    $(".not-find").show();
+                } else {
+                    $(".not-find").hide();
+                }
+                debugger;
+                // Chạy đúng
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                 $.each(res, function (index, obj) {
                     var tr = $(`<tr></tr>`);
                     if (me.object == "Customer")
@@ -261,14 +313,22 @@ class BaseJS {
                 method: "GET",
                 async: true,
             }).done(function (res) {
+<<<<<<< HEAD
                 var objectCode = me.object + "Code";//Lấy mã của đối tượng
                 var txtInput = "txt" + objectCode;
+=======
+                var objectCode = me.object + "Code";
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                 objectCode = res[objectCode];
                 var objectFirt = objectCode.slice(0, 2);//Tách mã thành chữ và số
                 objectCode = objectCode.slice(2);
                 objectCode = parseInt(objectCode) + 1;
                 objectCode = objectFirt + objectCode;
+<<<<<<< HEAD
                 $('input[id=\"' + txtInput + '\"]').val(objectCode);//Gán mã cho thẻ input mã
+=======
+                $('input[id="txtEmployeeCode"]').val(objectCode);//Gán mã cho thẻ input mã
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
             }).fail(function (res) {
 
             })
@@ -297,7 +357,10 @@ class BaseJS {
         try {
             // Validated dữ liệu
             $(".check-email").hide();
+<<<<<<< HEAD
             $("#refuseStatus div").remove();
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
             var inputValidates = $('.input-required, input[type="email"]');
             $.each(inputValidates, function (index, input) {
                 $(input).trigger('blur');// Trigger: Thực hiện tất cả các xử lý và đính kèm các loại sự kiện nhất định tới thành phần được chọn
@@ -305,6 +368,7 @@ class BaseJS {
 
             var inputNotVlidates = $('input[validate="false"]');
             if (inputNotVlidates && inputNotVlidates.length > 0) {
+<<<<<<< HEAD
                 var messenger = $(``);
                 if ($('#txtFullName').val() == '') {
                     messenger = $(`<div><i class="fas fa-exclamation-triangle"></i> &nbsp;&nbsp;&nbsp;<label>Họ và tên không được để trống</div>`);
@@ -326,6 +390,9 @@ class BaseJS {
                 //alert("Các trường có dấu (*) không được để trống hoặc dữ liệu không hợp lệ, vui lòng kiểm tra lại!");
                 $("#popup-refuse").show();
                 toastFail();
+=======
+                alert("Các trường có dấu (*) không được để trống, vui lòng kiểm tra lại!");
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                 inputNotVlidates[0].focus();
                 return;//Dừng chương trình
             }
@@ -345,7 +412,11 @@ class BaseJS {
                     value = $(this).val();//Lấy giá trị
                 }
 
+<<<<<<< HEAD
                 //Chuyển tiền tệ sang số
+=======
+                //Convert currency
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                 if (propertyName == "Salary") {
                     value = value.split(',').join('');
                     value = value.split('.').join('');
@@ -369,7 +440,11 @@ class BaseJS {
             var method = "POST";
             if (me.FormMode == 'Edit') {
                 method = "PUT";
+<<<<<<< HEAD
                 // Lấy đối tượng thực thi
+=======
+                // Lấy đối tượng thựic thi
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                 if (me.object == "Customer") {
                     entity.CustomerId = me.recordId;
                     var id = `/${entity.CustomerId}`;
@@ -397,29 +472,45 @@ class BaseJS {
                 $(".m-dialog").hide();
 
             }).fail(function (res) {
+<<<<<<< HEAD
                 // Thông báo khi fail
+=======
+                // Thông báo fail
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                 var messenger = res.responseText.split(',');
                 messenger = messenger[0].slice(10, messenger[0].length - 2);
                 var value = res.responseJSON.ObjectName;
                 switch (value) {
                     case me.propertyCode:
                         $(".check-infor").show();
+<<<<<<< HEAD
                         toastFail();
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                         $("#txtEmployeeCode").focus();
                         break;
                     case "Email":
                         $(".check-email").show();
+<<<<<<< HEAD
                         toastFail();
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                         $("#txtEmployeeEmail").focus();
                         break;
                     case "Số điện thoại":
                         $(".check-phone").show();
+<<<<<<< HEAD
                         toastFail();
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                         $("#txtPhoneNumber").focus();
                         break;
                     case "Số CMTND/ Căn cước":
                         $(".check-identify-card").show();
+<<<<<<< HEAD
                         toastFail();
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                         $("#txtIdentifyCardNumber").focus();
                         break;
                     default:
@@ -479,7 +570,11 @@ class BaseJS {
                     var propertyName = $(this).attr('fieldName');
                     var value = res[propertyName];
                     console.log(value);
+<<<<<<< HEAD
                     //Check nhóm (các combobox)
+=======
+                    //Check nhóm 
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                     var select = $('');
                     switch (propertyName) {
                         case "CustomerGroupName": case "PositionName":
@@ -495,7 +590,11 @@ class BaseJS {
                     var groupId = res[fieldValue1];
                     select.empty();
                     $.each(select, function (index, value) {
+<<<<<<< HEAD
                         // Lấy dữ liệu nhóm khách hàng, hiển thị lại giá trị lên combobox
+=======
+                        // Lấy dữ liệu nhóm khách hàng
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                         var api = $(select).attr('api');
                         var fieldName = $(select).attr('fieldName');
                         var fieldValue = $(select).attr('fieldValue');
@@ -519,6 +618,10 @@ class BaseJS {
                             } catch (e) {
                                 console.log(e);
                             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                             $('.loading').hide();
                         }).fail(function (res) {
                             $('.loading').hide();
@@ -631,6 +734,10 @@ class BaseJS {
         var messenger = '';
         $('#question-delete').empty();
         $("body").on("contextmenu", "table tr", function (e) {
+<<<<<<< HEAD
+=======
+            var me2 = this;
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
             $contextMenu.css({
                 display: "block",
                 left: e.pageX,
@@ -655,9 +762,15 @@ class BaseJS {
             $('#btnDelete').on('click', function () {
                 messenger = $(`<label>Bạn có chắc chắn muốn xóa nhân viên ${objectCode} không?</label>`);
                 $('#question-delete').append(messenger);
+<<<<<<< HEAD
                 $('#popup').show();
                 try {
                     $('#btnDeleteYes').on('click', function () {
+=======
+                $('.popup').show();
+                try {
+                    $('#btnDelete-2').on('click', function () {
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
                         $.ajax({
                             url: me.host + me.apiRouter + `/${recordId}`,
                             method: "DELETE",
@@ -666,7 +779,11 @@ class BaseJS {
                         }).done(function (res) {
                             me.loadData();
                             $('#question-delete').remove(messenger);
+<<<<<<< HEAD
                             $("#popup").hide();
+=======
+                            $(".popup").hide();
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 
                             toastSuccess();
                         }).fail(function (res) {
@@ -692,7 +809,11 @@ class BaseJS {
     }
 
     /**
+<<<<<<< HEAD
      * xử lý đổ dữ liệu lên các combobox =============================================================================================
+=======
+     * Đổ dữ liệu lên các combobox
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
      * @param {any} select thể select truyền vào
      * CreatedBy: PDTAI(20/02/2021)
      */

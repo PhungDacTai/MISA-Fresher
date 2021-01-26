@@ -31,37 +31,59 @@ input[id="txtSalary"]{
     border-color: #019160;
 }
 
+<<<<<<< HEAD
 /* ===============Định dạng hiển thị các thông báo lỗi khi thực hiện nhập liệu==================*/
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .check {
     position: absolute;
     height: 60px;
     width: 170px;
     z-index: 200;
 }
+<<<<<<< HEAD
 /*Check trùng mã nhân viên*/
+=======
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .check-infor {
     left: 338px;
     top: 77px;
 }
+<<<<<<< HEAD
 /*Check email không đúng định dạng*/
+=======
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .check-email {
     display: normal;
     left: 338px;
     top: 385px;
     z-index: 202;
 }
+<<<<<<< HEAD
 /*Check trùng CMTND/ Căn cước*/
+=======
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .check-identify-card {
     top: 231px;
     left: 335px;
 }
+<<<<<<< HEAD
 /*Check trùng số định thoại*/
+=======
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .check-phone {
     right: 40px;
     top: 385px;
 }
 
+<<<<<<< HEAD
 /*Khung chứa thông báo lỗi*/
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .rectangle {
     position: absolute;
     height: 45px;
@@ -74,6 +96,7 @@ input[id="txtSalary"]{
     background-color: #F65454;
     color: #FFFFFF;
 }
+<<<<<<< HEAD
 
 .triangle {
     position: absolute;
@@ -111,4 +134,15 @@ input[id="txtSalary"]{
     text-align: left;
     margin-bottom: 16px;
     background-color: #019160;
+=======
+
+.triangle {
+    position: absolute;
+    bottom: 0px;
+    left: 75px;
+    width: 10px;
+    height: 10px;
+    background-color: #F65454;
+    transform: rotate(45deg);
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 }

@@ -36,6 +36,9 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>Mã đối tượng/returns>
         /// CreatedBy: PDTAI (23/01/2021)
         Employee GetEmployeeCode();
+<<<<<<< HEAD
         #endregion
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
     }
 }

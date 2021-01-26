@@ -117,9 +117,12 @@ namespace MISA.CukCuk.Api.Controllers
                 return Ok(serviceResult);
             }
         }
+<<<<<<< HEAD
         #endregion 
 
         #region Delete
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
         /// <summary>
         /// Xóa qua id
         /// </summary>

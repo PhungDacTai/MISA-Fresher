@@ -1,13 +1,20 @@
 /*Xử lý popup cảnh báo xóa*/
+<<<<<<< HEAD
 .popup .popup-delete {
     top: 90px;
     height: 192px;
+=======
+.popup {
+    position: relative;
+    z-index: 202;
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 }
 
     .popup .popup-delete .popup-confirm .warn-icon .fas {
         color: #F65454 !important;
     }
 
+<<<<<<< HEAD
     .popup .popup-delete .dialog-footer .btn-save {
         background-color: #F65454;
     }
@@ -29,3 +36,109 @@
     .popup .popup-delete .dialog-footer .btn-no {
         margin-left: 12px;
     }
+=======
+    .popup .popup-delete {
+        position: absolute;
+        left: calc(50% - 220px);
+        top: 30px;
+        background-color: #fff;
+        height: 192px;
+        width: 440px;
+        z-index: 203;
+        border-radius: 5px;
+    }
+
+        .popup .popup-delete .popup-title {
+            display: flex;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 24px;
+            height: 20px;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+
+            .popup .popup-delete .popup-title button {
+                position: absolute;
+                height: 20px;
+                width: 20px;
+                right: 0px;
+                top: 0px;
+                background-image: url('../../contents/icons/x.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                border: none;
+                outline: none;
+                padding: 5px;
+                background-color: #ffffff;
+                border-top-right-radius: 5px;
+            }
+
+                .popup .popup-delete .popup-title button:hover {
+                    background-color: #e5e5e5;
+                    border-radius: 0px 0px 4px 4px;
+                }
+
+        .popup .popup-delete .popup-confirm {
+            width: 100%;
+            height: 40px;
+            background: #FFF;
+            display: flex;
+            line-height: 40px;
+            margin-bottom: 24px;
+        }
+
+            .popup .popup-delete .popup-confirm .warn-icon {
+                width: 40px;
+                height: 40px;
+                background: #e5e5e5;
+                border-radius: 20px;
+                margin-left: 24px;
+                margin-right: 10px;
+            }
+
+                .popup .popup-delete .popup-confirm .warn-icon .fas {
+                    font-size: 17px;
+                    margin: 0px;
+                    transform: translate(11px, -6px);
+                    color: #F65454 !important;
+                    position: absolute;
+                }
+
+        .popup .popup-delete .dialog-footer {
+            position: absolute;
+            display: flex;
+            background-color: #E9EBEE;
+            height: 60px;
+            width: 100%;
+            left: 0px;
+            border-radius: 0 0 5px 5px;
+        }
+
+            .popup .popup-delete .dialog-footer .btn-save {
+                background-color: #F65454;
+            }
+
+                .popup .popup-delete .dialog-footer .btn-save:hover {
+                    background-color: #FF6A6A;
+                }
+
+                .popup .popup-delete .dialog-footer .btn-save .delete-2 {
+                    margin-left: 18px;
+                }
+
+            .popup .popup-delete .dialog-footer #btnCancel-2 {
+            }
+
+        .popup .popup-delete #question-delete {
+            width: 330px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .popup .popup-delete .dialog-footer .btn-no {
+            margin-left: 12px;
+        }
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd

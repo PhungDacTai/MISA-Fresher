@@ -46,16 +46,22 @@ namespace MISA.CukCuk.Api.Controllers
 
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Lấy đối tượng có mã nhân viên lớn nhất
         /// </summary>
         /// <returns>Đối tượng lấy được</returns>
         /// CreatedBy: PDTAI (23/01/2021)
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
         [HttpGet("getcode")]
         public IActionResult GetEmployeeCode()
         {
             return Ok(_baseService.GetEmployeeCode());
         }
+<<<<<<< HEAD
         #endregion
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
     }
 }

@@ -24,9 +24,13 @@ namespace MISA.ApplicationCore
             _baseRepository = baseRepository;
             _employeeRepository = employeeRepository;
         }
+<<<<<<< HEAD
         #endregion
 
         #region Method
+=======
+
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
         public Employee GetEmployeeCode()
         {
             return _employeeRepository.GetEmployeeCode();

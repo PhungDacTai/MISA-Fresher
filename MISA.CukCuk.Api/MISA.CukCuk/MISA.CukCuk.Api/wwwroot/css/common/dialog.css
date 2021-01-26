@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿/*Định dạng dialog*/
 
 
 
+=======
+﻿/*Định dạng dialog khách hàng*/
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
 .m-dialog {
     position: relative;
     z-index: 100;

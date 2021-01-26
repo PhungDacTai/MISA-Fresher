@@ -15,7 +15,10 @@ namespace MISA.Infrarstructure
     /// CreatedBy: PDTAI (20/01/2021)
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
+<<<<<<< HEAD
         #region Constructor
+=======
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
         public EmployeeRepository(IConfiguration configuration) : base(configuration)
         {
 

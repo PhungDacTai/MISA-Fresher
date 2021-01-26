@@ -1,4 +1,5 @@
 ﻿/*Xử lý popup cảnh báo đóng form thông tin*/
+<<<<<<< HEAD
 .popup-promt .popup-promt-2 {
     top: 90px;
     height: 192px;
@@ -35,6 +36,129 @@
     }
 
 .popup-promt .btn-continue {
+=======
+.popup-promt {
+    position: relative;
+    z-index: 202;
+}
+
+    .popup-promt .dialog-modal {
+        position: fixed;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: black;
+    }
+
+    .popup-promt .popup-delete {
+        position: absolute;
+        left: calc(50% - 220px);
+        top: 250px;
+        background-color: #fff;
+        height: 192px;
+        width: 440px;
+        z-index: 203;
+        border-radius: 5px;
+    }
+
+        .popup-promt .popup-delete .popup-title {
+            display: flex;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 24px;
+            height: 20px;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+
+            .popup-promt .popup-delete .popup-title button {
+                position: absolute;
+                height: 20px;
+                width: 20px;
+                right: 0px;
+                top: 0px;
+                background-image: url('../../contents/icons/x.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                border: none;
+                outline: none;
+                padding: 5px;
+                background-color: #ffffff;
+                border-top-right-radius: 5px;
+            }
+
+                .popup-promt .popup-delete .popup-title button:hover {
+                    background-color: #e5e5e5;
+                    border-radius: 0px 0px 4px 4px;
+                }
+
+        .popup-promt .popup-delete .popup-confirm {
+            width: 100%;
+            height: 40px;
+            background: #FFF;
+            display: flex;
+            line-height: 40px;
+            margin-bottom: 24px;
+        }
+
+            .popup-promt .popup-delete .popup-confirm .warn-icon {
+                width: 40px;
+                height: 40px;
+                background: #e5e5e5;
+                border-radius: 20px;
+                margin-left: 24px;
+                margin-right: 10px;
+            }
+
+                .popup-promt .popup-delete .popup-confirm .warn-icon .fas {
+                    font-size: 17px;
+                    margin: 0px;
+                    transform: translate(11px, -6px);
+                    color: #FF8C00 !important;
+                    position: absolute;
+                }
+
+        .popup-promt .popup-delete .dialog-footer {
+            position: absolute;
+            display: flex;
+            background-color: #E9EBEE;
+            height: 60px;
+            width: 100%;
+            left: 0px;
+            border-radius: 0 0 5px 5px;
+        }
+
+            .popup-promt .popup-delete .dialog-footer .btn-save {
+                background-color: #019160;
+            }
+
+                .popup-promt .popup-delete .dialog-footer .btn-save:hover {
+                    background-color: #2FBE8E;
+                }
+
+                .popup-promt .popup-delete .dialog-footer .btn-save .delete-3 {
+                    margin-left: 15px;
+                }
+
+    .popup-promt .continue {
+        width: 150px;
+        width: 150px;
+        height: 38px;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 4px;
+    }
+
+        .popup-promt .continue:hover {
+            background: #BBB;
+        }
+
+.btn-continue {
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
     position: absolute;
     right: 145px;
     top: 12px;
@@ -42,7 +166,11 @@
     background-color: #E9EBEE;
 }
 
+<<<<<<< HEAD
 .popup-promt #question-continue {
+=======
+#question-continue {
+>>>>>>> 7a8b0b39b2c7cb7445f9fa576460bd412f817fbd
     position: absolute;
     left: 80px;
     top: 56px;
